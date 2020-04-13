@@ -13,14 +13,12 @@
 	<div class="wrapper">
 
 		<!-- navbar -->
-			<?php $this->load->view('layouts/navbar/navbar_dosen')?>
+			<?php $this->load->view('layouts/navbar/navbar_kbk')?>
 		<!-- END navbar -->
 		
 		<!-- sidebar -->
 			<?php echo $main['sidebar']; ?>
 		<!-- END sidebar -->
-
-		
 
 		<!-- Control Sidebar -->
 		<aside class="control-sidebar control-sidebar-dark">
@@ -38,5 +36,11 @@
 	<?php $this->load->view('layouts/javascript')?>
 	<!-- END javascript -->
 
+
+
+
 </body>
+
+
+
 </html>
