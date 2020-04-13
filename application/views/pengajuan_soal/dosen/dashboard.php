@@ -11,14 +11,36 @@
 	<div class="wrapper">
 
 		<!-- navbar -->
-			<?php $this->load->view('layouts/navbar')?>
+			<?php $this->load->view('layouts/navbar/navbar_dosen')?>
 		<!-- END navbar -->
 		
 		<!-- sidebar -->
 			<?php $this->load->view('layouts/sidebar/sidebar_dosen')?>
 		<!-- END sidebar -->
 
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- pages -->
+			<?php $this->load->view('pages/main_dosen_dashboard') ?>
+			<!-- END pages -->
+		</div>
+		<!-- /.content-wrapper -->
+		
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+
+		<!-- footer -->
+		<?php $this->load->view('layouts/footer')?>
+		<!-- END footer -->
+
 	</div>
 	<!-- ./wrapper -->
+
+	<!-- javascript -->
+	<?php $this->load->view('layouts/javascript')?>
+	<!-- END javascript -->
 </body>
 </html>

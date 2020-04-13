@@ -9,7 +9,7 @@
 
    
 
-     <h3 class="m-6 text-dark">Sistem Pengajuan Soal</h3>
+     <h3 class="m-6 text-dark">Sistem Pengajuan Soal</h3
     
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">

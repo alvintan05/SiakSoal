@@ -20,4 +20,12 @@ class Dosen extends CI_Controller
 		$data['title'] = 'Dashboard | Dosen';
 		$this->load->view('pengajuan_soal/dosen/dashboard.php', array('main'=>$data));
 	}
+
+	function status_soal()
+	{
+		$data['title'] = 'Status Soal | Dosen';
+		$this->load->view('pengajuan_soal/dosen/status_soal.php', array('main'=>$data));
+	}
+
+
 }
