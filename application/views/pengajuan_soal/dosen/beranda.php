@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title><?php echo $main['title']; ?></title>
+  <title><?php echo $main['title']; ?></title> 
   <?php $this->load->view('layouts/head') ?>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
