@@ -1,6 +1,6 @@
 <?php 
 
-class Dosen extends CI_Controller
+class Dosen extends CI_Controller 
 {
 	
 	function __construct()
