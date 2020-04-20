@@ -12,7 +12,7 @@ class Dosen extends CI_Controller
 	{
 		$data['title'] = 'Home | Dosen';
 		$data['pages'] = $this->load->view('pages/dosen/dashboard','',true);
-		$this->load->view('pengajuan_soal/dosen/beranda.php', array('main'=>$data));
+		$this->load->view('pengajuan_soal/dosen/home.php', array('main'=>$data));
 	}
 
 	function dashboard()
