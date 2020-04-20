@@ -11,7 +11,7 @@ class Dosen extends CI_Controller
 	function index()
 	{
 		$data['title'] = 'Home | Dosen';
-		$data['pages'] = $this->load->view('pages/main','',true);
+		$data['pages'] = $this->load->view('pages/dosen/dashboard','',true);
 		$this->load->view('pengajuan_soal/dosen/beranda.php', array('main'=>$data));
 	}
 

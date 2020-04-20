@@ -10,9 +10,21 @@ class Kbk extends CI_Controller
 
 	function index()
 	{
-		$data['title'] = 'AdminLTE 3 | Dashboard 2';
-		$data['sidebar'] = $this->load->view('layouts/sidebar/sidebar_kbk','',true);
-        $data['pages'] = $this->load->view('pages/main','',true);
-		$this->load->view('pengajuan_soal/kbk/beranda',array('main'=>$data));
+		$data['title'] = 'Home | KBK';
+		$data['pages'] = $this->load->view('pages/main','',true);
+		$this->load->view('pengajuan_soal/kbk/home.php', array('main'=>$data));
 	}
+
+	// function dashboard()
+	// {
+	// 	$data['title'] = 'Dashboard | Dosen';
+	// 	$this->load->view('pengajuan_soal/dosen/dashboard.php', array('main'=>$data));
+	// }
+
+	// function status_soal()
+	// {
+	// 	$data['title'] = 'Status Soal | Dosen';
+	// 	$this->load->view('pengajuan_soal/dosen/status_soal.php', array('main'=>$data));
+	// }
+
 }

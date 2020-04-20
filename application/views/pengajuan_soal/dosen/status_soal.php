@@ -21,7 +21,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/main_dosen_statussoal') ?>
+			<?php $this->load->view('pages/dosen/status_soal') ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->

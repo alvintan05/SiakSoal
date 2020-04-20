@@ -18,7 +18,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php echo $main['pages']; ?>
+			<?php $this->load->view('pages/dosen/home') ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->

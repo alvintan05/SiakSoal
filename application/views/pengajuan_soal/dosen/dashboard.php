@@ -21,7 +21,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/main_dosen_dashboard') ?>
+			<?php $this->load->view('pages/dosen/dashboard') ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
