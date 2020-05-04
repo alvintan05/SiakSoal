@@ -29,7 +29,7 @@
               <div class="card-body p-0">
                 <div class="table table-striped">
                   <table class="table m-0">
-                    <thead>
+                    <thead class="thead-dark">
                     <tr>
                       <th>Kode</th>
                       <th>Mata Kuliah</th>

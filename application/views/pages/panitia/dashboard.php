@@ -24,12 +24,14 @@
                 <h6 class="card-description text-muted">Dosen : Raisa Andriana</h6>
                 <!-- <p></p> -->
                 <!-- <h6 class="card-subtitle mb-2 text-muted">Dosen : Raisa Andriana</h6> -->
+              <div>
+              </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
                 <div class="table table-striped">
                   <table class="table m-0">
-                    <thead>
+                    <thead class="thead-dark">
                     <tr>
                       <th>Kode</th>
                       <th>Mata Kuliah</th>
