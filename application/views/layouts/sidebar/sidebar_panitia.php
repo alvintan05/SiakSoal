@@ -40,6 +40,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('panitia/bataswaktu'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'panitia/bataswaktu') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-clock"></i>
+              <p>
+                Batas Waktu
+              </p>
+            </a>
+          </li>
           <!-- <li class="nav-item">
             <a href="<?php echo site_url('dosen/status_soal'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'dosen/status_soal') {echo "active" ;} ?>">
               <i class="nav-icon fas fa-file"></i>

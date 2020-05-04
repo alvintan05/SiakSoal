@@ -20,4 +20,10 @@ class Panitia extends CI_Controller
 		$data['title'] = 'Dashboard | Panitia';
 		$this->load->view('pengajuan_soal/panitia/dashboard.php', array('main'=>$data));
 	}
+
+	function bataswaktu()
+	{
+		$data['title'] = 'Batas Waktu | Panitia';
+		$this->load->view('pengajuan_soal/panitia/bataswaktu.php',array('main'=>$data));
+	}
 }
