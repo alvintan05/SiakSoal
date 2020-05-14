@@ -14,3 +14,13 @@
 <link rel="stylesheet" href="<?php echo base_url();?>assets/dist/css/main.css">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<!-- DatePicker -->
+<script src="<?php echo base_url();?>assets/plugins/daterangepicker/daterangepicker.js"></script>
+<link rel="stylesheet" href="<?php echo base_url();?>assets/plugins/daterangepicker/daterangepicker.css">
+<script>
+    $(function(){
+    $('#daterangepicker').daterangepicker({
+    autoclose: true
+    });
+    });
+</script>
