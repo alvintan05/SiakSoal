@@ -20,7 +20,7 @@
                   </button>
                 </div>
                 <h1 class="card-title "><b>Jadwal Dosen</b></h1>
-                <br>
+                <p><br></p>
                 <h6 class="card-description text-muted">Dosen : Raisa Andriana</h6>
                 <!-- <p></p> -->
                 <!-- <h6 class="card-subtitle mb-2 text-muted">Dosen : Raisa Andriana</h6> -->

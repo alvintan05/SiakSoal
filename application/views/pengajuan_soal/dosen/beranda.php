@@ -18,6 +18,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
+			<?php $this->load->view('layouts/breadcrumb')?>
 			<?php $this->load->view('pages/dosen/home') ?>
 			<!-- END pages -->
 		</div>

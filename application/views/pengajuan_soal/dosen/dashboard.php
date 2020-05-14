@@ -18,9 +18,12 @@
 			<?php $this->load->view('layouts/sidebar/sidebar_dosen')?>
 		<!-- END sidebar -->
 
+
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
+			<?php $this->load->view('layouts/breadcrumb')?>
+
 			<?php $this->load->view('pages/dosen/dashboard') ?>
 			<!-- END pages -->
 		</div>

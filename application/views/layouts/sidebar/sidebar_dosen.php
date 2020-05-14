@@ -16,6 +16,7 @@
         </div>
         <div class="info">
           <a href="<?php echo site_url('.')?>" class="d-block">Raisa Andriana</a>
+          <span data-toggle="tooltip" title="Sebagai" class="badge badge-warning">Dosen</span>
         </div>
       </div>
 
@@ -24,7 +25,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-           <li class="nav-item">
+           <li class="nav-item <?php echo $this->uri->segment(2) == 'dosen' ? 'active': '' ?>">
             <a href="<?php echo site_url('dosen'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'dosen' ) {echo "active" ;} ?>">
               <i class="nav-icon fas fa-home"></i>
               <p>
@@ -32,15 +33,15 @@
               </p>
             </a>
           </li>
-           <li class="nav-item">
-            <a href="<?php echo site_url('dosen/dashboard'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'dosen/dashboard') {echo "active" ;} ?>">
+           <li class="nav-item <?php echo $this->uri->segment(2) == 'dosen/dashboard' ? 'active': '' ?>">
+            <a href="<?php echo site_url('dosen/dashboard'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'dosen/dashboard' ) {echo "active" ;} ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <?php echo $this->uri->segment(2) == 'dosen/status_soal' ? 'active': '' ?>">
             <a href="<?php echo site_url('dosen/status_soal'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'dosen/status_soal') {echo "active" ;} ?>">
               <i class="nav-icon fas fa-file"></i>
               <p>
