@@ -11,6 +11,27 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
+
+      <!-- Info boxes -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Matkul</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+
+
     	<!-- TABLE: LATEST ORDERS -->
             <div class="card">
               <div class="card-header border-transparent">
@@ -46,7 +67,7 @@
                       <td>AA 301</td>
                       <td>
                       	<div class="box-button">
-								<a href='' class="btn btn-info btn-sm">Upload</a>
+								<a href='<?php echo site_url('dosen/upload_soal'); ?>' class="btn btn-info btn-sm">Upload</a>
 						</div>
                       </td>
                     </tr>
@@ -57,7 +78,7 @@
                       <td>AA 302</td>
                       <td>
                       	<div class="box-button">
-								<a href='' class="btn btn-info btn-sm">Upload</a>
+								<a href='<?php echo site_url('dosen/upload_soal'); ?>' class="btn btn-info btn-sm">Upload</a>
 						</div>
                       </td>
                     </tr>

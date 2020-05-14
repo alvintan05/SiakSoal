@@ -12,6 +12,69 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
+
+       <!-- Info boxes -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Matkul</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+           <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hourglass-half"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Processing</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+           <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon badge-success elevation-1"><i class="fas fa-check"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Verified</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+           <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon badge-danger elevation-1"><i class="fas fa-times"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Rejected</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
+
+
     	<!-- TABLE: LATEST ORDERS -->
             <div class="card">
               <div class="card-header border-transparent">
@@ -61,6 +124,21 @@
                       <td>Datawarehouse</td>
                       <td><a href="">Datawarehouse.pdf</a></td>
                       <td><span class="badge badge-warning">Processing</span></td>
+                      <td>22-06-2020</td>
+                      <td>
+                        <div class="box-button">
+                          <button class="btn" ><i class="fa fa-edit"></i></button>
+                          <button class="btn" ><i class="fa fa-trash"></i></button>
+
+                          <!-- <a href='' class="btn btn-link btn-sm"><span class="fa fa-pencil"></span>ll</a> -->
+                          </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>WB002</td>
+                      <td>Pemrograman Web 1</td>
+                      <td><a href="">PemogramanWeb1.pdf</a></td>
+                      <td><span class="badge badge-danger">Rejected</span></td>
                       <td>22-06-2020</td>
                       <td>
                         <div class="box-button">
