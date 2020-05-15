@@ -2,7 +2,7 @@
 	<div class="container-fluid">
         <div class="row mb-2">
         	<div class="col-sm-6">
-            	<h1 class="m-0 text-dark">Status Soal</h1>
+            	<h4 class="m-0 text-dark">Status Soal</h4>
           	</div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -112,8 +112,9 @@
                       <td>22-06-2020</td>
                       <td>
                       	<div class="box-button">
-                          <button class="btn" ><i class="fa fa-edit"></i></button>
-                          <button class="btn" ><i class="fa fa-trash"></i></button>
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+                          <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>
 
 								          <!-- <a href='' class="btn btn-link btn-sm"><span class="fa fa-pencil"></span>ll</a> -->
 						              </div>
@@ -127,8 +128,9 @@
                       <td>22-06-2020</td>
                       <td>
                         <div class="box-button">
-                          <button class="btn" ><i class="fa fa-edit"></i></button>
-                          <button class="btn" ><i class="fa fa-trash"></i></button>
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+                          <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#hapusModal" ><i class="fa fa-trash"></i></a>
 
                           <!-- <a href='' class="btn btn-link btn-sm"><span class="fa fa-pencil"></span>ll</a> -->
                           </div>
@@ -142,10 +144,9 @@
                       <td>22-06-2020</td>
                       <td>
                         <div class="box-button">
-                          <button class="btn" ><i class="fa fa-edit"></i></button>
-                          <button class="btn" ><i class="fa fa-trash"></i></button>
-
-                          <!-- <a href='' class="btn btn-link btn-sm"><span class="fa fa-pencil"></span>ll</a> -->
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+                          <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#hapusModal" ><i class="fa fa-trash"></i></a>
                           </div>
                       </td>
                     </tr>
@@ -156,6 +157,79 @@
               </div>
               <!-- /.card-body -->
           </div>
+
+          <!-- Modal Detail-->
+          <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="detailModalTitle">Detail Soal</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="card">
+                    <table class="table table-sm table-hover">
+                      <tr>
+                        <th>Kode Matkul</th>
+                        <td><p>MK002</p></td>
+                      </tr>
+                      <tr>
+                        <th>Nama Matkul</th>
+                        <td><p>Data Warehouse</p></td>
+                      </tr>
+                      <tr>
+                        <th>Dosen Pengajar</th>
+                        <td><p>Iklima Putri</p></td>
+                      </tr>
+                      <tr>
+                        <th>Jenis Ujian</th>
+                        <td><p>Tertulis</p></td>
+                      </tr>
+                      <tr>
+                        <th>UTS / UAS</th>
+                        <td><p>UTS</p></td>
+                      </tr>
+                      <tr>
+                        <th>Tanggal Upload</th>
+                        <td><p>Senin, 22 Juni 2020, 07.30 AM</p></td>
+                      </tr>
+                      <tr>
+                        <th>File Soal</th>
+                        <td><a href=""><i class="fas fa-file"></i> PemogramanWeb1.pdf </a></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Hapus-->
+          <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="hapusModalLabel">Perhatian</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Apakah Anda yakin ingin menghapus data ?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <a href="" class="btn btn-danger">Hapus</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
       </div>
   </section>
 

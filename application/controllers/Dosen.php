@@ -26,6 +26,12 @@ class Dosen extends CI_Controller
 		$this->load->view('pengajuan_soal/dosen/upload_soal.php', array('main'=>$data));
 	}
 
+	function edit_soal()
+	{
+		$data['title'] = 'Edit Soal | Dosen';
+		$this->load->view('pengajuan_soal/dosen/edit_soal.php', array('main'=>$data));
+	}
+
 	function status_soal()
 	{
 		$data['title'] = 'Status Soal | Dosen';
