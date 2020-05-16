@@ -23,7 +23,7 @@
 			<!-- pages -->
 			
 			<?php $this->load->view('layouts/breadcrumb')?>
-			<?php $this->load->view('pages/kbk/dashboard') ?>
+			<?php $this->load->view('pages/kbk/home') ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->

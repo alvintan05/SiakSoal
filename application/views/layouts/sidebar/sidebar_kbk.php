@@ -4,7 +4,7 @@
     <a href="<?php echo site_url('.');?>" class="brand-link">
       <img src="<?php echo base_url();?>assets/dist/img/logo_pnj1.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">  Sistem Pengajuan Soal</span> 
+      <span class="brand-text font-weight-light"> Sistem Pengajuan Soal</span> 
     </a>
 
     <!-- Sidebar -->
@@ -25,14 +25,14 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
            <li class="nav-item">
-            <a href="<?php echo site_url('kbk'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk' ) {echo "active" ;} ?>">
+            <a href="<?php echo site_url('kbk/home'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/home' ) {echo "active" ;} ?>">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
               </p>
             </a>
           </li>
-           <li class="nav-item">
+          <li class="nav-item">
             <a href="<?php echo site_url('kbk/dashboard'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/dashboard') {echo "active" ;} ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -40,7 +40,15 @@
               </p>
             </a>
           </li>
-         <!--  -->
+         <!-- upload form soal -->
+          <li class="nav-item">
+            <a href="<?php echo site_url('kbk/upload_form_soal'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/upload_form_soal') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-cloud-upload-alt"></i>
+              <p>
+                Upload Format Soal
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
