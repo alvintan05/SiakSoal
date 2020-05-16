@@ -36,11 +36,4 @@ class Kbk extends CI_Controller
 	}
 
 
-
-	// function status_soal()
-	// {
-	// 	$data['title'] = 'Status Soal | Dosen';
-	// 	$this->load->view('pengajuan_soal/dosen/status_soal.php', array('main'=>$data));
-	// }
-
 }
