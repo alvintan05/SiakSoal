@@ -1,20 +1,79 @@
 <div class="content-header">
-
+  <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+              <h4 class="m-0 text-dark">Status Soal</h4>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
 </div>
+<!-- /.content-header -->
+ 
+<!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-      <div class="row">
-       <div class="info-box bg-warning col-md-3">
-          <span class="info-box-icon">
-            <i class="nav-icon fas fa-file"></i>
-          </span>
-          <div class="info-box-content">
-            <span class="info-box-number">5</span>
-            <span class="info-box-text">Total Matakuliah</span>    
+
+       <!-- Info boxes -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Total Matkul</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
           </div>
+           <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hourglass-half"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Processing</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+           <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon badge-success elevation-1"><i class="fas fa-check"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Verified</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+           <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box">
+              <span class="info-box-icon badge-danger elevation-1"><i class="fas fa-times"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Rejected</span>
+                <span class="info-box-number">
+                  5
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
         </div>
-      </div>
-    </div>
+
     <!-- TABLE: LATEST ORDERS -->
             <div class="card">
               <div class="card-header border-transparent">
@@ -57,7 +116,7 @@
                       <td>TI 2A</td>
                       <td>
                         <div class="box-button">
-                          <a href='' class="btn btn-info btn-sm">Detail</a>
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -68,7 +127,7 @@
                       <td>TI 4A</td>
                       <td>
                        <div class="box-button">
-                          <a href='' class="btn btn-info btn-sm">Detail</a>
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -79,7 +138,7 @@
                       <td>TI 6A</td>
                       <td>
                        <div class="box-button">
-                          <a href='' class="btn btn-info btn-sm">Detail</a>
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -90,8 +149,7 @@
                       <td>TI 2B</td>
                       <td>
                        <div class="box-button">
-                          <a href='' class="btn btn-info btn-sm">Detail</a>
-                        </div>
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
                       </td>
                     </tr>
                      <tr>
@@ -101,7 +159,7 @@
                       <td>TI 6B</td>
                       <td>
                        <div class="box-button">
-                          <a href='' class="btn btn-info btn-sm">Detail</a>
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -111,5 +169,57 @@
                 <!-- /.table-responsive -->
               </div>
               <!-- /.card-body -->
+          </div>
+
+
+           <!-- Modal Detail-->
+          <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="detailModalTitle">Detail Soal</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="card">
+                    <table class="table table-sm table-hover">
+                      <tr>
+                        <th>Kode Matkul</th>
+                        <td><p>MK001</p></td>
+                      </tr>
+                      <tr>
+                        <th>Nama Matkul</th>
+                        <td><p>Data Mining</p></td>
+                      </tr>
+                      <tr>
+                        <th>Dosen Pengajar</th>
+                        <td><p>Anggi Widayano</p></td>
+                      </tr>
+                      <tr>
+                        <th>Jenis Ujian</th>
+                        <td><p>Tertulis</p></td>
+                      </tr>
+                      <tr>
+                        <th>UTS / UAS</th>
+                        <td><p>UTS</p></td>
+                      </tr>
+                      <tr>
+                        <th>Tanggal Upload</th>
+                        <td><p>Senin, 22 Juni 2020, 07.30 AM</p></td>
+                      </tr>
+                      <tr>
+                        <th>File Soal</th>
+                        <td><a href=""><i class="fas fa-file"></i> Data Mining.pdf </a></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
           </div>
 </section>

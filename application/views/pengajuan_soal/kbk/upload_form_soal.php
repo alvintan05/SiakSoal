@@ -21,9 +21,8 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			
 			<?php $this->load->view('layouts/breadcrumb')?>
-			<?php $this->load->view('pages/kbk/dashboard') ?>
+			<?php $this->load->view('pages/kbk/upload_form_soal') ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
