@@ -61,7 +61,24 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                      <?php  
+                        foreach($data_jadwal as $row) {
+                          ?>
+                          <tr>
+                            <td><?php echo $row->matakuliah_kodemk;?></td>
+                            <td><?php echo $row->namamk;?></td>
+                            <td><?php echo $row->namaklas;?></td>
+                            <td><?php echo $row->ruangan_namaruang;?></td>
+                            <td>
+                              <div class="box-button">
+								                <a href='<?php echo site_url('dosen/upload_soal/'.$row->kodejdwl); ?>' class="btn btn-info btn-sm">Upload</a>
+						                  </div>
+                            </td>
+                          </tr>
+                          <?php                         
+                        }       
+                      ?>                                         
+                    <!-- <tr>
                       <td>MK001</td>
                       <td>Data Mining</td>
                       <td>T1 2A</td>
@@ -82,7 +99,7 @@
 								<a href='<?php echo site_url('dosen/upload_soal'); ?>' class="btn btn-info btn-sm">Upload</a>
 						</div>
                       </td>
-                    </tr>
+                    </tr> -->
                     </tbody>
                   </table>
                 </div>
