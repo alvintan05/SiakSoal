@@ -8,7 +8,7 @@
 <div class="content">
     <div class="container-fluid">
         <div class="card mb-3">
-            <div class="content-header">
+            <div class="content-header border-bottom">
             <h1 class="card-title"><b>Bank Soal</b></h1>
 
             </div>
