@@ -45,13 +45,7 @@
                       <td>MK001</td>
                       <td>Data Mining</td>
                       <td>Rahmat Firmansyah</td>
-                      <td>
-                      <select name="status" id="status_soal">
-                      <option selected>Pilih Status</option>
-                      <option value="valid">Valid</option>
-                      <option value="tidak_valid">Tidak Valid</option>
-                      </select>
-                      </td>
+                      <td>Valid</td>
                       <td>
                       	<div class="box-button">
 								<a href='' class="btn btn-primary btn-sm">Download</a>
@@ -62,13 +56,7 @@
                       <td>MK002</td>
                       <td>Datawarehouse</td>
                       <td>Adi Rahman</td>
-                      <td>
-                      <select name="status" id="status_soal">
-                      <option selected>Pilih Status</option>
-                      <option value="valid">Valid</option>
-                      <option value="tidak_valid">Tidak Valid</option>
-                      </select>
-                      </td>
+                      <td>Tidak Valid</td>
                       <td>
                       	<div class="box-button">
 								<a href='' class="btn btn-primary btn-sm">Download</a>
