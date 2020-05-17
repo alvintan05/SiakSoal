@@ -1,3 +1,21 @@
+<?php 
+  $proccess = 0;
+  $verified = 0;
+  $rejected = 0;
+  foreach($data_status as $row) {
+      switch($row->status){
+        case "Verified":
+          $verified++;
+          break;
+        case "Processing":
+          $proccess++;
+          break;
+        case "Rejected":
+          $rejected++;
+          break;
+      }
+  }
+?>
 <div class="content-header">
 	<div class="container-fluid">
         <div class="row mb-2">
@@ -22,7 +40,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Total Matkul</span>
                 <span class="info-box-number">
-                  5
+                <?php echo count($data_status); ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -36,7 +54,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Processing</span>
                 <span class="info-box-number">
-                  5
+                  <?php echo $proccess; ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -50,7 +68,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Verified</span>
                 <span class="info-box-number">
-                  5
+                  <?php echo $verified; ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -64,7 +82,7 @@
               <div class="info-box-content">
                 <span class="info-box-text">Rejected</span>
                 <span class="info-box-number">
-                  5
+                  <?php echo $rejected; ?>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -104,7 +122,51 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                      <?php  
+                          foreach($data_status as $row) {
+                            ?>
+                            <tr>
+                              <td><?php echo $row->matakuliah_kodemk;?></td>
+                              <td><?php echo $row->namamk;?></td>
+                              <td><?php echo $row->file;?></td>                                                      
+                              <td>
+                                <span class="badge 
+                                  <?php  
+                                    switch($row->status){
+                                      case "Verified":
+                                        echo 'badge-success';
+                                        break;
+                                      case "Processing":
+                                        echo 'badge-warning';
+                                        break;
+                                      case "Rejected":
+                                        echo 'badge-danger';
+                                        break;
+                                    }
+                                  ?>
+                                  ">                                  
+                                  <?php echo $row->status ?>
+                                </span>
+                              </td>
+                              <td>
+                                <?php 
+                                  $datedb =  $row->create_at;
+                                  $newDate = date("d-m-Y", strtotime($datedb));
+                                  echo $newDate;
+                                ?>
+                              </td>
+                              <td>
+                                <div class="box-button">
+                                  <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
+                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
+                                  <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                  
+                                </div>
+                              </td>
+                            </tr>
+                            <?php                         
+                          }       
+                      ?>      
+                    <!-- <tr>
                       <td>MK001</td>
                       <td>Data Mining</td>
                       <td><a href="">DataMining.pdf</a></td>
@@ -114,10 +176,8 @@
                       	<div class="box-button">
                           <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
                           <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>
-
-								          <!-- <a href='' class="btn btn-link btn-sm"><span class="fa fa-pencil"></span>ll</a> -->
-						              </div>
+                          <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>								        
+						            </div>
                       </td>
                     </tr>
                     <tr>
@@ -130,10 +190,8 @@
                         <div class="box-button">
                           <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
                           <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#hapusModal" ><i class="fa fa-trash"></i></a>
-
-                          <!-- <a href='' class="btn btn-link btn-sm"><span class="fa fa-pencil"></span>ll</a> -->
-                          </div>
+                          <a class="btn" data-toggle="modal" data-target="#hapusModal" ><i class="fa fa-trash"></i></a>                      
+                        </div>
                       </td>
                     </tr>
                     <tr>
@@ -147,9 +205,9 @@
                           <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-search"></i></a>
                           <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
                           <a class="btn" data-toggle="modal" data-target="#hapusModal" ><i class="fa fa-trash"></i></a>
-                          </div>
+                        </div>
                       </td>
-                    </tr>
+                    </tr> -->
                     </tbody>
                   </table>
                 </div>
