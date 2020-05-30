@@ -20,7 +20,18 @@
           </div>
           <div class="card-body">
             <form action="<?php echo site_url('#') ?>" method="post" enctype="multipart/form-data" >
+            <h1 class="card-title "><b>Upload Soal</b></h1>
+            <br>
+            <h6 class="card-description text-muted">Mata Kuliah: <?php echo $data_matkul[0]->namamk;?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kelas: <?php echo $data_matkul[0]->namaklas;?></h6>
+          </div>
+          <div class="card-body">
+            <form action="<?php echo site_url('#') ?>" method="post" enctype="multipart/form-data" >
+              <!-- <div class="form-group">
+                <label for="namaMatkul">Nama Matkul</label>
+                <input class="form-control" type="text" name="namaMatkul" placeholder="Nama Mata Kuliah" />
+              </div> -->
               <div class="form-row">
+                <input type="hidden" value="<?php echo $data_matkul[0]->kodejdwl;?>" name="id">
                 <div class="form-group col-md-4">
                   <label for="utsuas">UTS / UAS</label>
                   <select id="utsuas" class="form-control">

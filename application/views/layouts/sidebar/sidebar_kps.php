@@ -2,9 +2,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo site_url('.');?>" class="brand-link">
-      <img src="<?php echo base_url();?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="<?php echo base_url();?>assets/dist/img/logo_pnj1.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">  Sistem Pengajuan Soal</span> 
     </a>
 
     <!-- Sidebar -->
@@ -12,10 +12,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="<?php echo base_url();?>assets/dist/img/user4-128x128.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="<?php echo site_url('.')?>" class="d-block">Alexander Pierce</a>
+          <a href="<?php echo site_url('.')?>" class="d-block">Raisa Andriana</a>
         </div>
       </div>
 
@@ -24,7 +24,43 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
+           <li class="nav-item">
+            <a href="<?php echo site_url('kps'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kps' ) {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-home"></i>
+              <p>
+                Home
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a href="<?php echo site_url('kps/bank_soal'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kps/bank_soal') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('kps/bank_soal'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kps/bank_soal') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-clock"></i>
+              <p>
+                Bank Soal
+              </p>
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a href="<?php echo site_url('dosen/status_soal'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'dosen/status_soal') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+                Status Soal
+              </p>
+            </a>
+          </li> -->
+
+
+
+
+         <!--  <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -547,7 +583,7 @@
               <i class="nav-icon far fa-circle text-info"></i>
               <p>Informational</p>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

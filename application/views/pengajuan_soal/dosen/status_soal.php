@@ -22,6 +22,8 @@
 		<div class="content-wrapper">
 			<!-- pages -->
 			<?php $this->load->view('pages/dosen/status_soal') ?>
+			<?php $this->load->view('layouts/breadcrumb')?>
+			<?php $this->load->view('pages/dosen/status_soal', $main) ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->

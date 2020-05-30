@@ -10,6 +10,8 @@ class Kps extends CI_Controller
 
 	function index()
 	{
-		$this->load->view('pengajuan_soal/kps/beranda.php');
+		$data['title'] = 'Home | KPS';
+		$data['pages'] = $this->load->view('pages/kps/bank_soal','',true);
+		$this->load->view('pengajuan_soal/kps/bank_soal.php', array('main'=>$data));
 	}
 }

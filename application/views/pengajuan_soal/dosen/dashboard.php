@@ -24,7 +24,8 @@
 			<!-- pages -->
 			
 
-			<?php $this->load->view('pages/dosen/dashboard') ?>
+			<?php $this->load->view('pages/dosen/dashboard', $main) ?>
+			
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
