@@ -234,7 +234,7 @@
                             <?php                         
                           }       
                       ?>      
-                    <!-- <tr>
+                    <tr>
                       <td>MK001</td>
                       <td>Data Mining</td>
                       <td><a href="">DataMining.pdf</a></td>
@@ -279,7 +279,7 @@
                     </tbody>
                   </table>
                 </div>
-                <!-- /.table-responsive -->
+                <!--  /.table-responsive -->
               </div>
               <!-- /.card-body -->
           </div>
