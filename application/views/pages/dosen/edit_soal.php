@@ -1,4 +1,4 @@
-<div class="content-header">
+<div class="content-header"> 
 	<div class="container-fluid">
         
     </div><!-- /.container-fluid -->
@@ -9,11 +9,14 @@
 <section class="content">
     <div class="container-fluid">
 
-      <div class="card mb-3">
+      <div class="card">
           <div class="card-header">
-            <h1 class="card-title "><b>Edit Soal</b></h1>
-            <br>
-            <h6 class="card-description text-muted">Matkul: Datawarehouse &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kelas: TI 4A</h6>
+            <div class="card-tools" align="float-sm-right">
+              <a href="<?php echo site_url('dosen/status_soal') ?>"><input class="btn btn-sm btn-warning" type="button" name="kembali" value="Kembali"></a>
+            </div>
+
+            <h1 class="card-title "><big><b>Edit Soal</b></big></h1>
+            <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div>
           </div>
           <div class="card-body">
             <form action="<?php echo site_url('#') ?>" method="post" enctype="multipart/form-data" >
@@ -63,7 +66,7 @@
 
               <div align="right">
                 <br>
-                <a href="<?php echo site_url('dosen/status_soal') ?>"><input class="btn btn-danger" type="button" name="kemali" value="Kembali"></a>
+                <a href="<?php echo site_url('dosen/status_soal') ?>"><input class="btn btn-danger" type="button" name="kembali" value="Kembali"></a>
                 &nbsp;&nbsp;
                 <input class="btn btn-success" type="submit" name="simpan" value="Update" />
               </div>

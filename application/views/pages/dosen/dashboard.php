@@ -1,9 +1,19 @@
 <div class="content-header">
-	<div class="container-fluid">
-        <div class="row mb-2">
-        	<div class="col-sm-6">
-            	<h4 class="m-0 text-dark">Dashboard</h4>
-          </div><!-- /.col --> 
+	<div class="container-fluid ">
+    <div class="row callout callout bg-light">
+          <div class="col-1" align="right">
+            <span class="fa-stack fa-lg">
+              <i class="fas fa-square fa-stack-2x" style="color: #ffff"></i>
+              <i class="fa fa-tachometer-alt fa-stack-1x " style="color: #17a2b8"></i>
+            </span>
+          </div>
+          <div class="col-9">
+            <div class="text-secondary"><b>Dashboard</b></div>
+            <small class="content text-gray">Halaman ini digunakan untuk meng-upload soal UTS dan UAS. </small>
+          </div>
+          <div class="col-2">
+            <?php $this->load->view('layouts/breadcrumb')?>
+          </div>
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
@@ -16,14 +26,13 @@
       <!-- Info boxes -->
         <div class="row">
           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
+            <!-- Info Boxes Style 2 -->
+            <div class="info-box mb-3 bg-info">
+              <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
               <div class="info-box-content">
                 <span class="info-box-text">Total Matkul</span>
-                <span class="info-box-number">
-                  5
-                </span>
+                <span class="info-box-number">3</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -41,13 +50,11 @@
                     <i class="fas fa-minus"></i>
                   </button>
                 </div>
-                <h1 class="card-title "><b>Jadwal Dosen</b></h1>
-                <p><br></p>
-                <h6 class="card-description text-muted">Dosen : Raisa Andriana</h6>
-                <!-- <p></p> -->
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Dosen : Raisa Andriana</h6> -->
+                <h5 class="card-title"><big><b>Jadwal Dosen</b></big></h5>
+                <div class="card-description text-muted subjudul">Dosen : Raisa Andriana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
               </div>
               <!-- /.card-header -->
+
               <div class="card-body p-0">
                 <div class="table table-striped">
                   <table class="table m-0">

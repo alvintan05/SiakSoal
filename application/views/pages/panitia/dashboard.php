@@ -1,9 +1,20 @@
 <div class="content-header">
-	<div class="container-fluid">
-        <div class="row mb-2">
-        	<div class="col-sm-6">
-            	<h1 class="m-0 text-dark">Dashboard</h1>
-          	</div><!-- /.col --> 
+  <div class="container-fluid">
+        <div class="row callout callout bg-light">
+          <div class="col-1" align="right">
+            <span class="fa-stack fa-lg">
+              <i class="fas fa-square fa-stack-2x" style="color: #ffff"></i>
+              <i class="fas fa-tachometer-alt fa-stack-1x " style="color: #17a2b8"></i>
+            </span>
+          </div>
+          <div class="col-9">
+            <div class="text-secondary"><b>Dashboard</b></div>
+            <small class="content text-gray">Halaman ini menampilkan daftar soal yang telah di verifikasi KBK. </small>
+          </div>
+          <div class="col-2">
+            <?php $this->load->view('layouts/breadcrumb')?>
+          </div>
+        </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->

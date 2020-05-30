@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?php echo $main['title']; ?></title>
 	<?php $this->load->view('layouts/head') ?>
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/pengajuan_soal/styles.css " type="text/css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 	<div class="wrapper">
@@ -22,7 +22,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('layouts/breadcrumb')?>
+			
 
 			<?php $this->load->view('pages/dosen/dashboard') ?>
 			<!-- END pages -->

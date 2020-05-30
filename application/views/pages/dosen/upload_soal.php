@@ -9,23 +9,17 @@
 <section class="content">
     <div class="container-fluid">
 
-      <div class="card mb-3">
+      <div class="card">
           <div class="card-header">
             <div class="card-tools" align="float-sm-right">
               <a href="<?php echo site_url('dosen/dashboard') ?>"><input class="btn btn-sm btn-warning" type="button" name="kembali" value="Kembali"></a>
             </div>
             
-            <h1 class="card-title "><b>Upload Soal</b></h1>
-            <br>
-            <h6 class="card-description text-muted">Matkul: Datawarehouse &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kelas: TI 4A</h6>
+            <h1 class="card-title"><big><b>Upload Soal</b></big></h1>
+            <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div>
           </div>
           <div class="card-body">
             <form action="<?php echo site_url('#') ?>" method="post" enctype="multipart/form-data" >
-              <div class="form-group">
-                <label for="namaMatkul">Nama Matkul</label>
-                <input class="form-control" type="text" name="namaMatkul" placeholder="Nama Mata Kuliah" />
-              </div>
-
               <div class="form-row">
                 <div class="form-group col-md-4">
                   <label for="utsuas">UTS / UAS</label>
