@@ -33,8 +33,6 @@
               <div class="info-box-content">
                 <span class="info-box-text">Total Matkul</span>
 
-                <span class="info-box-number">3</span>
-
                 <span class="info-box-number">
                   <?php echo count($data_jadwal) ?>
                 </span>
