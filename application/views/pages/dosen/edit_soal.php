@@ -16,13 +16,17 @@
             </div>
 
             <h1 class="card-title "><big><b>Edit Soal</b></big></h1>
-            <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div>
+            <!-- <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div> -->
           </div>
           <div class="card-body">
             <form action="<?php echo site_url('#') ?>" method="post" enctype="multipart/form-data" >
               <div class="form-group">
-                <label for="namaMatkul">Nama Matkul</label>
-                <input class="form-control" type="text" name="namaMatkul" placeholder="Nama Mata Kuliah" />
+                <label for="matkul">Mata Kuliah</label>
+                <input class="form-control" type="text" name="matkul" value="" disabled/>
+              </div>
+               <div class="form-group">
+                <label for="kelas">Kelas</label>
+                <input class="form-control" type="text" name="kelas" value="" disabled/>
               </div>
 
               <div class="form-row">
