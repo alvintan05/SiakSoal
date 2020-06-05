@@ -14,10 +14,6 @@
           <div class="col-2">
             <?php $this->load->view('layouts/breadcrumb')?>
           </div>
-        <div class="row mb-2">
-          <div class="col-sm-6">
-              <h4 class="m-0 text-dark">Status Soal</h4>
-            </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
