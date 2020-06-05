@@ -46,8 +46,10 @@ class Dosen extends CI_Controller
 	{
 		$data['title'] = 'Status Soal | Dosen';
 		$id = array('nip'=>12345);
-		$data_status = json_decode($this->curl->simple_get($this->API.'/dosen/daftarstatusuts', $id));		
-		$data['data_status'] = $data_status->data;
+		$data_status_uts = json_decode($this->curl->simple_get($this->API.'/dosen/daftarstatusuts', $id));
+		$data_status_uas = json_decode($this->curl->simple_get($this->API.'/dosen/daftarstatusuas', $id));
+		$data['data_status_uts'] = $data_status_uts->data;
+		$data['data_status_uas'] = $data_status_uas->data;
 		$this->load->view('pengajuan_soal/dosen/status_soal.php', array('main'=>$data));
 	}
 

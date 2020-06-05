@@ -1,20 +1,38 @@
 <?php 
-  $proccess = 0;
-  $verified = 0;
-  $rejected = 0;
-  foreach($data_status as $row) {
+  $proccess_uts = 0;
+  $verified_uts = 0;
+  $rejected_uts = 0;
+  $proccess_uas = 0;
+  $verified_uas = 0;
+  $rejected_uas = 0;
+  
+  foreach($data_status_uts as $row) {
       switch($row->status){
         case "Verified":
-          $verified++;
+          $verified_uts++;
           break;
         case "Processing":
-          $proccess++;
+          $proccess_uts++;
           break;
         case "Rejected":
-          $rejected++;
+          $rejected_uts++;
           break;
       }
   }
+
+  foreach($data_status_uas as $row) {
+    switch($row->status){
+      case "Verified":
+        $verified_uas++;
+        break;
+      case "Processing":
+        $proccess_uas++;
+        break;
+      case "Rejected":
+        $rejected_uas++;
+        break;
+    }
+}
 ?>
 <div class="content-header">
 	<div class="container-fluid">
@@ -126,7 +144,7 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">Total Matkul</span>
-                        <span class="info-box-number"><?php echo count($data_status); ?></span>
+                        <span class="info-box-number"><?php echo count($data_status_uts); ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
@@ -140,7 +158,7 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">Processing</span>
-                        <span class="info-box-number"><?php echo $proccess; ?></span>
+                        <span class="info-box-number"><?php echo $proccess_uts; ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
@@ -154,7 +172,7 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">Verified</span>
-                        <span class="info-box-number"><?php echo $verified; ?></span>
+                        <span class="info-box-number"><?php echo $verified_uts; ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
@@ -168,7 +186,7 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">Rejected</span>
-                        <span class="info-box-number"><?php echo $rejected; ?></span>
+                        <span class="info-box-number"><?php echo $rejected_uts; ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
@@ -191,7 +209,7 @@
                     </thead>
                     <tbody>
                       <?php  
-                          foreach($data_status as $row) {
+                          foreach($data_status_uts as $row) {
                             ?>
                             <tr>
                               <td><?php echo $row->matakuliah_kodemk;?></td>
@@ -310,7 +328,7 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">Total Matkul</span>
-                        <span class="info-box-number"><?php echo count($data_status); ?></span>
+                        <span class="info-box-number"><?php echo count($data_status_uas); ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
@@ -324,7 +342,7 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">Processing</span>
-                        <span class="info-box-number"><?php echo $proccess; ?></span>
+                        <span class="info-box-number"><?php echo $proccess_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
@@ -338,7 +356,7 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">Verified</span>
-                        <span class="info-box-number"><?php echo $verified; ?></span>
+                        <span class="info-box-number"><?php echo $verified_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
@@ -352,7 +370,7 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">Rejected</span>
-                        <span class="info-box-number"><?php echo $rejected; ?></span>
+                        <span class="info-box-number"><?php echo $rejected_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
@@ -375,7 +393,7 @@
                     </thead>
                     <tbody>
                       <?php  
-                          foreach($data_status as $row) {
+                          foreach($data_status_uas as $row) {
                             ?>
                             <tr>
                               <td><?php echo $row->matakuliah_kodemk;?></td>
