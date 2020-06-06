@@ -102,27 +102,19 @@
                   <table class="table m-0">
                     <thead class="thead-dark">
                     <tr>
-                      <th>Kode</th>
-                      <th>Mata Kuliah</th>
-                      <th>Dosen</th>
-                      <th>Tenggat Waktu</th>
+                      <th>Option</th>
+                      <th>Batas Awal</th>
+                      <th>Batas Akhir</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                      <td>MK001</td>
-                      <td>Data Mining</td>
-                      <td>Rahmat Firmansyah</td>
+                      <td>Deadline Pengumpulan Soal</td>
                       <td>
-                      <input type="date" id="daterangepicker" class="form-control" placeholder="Tenggat Waktu">
+                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Awal">
                       </td>
-                    </tr>
-                    <tr>
-                      <td>MK002</td>
-                      <td>Datawarehouse</td>
-                      <td>Adi Rahman</td>
                       <td>
-                      <input type="date" id="daterangepicker" class="form-control" placeholder="Tenggat Waktu">
+                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Akhir">
                       </td>
                     </tr>
                     </tbody>
