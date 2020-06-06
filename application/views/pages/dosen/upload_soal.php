@@ -21,11 +21,6 @@
           </div>
           <div class="card-body">
             <form action="<?php echo site_url('#') ?>" method="post" enctype="multipart/form-data" >
-              <!-- <div class="form-group">
-                <label for="namaMatkul">Nama Matkul</label>
-                <input class="form-control" type="text" name="namaMatkul" placeholder="Nama Mata Kuliah" />
-              </div> -->
-
               <div class="form-row">
                 <input type="hidden" value="<?php echo $data_matkul[0]->kodejdwl;?>" name="id">
                 <div class="form-group col-md-4">

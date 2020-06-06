@@ -117,6 +117,8 @@
                       <td>
                         <div class="box-button">
                           <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -128,6 +130,8 @@
                       <td>
                        <div class="box-button">
                           <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -138,7 +142,9 @@
                       <td>TI 6A</td>
                       <td>
                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye skin-black"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -150,6 +156,9 @@
                       <td>
                        <div class="box-button">
                           <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                      </div>
                       </td>
                     </tr>
                      <tr>
@@ -160,6 +169,8 @@
                       <td>
                        <div class="box-button">
                           <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -218,6 +229,51 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Verifikasi-->
+          <div class="modal fade" id="verifikasiModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title">Verifikasi Soal</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>      
+                </div>
+                <div class="modal-body">
+                  <p>Apakah anda yakin untuk memverifikasi soal?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-success">Yes</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+          <!-- Modal Reject-->
+          <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title" id="rejectModal">Menolak Soal</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="message-text" class="control-label">Message:</label>
+                      <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger">Send message</button>
                 </div>
               </div>
             </div>
