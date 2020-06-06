@@ -9,18 +9,28 @@
 <section class="content">
     <div class="container-fluid">
 
-      <div class="card mb-3">
+      <div class="card">
           <div class="card-header">
             <div class="card-tools" align="float-sm-right">
               <a href="<?php echo site_url('dosen/dashboard') ?>"><input class="btn btn-sm btn-warning" type="button" name="kembali" value="Kembali"></a>
             </div>
             
-            <h1 class="card-title "><b>Upload Soal</b></h1>
-            <br>
-            <h6 class="card-description text-muted">Mata Kuliah: <?php echo $data_matkul[0]->namamk;?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kelas: <?php echo $data_matkul[0]->namaklas;?></h6>
+            <h1 class="card-title"><big><b>Upload Soal</b></big></h1>
+            <!-- <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div> -->
           </div>
           <div class="card-body">
             <form action="<?php echo site_url('#') ?>" method="post" enctype="multipart/form-data" >
+
+           <!--  <h6 class="card-description text-muted">Mata Kuliah: <?php echo $data_matkul[0]->namamk;?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kelas: <?php echo $data_matkul[0]->namaklas;?></h6> -->
+              <div class="form-group">
+                <label for="matkul">Mata Kuliah</label>
+                <input class="form-control" type="text" name="matkul" value="<?php echo $data_matkul[0]->namamk;?>" disabled/>
+              </div>
+               <div class="form-group">
+                <label for="kelas">Kelas</label>
+                <input class="form-control" type="text" name="kelas" value="<?php echo $data_matkul[0]->namaklas;?>" disabled/>
+              </div>
+
               <div class="form-row">
                 <input type="hidden" value="<?php echo $data_matkul[0]->kodejdwl;?>" name="id">
                 <div class="form-group col-md-4">

@@ -5,12 +5,12 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Dashboard</a>
-      </li>
+      </li> -->
     </ul>
 
 
@@ -121,10 +121,27 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
-      <li class="nav-item">
+
+      <!-- Account Dropdown Menu -->
+      <li class="nav-item dropdown user user-menu">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+          <div class="image">
+          <img src="<?php echo base_url();?>assets/dist/img/user4-128x128.jpg" class="user-image img-circle elevation-2" alt="User Image">
+        </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <div class="dropdown-divider"></div>
+          <a href="<?php echo site_url('dosen') ?>" class="dropdown-item">
+            <i class="fas fa-sign-out-alt mr-2" aria-hidden="true"></i> Logout
+          </a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      
+     <!--  <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
             class="fas fa-th-large"></i></a>
-      </li>
+      </li> -->
     </ul>
 </nav>
 <!-- /.navbar -->
