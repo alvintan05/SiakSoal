@@ -53,5 +53,11 @@ class Dosen extends CI_Controller
 		$this->load->view('pengajuan_soal/dosen/status_soal.php', array('main'=>$data));
 	}
 
+	function home_setelah_login()
+	{
+		$data['title'] = 'Home | Dosen';
+		$this->load->view('pengajuan_soal/dosen/home_setelah_login.php', array('main'=>$data));
+	}
+
 
 }

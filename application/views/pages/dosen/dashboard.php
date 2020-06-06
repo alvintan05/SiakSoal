@@ -48,18 +48,31 @@
 
     	<!-- TABLE: LATEST ORDERS -->
             <div class="card">
-              <div class="card-header border-transparent">
+              <div class="card-header">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
                 </div>
+
                 <h5 class="card-title"><big><b>Jadwal Dosen</b></big></h5>
-                <div class="card-description text-muted subjudul">Dosen : Raisa Andriana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div class="card-description text-muted subjudul">
+                  Dosen : Raisa Andriana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
               </div>
               <!-- /.card-header -->
 
-              <div class="card-body p-0">
+              <div class="card-body p-2">
+                <div class="card-tools">
+                  <div class="input-group input-group-sm float-right" style="width: 200px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <br><p></p>
                 <div class="table table-striped">
                   <table class="table m-0">
                     <thead>
