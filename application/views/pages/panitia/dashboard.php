@@ -123,8 +123,8 @@
                       <td>Valid</td>
                       <td>
                       	<div class="box-button">
-								<a href='' class="btn btn-primary btn-sm">Download</a>
-						</div>
+								          <a href='' class="btn btn-primary btn-sm">Download</a>
+						            </div>
                       </td>
                     </tr>
                     <tr>
@@ -134,8 +134,41 @@
                       <td>Tidak Valid</td>
                       <td>
                       	<div class="box-button">
-								<a href='' class="btn btn-primary btn-sm">Download</a>
-						</div>
+								          <a href='' class="btn btn-primary btn-sm">Download</a>
+						            </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>MK003</td>
+                      <td>Pengantar Multimedia</td>
+                      <td>Jessica Iskandar</td>
+                      <td>Valid</td>
+                      <td>
+                      	<div class="box-button">
+								          <a href='' class="btn btn-primary btn-sm">Download</a>
+						            </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>MK004</td>
+                      <td>Object Oriented Programming</td>
+                      <td>Boi William</td>
+                      <td>Tidak Valid</td>
+                      <td>
+                      	<div class="box-button">
+								          <a href='' class="btn btn-primary btn-sm">Download</a>
+						            </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>MK005</td>
+                      <td>Character Building</td>
+                      <td>Natasha Wilona</td>
+                      <td>Valid</td>
+                      <td>
+                      	<div class="box-button">
+								          <a href='' class="btn btn-primary btn-sm">Download</a>
+						            </div>
                       </td>
                     </tr>
                     </tbody>
