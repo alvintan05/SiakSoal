@@ -243,7 +243,21 @@
                               </td>
                               <td>
                                 <div class="box-button">
-                                  <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                                <!-- Detail icon -->
+                                  <a 
+                                    id="dtlmodal"
+                                    class="btn" 
+                                    data-toggle="modal" 
+                                    data-target="#detailModal"
+                                    data-kode="<?php $row->matakuliah_kodemk ?>"
+                                    data-nama="<?php $row->namamk ?>"
+                                    data-jenisujian="<?php $row->jenis_soal ?>"
+                                    data-jenissoal="UTS"
+                                    data-tanggal="<?php $row->create_at ?>"
+                                    data-file="<?php $row->file ?>">                                    
+                                    <i class="fa fa-eye"></i>
+                                  </a>
+
                                   <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
                                   <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                  
                                 </div>
@@ -305,8 +319,7 @@
          
 
 
-        <!-- UAS -->
-            <!-- UTS -->
+        <!-- UAS -->            
             <div class="card collapsed-card">
               <div class="card-header border-transparent">
                 <div class="card-tools" align="float-sm-right">
@@ -378,7 +391,7 @@
                   </div>
                 </div>
 
-                <!-- TABLE : UTS -->
+                <!-- TABLE : UAS -->
                 <div class="table table-striped">
                   <table class="table m-0">
                     <thead>
@@ -488,7 +501,7 @@
 
 
 
-           <!-- Modal Detail UTS-->
+           <!-- Modal Detail -->
           <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
               <div class="modal-content">
@@ -503,11 +516,11 @@
                     <table class="table table-sm table-hover">
                       <tr>
                         <th>Kode Matkul</th>
-                        <td><p>MK002</p></td>
+                        <td><p id="kode"></p></td>
                       </tr>
                       <tr>
                         <th>Nama Matkul</th>
-                        <td><p>Data Warehouse</p></td>
+                        <td><p id="nama"></p></td>
                       </tr>
                       <tr>
                         <th>Dosen Pengajar</th>
@@ -515,19 +528,20 @@
                       </tr>
                       <tr>
                         <th>Jenis Ujian</th>
-                        <td><p>Tertulis</p></td>
+                        <td><p id="jenisujian"></p></td>
                       </tr>
                       <tr>
                         <th>UTS / UAS</th>
-                        <td><p>UTS</p></td>
+                        <td><p id="jenissoal"></p></td>
                       </tr>
                       <tr>
                         <th>Tanggal Upload</th>
-                        <td><p>Senin, 22 Juni 2020, 07.30 AM</p></td>
+                        <!-- <td><p>Senin, 22 Juni 2020, 07.30 AM</p></td> -->
+                        <td><p id="tanggal"></p></td>
                       </tr>
                       <tr>
                         <th>File Soal</th>
-                        <td><a href=""><i class="fas fa-file"></i> Datawarehouse.pdf </a></td>
+                        <td><a href="" id="file"><i class="fas fa-file"></i></a></td>
                       </tr>
                     </table>
                   </div>
@@ -563,6 +577,23 @@
       </div>
   </section>
 
+<!-- <script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on('click', '#dtlmodal', function() {
+      var kode = $(this).data('kode');
+      var nama = $(this).data('nama');
+      var jenisujian = $(this).data('jenisujian');
+      var jenissoal = $(this).data('jenissoal');
+      var tanggal = $(this).data('tanggal');
+      var file = $(this).data('file');
 
-
+      $('#kode').text(kode);
+      $('#nama').text(nama);
+      $('#jenisujian').text(jenisujian);
+      $('#jenissoal').text(jenissoal);
+      $('#tanggal').text(tanggal);
+      $('#file').text(file);      
+    })
+  })
+</script> -->
 

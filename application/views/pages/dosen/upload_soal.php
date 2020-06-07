@@ -19,8 +19,8 @@
             <!-- <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div> -->
           </div>
           <div class="card-body">
-            <form action="<?php echo site_url('#') ?>" method="post" enctype="multipart/form-data" >
-
+            <!-- <?php echo form_open_multipart('dosen/post_upload/');?> -->
+            <form action="<?php echo base_url(). 'dosen/post_upload/' ?>" method="post" enctype="multipart/form-data" >            
            <!--  <h6 class="card-description text-muted">Mata Kuliah: <?php echo $data_matkul[0]->namamk;?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kelas: <?php echo $data_matkul[0]->namaklas;?></h6> -->
               <div class="form-group">
                 <label for="matkul">Mata Kuliah</label>
@@ -30,28 +30,27 @@
                 <label for="kelas">Kelas</label>
                 <input class="form-control" type="text" name="kelas" value="<?php echo $data_matkul[0]->namaklas;?>" disabled/>
               </div>
-
               <div class="form-row">
                 <input type="hidden" value="<?php echo $data_matkul[0]->kodejdwl;?>" name="id">
                 <div class="form-group col-md-4">
                   <label for="utsuas">UTS / UAS</label>
-                  <select id="utsuas" class="form-control">
+                  <select id="utsuas" name="utsuas" class="form-control">
                     <option selected>Pilih...</option>
-                    <option value="uts">UTS</option>
-                    <option value="uas">UAS</option>
+                    <option value="UTS">UTS</option>
+                    <option value="UAS">UAS</option>
                   </select>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="jenisUjian">Jenis Ujian</label>
-                  <select id="jenisUjian" class="form-control">
+                  <select id="jenisUjian" name="jenisUjian" class="form-control">
                     <option selected>Pilih...</option>
-                    <option value="tertulis">Tertulis</option>
-                    <option value="praktikum">Praktikum</option>
+                    <option value="Tertulis">Tertulis</option>
+                    <option value="Praktikum">Praktikum</option>
                   </select>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="kbk">KBK</label>
-                  <select id="kbk" class="form-control">
+                  <select id="kbk" name="kbk" class="form-control">
                     <option selected>Pilih KBK...</option>
                     <option value="kbkTI">KBK TI</option>
                     <option value="kbkTMD">KBK TMD</option>
@@ -61,10 +60,10 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
                 <textarea class="form-control" id="deskripsi" rows="5"></textarea>
-              </div>
+              </div> -->
 
               <div class="form-group">
                 <label for="file1">File Soal Ujian</label>
@@ -75,9 +74,10 @@
                 <br>
                 <a href="<?php echo site_url('dosen/dashboard') ?>"><input class="btn btn-danger" type="button" name="kemali" value="Cancel"></a>
                 &nbsp;&nbsp;
-                <input class="btn btn-success" type="submit" name="simpan" value="Simpan" />
+                <input class="btn btn-success" type="submit" name="submit" value="Upload" />
               </div>
             </form>
+            <!-- <?php echo form_close();?> -->
           </div>
         </div>
     </div>

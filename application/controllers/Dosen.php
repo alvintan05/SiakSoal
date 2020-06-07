@@ -10,6 +10,9 @@ class Dosen extends CI_Controller
 		$this->API="http://localhost/siaksoal-api/api";		
         $this->load->library('curl');        
 		$this->load->helper('url');
+		$this->load->helper('form');			
+		$this->load->library('upload');
+
 	}
 
 	function index()
@@ -59,5 +62,35 @@ class Dosen extends CI_Controller
 		$this->load->view('pengajuan_soal/dosen/home_setelah_login.php', array('main'=>$data));
 	}
 
+	function post_upload()
+	{
+		$config = array(
+			'upload_path'=>'uploads/soal/',
+			'allowed_types'=>'doc|docx|pdf',
+			'max_size'=>2048
+		);
+
+		$this->upload->initialize($config);
+	
+		if ($this->upload->do_upload('file1'))
+		{
+			$data_upload = $this->upload->data();
+			$filename = $data_upload['file_name'];
+			
+			$data = array(
+				'jenis_ujian' =>  $this->input->post('utsuas'),
+				'jenis_soal' =>  $this->input->post('jenisUjian'),
+				'file' =>  $filename,
+				'kbk_nip' =>  $this->input->post('kbk'),
+				'uts_uas_kodejdwl' => $this->input->post('id')
+			);			
+	
+			$insert =  $this->curl->simple_post($this->API.'/dosen/upload', $data);     
+			redirect('dosen/dashboard');
+		} else {
+			echo "Gagal Upload";
+			
+		}				
+	}
 
 }
