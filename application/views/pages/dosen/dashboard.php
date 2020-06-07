@@ -1,4 +1,5 @@
 <div class="content-header">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 	<div class="container-fluid ">
     <div class="row callout callout bg-light">
           <div class="col-1" align="right">
@@ -62,7 +63,7 @@
               </div>
               <!-- /.card-header -->
 
-              <div class="card-body p-2">
+              <!-- <div class="card-body p-2">
                 <div class="card-tools">
                   <div class="input-group input-group-sm float-right" style="width: 200px;">
                     <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -72,9 +73,10 @@
                     </div>
                   </div>
                 </div>
-                <br><p></p>
-                <div class="table table-striped">
-                  <table class="table m-0">
+                <br><p></p> -->
+              <div class="card-body p-2">
+                <div class="table table-striped" >
+                  <table id="example" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>
@@ -133,6 +135,4 @@
           </div>
       </div>
   </section>
-
-
 

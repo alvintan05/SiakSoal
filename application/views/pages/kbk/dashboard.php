@@ -1,4 +1,8 @@
 <div class="content-header">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <div class="container-fluid">
         <div class="row callout callout bg-light">
           <div class="col-1" align="right">
@@ -19,8 +23,6 @@
 </div>
 <!-- /.content-header -->
 
-
- 
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
@@ -30,87 +32,59 @@
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
-
               <div class="info-box-content">
                 <span class="info-box-text">Total Matkul</span>
-                <span class="info-box-number">
-                  5
-                </span>
+                <span class="info-box-number">5</span>
               </div>
-              <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
+
           </div>
            <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hourglass-half"></i></span>
-
               <div class="info-box-content">
                 <span class="info-box-text">Processing</span>
-                <span class="info-box-number">
-                  5
-                </span>
+                <span class="info-box-number">5</span>
               </div>
-              <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
           </div>
-           <div class="col-12 col-sm-6 col-md-3">
+
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <span class="info-box-icon badge-success elevation-1"><i class="fas fa-check"></i></span>
-
               <div class="info-box-content">
                 <span class="info-box-text">Verified</span>
-                <span class="info-box-number">
-                  5
-                </span>
+                <span class="info-box-number">5</span>
               </div>
-              <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
           </div>
-           <div class="col-12 col-sm-6 col-md-3">
+
+          <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box">
               <span class="info-box-icon badge-danger elevation-1"><i class="fas fa-times"></i></span>
-
               <div class="info-box-content">
                 <span class="info-box-text">Rejected</span>
-                <span class="info-box-number">
-                  5
-                </span>
+                <span class="info-box-number">5</span>
               </div>
-              <!-- /.info-box-content -->
             </div>
-            <!-- /.info-box -->
           </div>
-          <!-- /.col -->
         </div>
 
     <!-- TABLE: LATEST ORDERS -->
             <div class="card">
-              <div class="card-header border-transparent">
+              <div class="card-header">
                 <div class="card-tools" align="float-sm-right">
-                  <form class="form-inline ml-3">
-                    <div class="input-group input-group-sm">
-                      <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                      <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                        <i class="fas fa-search"></i>
-                        </button>
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                  </form>  
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
                 </div>
-                <h1 class="card-title "><b>Daftar Soal</b></h1>
-                <br>
+                <h4 class="card-title"><big><b>Daftar Soal</b></big></h4>
               </div>
+            
               <!-- /.card-header -->
               <div class="card-body p-0">
-                <div class="table table-striped">
-                  <table class="table m-0">
+               <div class="table table-striped" >
+                  <table id="example" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>

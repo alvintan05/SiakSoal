@@ -22,3 +22,32 @@
 
 <!-- PAGE SCRIPTS -->
 <script src="<?php echo base_url();?>/assets/dist/js/pages/dashboard2.js"></script>
+
+
+<!--Data Table-->
+<script src="<?php echo base_url();?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url();?>/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+<script>
+$(function () { 
+ 	$("#example").dataTable();
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $('table.display').DataTable();
+} );
+</script>
+
+
+
+
+<!-- // Select wrong element
+// Error as #demo is the `div` element
+$('#demo').dataTable()
+ 
+// Selector too broad.
+// Error as `.display` is applied to both the div and the table
+$('.display').dataTable();
+ -->
