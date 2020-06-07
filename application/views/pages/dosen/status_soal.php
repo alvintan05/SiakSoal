@@ -1,4 +1,4 @@
-<?php 
+<?php   
   $proccess_uts = 0;
   $verified_uts = 0;
   $rejected_uts = 0;
@@ -237,27 +237,14 @@
                               <td>
                                 <?php 
                                   $datedb =  $row->create_at;
-                                  $newDate = date("d-m-Y", strtotime($datedb));
+                                  $newDate = date("d F Y", strtotime($datedb));
                                   echo $newDate;
                                 ?>
                               </td>
                               <td>
                                 <div class="box-button">
-                                <!-- Detail icon -->
-                                  <a 
-                                    id="dtlmodal"
-                                    class="btn" 
-                                    data-toggle="modal" 
-                                    data-target="#detailModal"
-                                    data-kode="<?php $row->matakuliah_kodemk ?>"
-                                    data-nama="<?php $row->namamk ?>"
-                                    data-jenisujian="<?php $row->jenis_soal ?>"
-                                    data-jenissoal="UTS"
-                                    data-tanggal="<?php $row->create_at ?>"
-                                    data-file="<?php $row->file ?>">                                    
-                                    <i class="fa fa-eye"></i>
-                                  </a>
-
+                                  <!-- Detail icon -->
+                                  <a class="btn" data-toggle="modal" data-target="#detailModalUts<?php echo $row->kode_soal;?>"> <i class="fa fa-eye"></i></a>
                                   <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
                                   <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                  
                                 </div>
@@ -265,58 +252,14 @@
                             </tr>
                             <?php                         
                           }       
-                      ?>      
-                    
-                      <!-- <td>MK001</td>
-                      <td>Data Mining</td>
-                      <td><a href="">DataMining.pdf</a></td>
-                      <td><span class="badge badge-success">Verivied</span></td>
-                      <td>22-06-2020</td>
-                      <td>
-                      	<div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModalUTS"><i class="fa fa-eye"></i></a>
-                          <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>								        
-						            </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MK002</td>
-                      <td>Datawarehouse</td>
-                      <td><a href="">Datawarehouse.pdf</a></td>
-                      <td><span class="badge badge-warning">Processing</span></td>
-                      <td>22-06-2020</td>
-                      <td>
-                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModalUTS"><i class="fa fa-eye"></i></a>
-                          <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#hapusModal" ><i class="fa fa-trash"></i></a>                      
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>WB002</td>
-                      <td>Pemrograman Web 1</td>
-                      <td><a href="">PemogramanWeb1.pdf</a></td>
-                      <td><span class="badge badge-danger">Rejected</span></td>
-                      <td>22-06-2020</td>
-                      <td>
-                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModalUTS"><i class="fa fa-eye"></i></a>
-                          <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#hapusModal" ><i class="fa fa-trash"></i></a>
-                          </div>
-                      </td>
-                    </tr> -->
+                      ?>                                            
                     </tbody>
                   </table>
                 </div>
                 <!--  /.table-responsive -->
               </div>
               <!-- /.card-body -->
-          </div>
-
-         
+          </div>    
 
 
         <!-- UAS -->            
@@ -434,13 +377,13 @@
                               <td>
                                 <?php 
                                   $datedb =  $row->create_at;
-                                  $newDate = date("d-m-Y", strtotime($datedb));
+                                  $newDate = date("d F Y", strtotime($datedb));
                                   echo $newDate;
                                 ?>
                               </td>
                               <td>
                                 <div class="box-button">
-                                  <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                                  <a class="btn" data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>"><i class="fa fa-eye"></i></a>
                                   <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
                                   <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                  
                                 </div>
@@ -448,49 +391,7 @@
                             </tr>
                             <?php                         
                           }       
-                      ?>      
-                    
-                      <!-- <td>MK001</td>
-                      <td>Data Mining</td>
-                      <td><a href="">DataMining.pdf</a></td>
-                      <td><span class="badge badge-success">Verivied</span></td>
-                      <td>22-06-2020</td>
-                      <td>
-                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModalUTS"><i class="fa fa-eye"></i></a>
-                          <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                        
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MK002</td>
-                      <td>Datawarehouse</td>
-                      <td><a href="">Datawarehouse.pdf</a></td>
-                      <td><span class="badge badge-warning">Processing</span></td>
-                      <td>22-06-2020</td>
-                      <td>
-                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModalUTS"><i class="fa fa-eye"></i></a>
-                          <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#hapusModal" ><i class="fa fa-trash"></i></a>                      
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>WB002</td>
-                      <td>Pemrograman Web 1</td>
-                      <td><a href="">PemogramanWeb1.pdf</a></td>
-                      <td><span class="badge badge-danger">Rejected</span></td>
-                      <td>22-06-2020</td>
-                      <td>
-                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModalUTS"><i class="fa fa-eye"></i></a>
-                          <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#hapusModal" ><i class="fa fa-trash"></i></a>
-                          </div>
-                      </td>
-                    </tr> -->
+                      ?>                                                
                     </tbody>
                   </table>
                 </div>
@@ -499,10 +400,19 @@
               <!-- /.card-body -->
           </div>
 
-
-
-           <!-- Modal Detail -->
-          <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+          <?php          
+            foreach($data_status_uts as $row2) 
+            {
+              $kode = $row2->matakuliah_kodemk;
+              $nama = $row->namamk;
+              $jenisujian = "UTS";
+              $jenissoal = $row2->jenis_soal;              
+              $datedb =  $row2->create_at;
+              $tanggal = date("d F Y", strtotime($datedb));                                  
+              $file = $row2->file;
+          ?>
+           <!-- Modal Detail UTS -->
+          <div class="modal fade" id="detailModalUts<?php echo $row2->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -516,11 +426,11 @@
                     <table class="table table-sm table-hover">
                       <tr>
                         <th>Kode Matkul</th>
-                        <td><p id="kode"></p></td>
+                        <td><p><?php echo $kode ?></p></td>
                       </tr>
                       <tr>
                         <th>Nama Matkul</th>
-                        <td><p id="nama"></p></td>
+                        <td><p><?php echo $nama ?></p></td>
                       </tr>
                       <tr>
                         <th>Dosen Pengajar</th>
@@ -528,20 +438,20 @@
                       </tr>
                       <tr>
                         <th>Jenis Ujian</th>
-                        <td><p id="jenisujian"></p></td>
+                        <td><p><?php echo $jenissoal ?></p></td>
                       </tr>
                       <tr>
                         <th>UTS / UAS</th>
-                        <td><p id="jenissoal"></p></td>
+                        <td><p><?php echo $jenisujian ?></p></td>
                       </tr>
                       <tr>
                         <th>Tanggal Upload</th>
                         <!-- <td><p>Senin, 22 Juni 2020, 07.30 AM</p></td> -->
-                        <td><p id="tanggal"></p></td>
+                        <td><p><?php echo $tanggal ?></p></td>
                       </tr>
                       <tr>
                         <th>File Soal</th>
-                        <td><a href="" id="file"><i class="fas fa-file"></i></a></td>
+                        <td><a href="<?php echo site_url('dosen/download/'.$file); ?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>
                       </tr>
                     </table>
                   </div>
@@ -552,6 +462,74 @@
               </div>
             </div>
           </div>
+          <?php
+          }
+          ?>
+
+          <?php
+            foreach($data_status_uas as $row3) 
+            {
+              $kode = $row3->matakuliah_kodemk;
+              $nama = $row->namamk;
+              $jenisujian = "UAS";
+              $jenissoal = $row3->jenis_soal;              
+              $datedb =  $row3->create_at;
+              $tanggal = date("d F Y", strtotime($datedb));                                  
+              $file = $row3->file;
+          ?>
+           <!-- Modal Detail UAS -->
+          <div class="modal fade" id="detailModalUas<?php echo $row3->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="detailModalTitle">Detail Soal</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="card">
+                    <table class="table table-sm table-hover">
+                      <tr>
+                        <th>Kode Matkul</th>
+                        <td><p><?php echo $kode ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Nama Matkul</th>
+                        <td><p><?php echo $nama ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Dosen Pengajar</th>
+                        <td><p>Raisa Andriana</p></td>
+                      </tr>
+                      <tr>
+                        <th>Jenis Ujian</th>
+                        <td><p><?php echo $jenissoal ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>UTS / UAS</th>
+                        <td><p><?php echo $jenisujian ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Tanggal Upload</th>                        
+                        <td><p><?php echo $tanggal ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>File Soal</th>
+                        <td><a href="<?php echo site_url('dosen/download/'.$file); ?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php
+          }
+          ?>
 
           <!-- Modal Hapus-->
           <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
@@ -576,24 +554,3 @@
 
       </div>
   </section>
-
-<!-- <script type="text/javascript">
-  $(document).ready(function() {
-    $(document).on('click', '#dtlmodal', function() {
-      var kode = $(this).data('kode');
-      var nama = $(this).data('nama');
-      var jenisujian = $(this).data('jenisujian');
-      var jenissoal = $(this).data('jenissoal');
-      var tanggal = $(this).data('tanggal');
-      var file = $(this).data('file');
-
-      $('#kode').text(kode);
-      $('#nama').text(nama);
-      $('#jenisujian').text(jenisujian);
-      $('#jenissoal').text(jenissoal);
-      $('#tanggal').text(tanggal);
-      $('#file').text(file);      
-    })
-  })
-</script> -->
-

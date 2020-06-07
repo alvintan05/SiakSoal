@@ -3,16 +3,18 @@
 class Dosen extends CI_Controller  
 {
 	var $API ="";
+	var $BASE_URL_FILE = "";
 	
 	function __construct()
 	{
 		parent::__construct();
 		$this->API="http://localhost/siaksoal-api/api";		
+		$this->BASE_URL_FILE="http://localhost/SiakSoal/uploads/soal/";
         $this->load->library('curl');        
 		$this->load->helper('url');
 		$this->load->helper('form');			
 		$this->load->library('upload');
-
+		$this->load->helper('download');
 	}
 
 	function index()
@@ -91,6 +93,13 @@ class Dosen extends CI_Controller
 			echo "Gagal Upload";
 			
 		}				
+	}
+
+	function download($file = NULL)
+	{					
+		$filepath = $this->BASE_URL_FILE . $file;
+		// echo $filepath;
+		redirect($filepath);		
 	}
 
 }
