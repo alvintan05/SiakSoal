@@ -22,64 +22,7 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-    <!-- Info boxes -->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Total Matkul</span>
-                <span class="info-box-number">
-                  5
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hourglass-half"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Processing</span>
-                <span class="info-box-number">
-                  5
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon badge-success elevation-1"><i class="fas fa-check"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Verified</span>
-                <span class="info-box-number">
-                  5
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon badge-danger elevation-1"><i class="fas fa-times"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Rejected</span>
-                <span class="info-box-number">
-                  5
-                </span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
+    
           <!-- /.col -->
         </div>
     	<!-- TABLE: LATEST ORDERS -->
