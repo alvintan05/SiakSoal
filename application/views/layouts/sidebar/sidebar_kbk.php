@@ -25,7 +25,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
            <li class="nav-item">
-            <a href="<?php echo site_url('kbk/home'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/home' ) {echo "active" ;} ?>">
+            <a href="<?php echo site_url('kbk'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk' ) {echo "active" ;} ?>">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
