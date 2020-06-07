@@ -106,7 +106,7 @@
               <div class="card-body p-0">
                 <div class="table table-striped">
                   <table id="example" class="display" style="width:100%">
-                    <thead class="thead-dark">
+                    <thead>
                     <tr>
                       <th>Kode</th>
                       <th>Mata Kuliah</th>

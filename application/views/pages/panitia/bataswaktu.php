@@ -43,7 +43,7 @@
               <div class="card-body p-0">
                 <div class="table table-striped">
                   <table class="table m-0">
-                    <thead class="thead-dark">
+                    <thead>
                     <tr>
                       <th>Option</th>
                       <th>Batas Awal</th>
