@@ -122,7 +122,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="<?php echo site_url('panitia/logout') ?>" class="dropdown-item">
             <i class="fas fa-sign-out-alt mr-2" aria-hidden="true"></i> Logout
           </a>
           <div class="dropdown-divider"></div>

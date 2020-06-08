@@ -31,5 +31,10 @@ class Kbk extends CI_Controller
 		$this->load->view('pengajuan_soal/kbk/upload_form_soal.php', array('main'=>$data));
 	}
 
+	function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('/');
+	}
 
 }

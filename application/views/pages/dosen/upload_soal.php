@@ -68,6 +68,7 @@
               <div class="form-group">
                 <label for="file1">File Soal Ujian</label>
                 <input class="form-control-file" type="file" name="file1" />
+                <?php echo form_error('file1', '<p class="frm_err">','</p>') ?>
               </div>
 
               <div align="right">

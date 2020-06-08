@@ -26,4 +26,10 @@ class Panitia extends CI_Controller
 		$data['title'] = 'Batas Waktu | Panitia';
 		$this->load->view('pengajuan_soal/panitia/bataswaktu.php',array('main'=>$data));
 	}
+
+	function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('/');
+	}
 }

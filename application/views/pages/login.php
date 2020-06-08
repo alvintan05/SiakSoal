@@ -17,7 +17,9 @@
               <h1 class="card-title text-center" style="width: 23rem;"><big><b>Login</b></big></h1>
             </div>
             <div class="card-body m-3">
-              <form action="<?php echo site_url('dosen/home_setelah_login') ?>" method="post" enctype="multipart/form-data" >
+              <!-- <form action="<?php echo site_url('/login') ?>" method="post" enctype="multipart/form-data" > -->
+              <?php echo $this->session->flashdata('notif')?>
+              <?php echo form_open('main/login')?>
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input class="form-control" type="text" name="username" />
@@ -29,12 +31,11 @@
                 </div>
 
                 <div align="center">
-                  <br>
-                  <!-- <a href="<?php echo site_url('dosen/dashboard') ?>"><input class="btn btn-danger" type="button" name="kemali" value="Cancel"></a>
-                  &nbsp;&nbsp; -->
+                  <br>                  
                   <input class="btn btn-block btn-success btn-lg" type="submit" name="login" value="Login" />
                 </div>
-              </form>
+              <!-- </form> -->
+              <?php echo form_close()?>
             </div>
           </div>
         </div>

@@ -37,7 +37,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Login -->
-      <a href="<?php echo site_url('login') ?>"><input class="btn btn-block btn-danger" type="button" name="login" value="Login"></a>
+      <a href="<?php echo site_url('dosen/logout') ?>"><input class="btn btn-block btn-danger" type="button" name="logout" value="Logout"></a>
     </ul>
 </nav>
 <!-- /.navbar -->

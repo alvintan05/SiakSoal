@@ -14,7 +14,7 @@
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
+    <!-- <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
         <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
         <div class="input-group-append">
@@ -23,7 +23,7 @@
           </button>
         </div>
       </div>
-    </form>
+    </form> -->
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -113,6 +113,9 @@
         </div>
       </li>
 
+      <!-- Button logout -->
+      <!-- <a href="<?php echo site_url('kps/logout') ?>"><input class="btn btn-block btn-danger" type="button" name="logout" value="Logout"></a> -->
+
       <!-- Account Dropdown Menu -->
       <li class="nav-item dropdown user user-menu">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
@@ -122,7 +125,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="<?php echo site_url('kps/logout') ?>" class="dropdown-item">
             <i class="fas fa-sign-out-alt mr-2" aria-hidden="true"></i> Logout
           </a>
           <div class="dropdown-divider"></div>
