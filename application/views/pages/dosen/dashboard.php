@@ -57,9 +57,9 @@
                 </div>
 
                 <h5 class="card-title"><big><b>Jadwal Dosen</b></big></h5>
-                <div class="card-description text-muted subjudul">
+                <!-- <div class="card-description text-muted subjudul">
                   Dosen : Raisa Andriana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </div>
+                </div> -->
               </div>
               <!-- /.card-header -->
 

@@ -245,8 +245,11 @@
                                 <div class="box-button">
                                   <!-- Detail icon -->
                                   <a class="btn" data-toggle="modal" data-target="#detailModalUts<?php echo $row->kode_soal;?>"> <i class="fa fa-eye"></i></a>
-                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                                  <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                  
+                                  <!-- Edit Icon -->
+                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal);?>" <?php if($row->status == "Verified" || $row->status == "Rejected") echo 'hidden';?>>
+                                    <i class="fa fa-edit"></i>
+                                  </a>
+                                  <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->
                                 </div>
                               </td>
                             </tr>
@@ -384,8 +387,10 @@
                               <td>
                                 <div class="box-button">
                                   <a class="btn" data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>"><i class="fa fa-eye"></i></a>
-                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal') ?>" ><i class="fa fa-edit"></i></a>
-                                  <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                  
+                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal); ?>" <?php if($row->status == "Verified" || $row->status == "Rejected") echo 'hidden';?>>
+                                    <i class="fa fa-edit"></i>
+                                  </a>
+                                  <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->
                                 </div>
                               </td>
                             </tr>
@@ -431,11 +436,7 @@
                       <tr>
                         <th>Nama Matkul</th>
                         <td><p><?php echo $nama ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>Dosen Pengajar</th>
-                        <td><p>Raisa Andriana</p></td>
-                      </tr>
+                      </tr>                      
                       <tr>
                         <th>Jenis Ujian</th>
                         <td><p><?php echo $jenissoal ?></p></td>
@@ -445,8 +446,7 @@
                         <td><p><?php echo $jenisujian ?></p></td>
                       </tr>
                       <tr>
-                        <th>Tanggal Upload</th>
-                        <!-- <td><p>Senin, 22 Juni 2020, 07.30 AM</p></td> -->
+                        <th>Tanggal Upload</th>                        
                         <td><p><?php echo $tanggal ?></p></td>
                       </tr>
                       <tr>
@@ -497,10 +497,6 @@
                       <tr>
                         <th>Nama Matkul</th>
                         <td><p><?php echo $nama ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>Dosen Pengajar</th>
-                        <td><p>Raisa Andriana</p></td>
                       </tr>
                       <tr>
                         <th>Jenis Ujian</th>
