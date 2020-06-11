@@ -183,8 +183,8 @@ class Dosen extends CI_Controller
 				'file' =>  $filename								
 			);			
 	
-			$insert =  $this->curl->simple_post($this->API.'/dosen/upload', $data);
-			redirect('dosen/dashboard');
+			$insert =  $this->curl->simple_put($this->API.'/dosen/editupload', $data);
+			redirect('dosen/status_soal');
 		} else {
 			echo "Gagal Upload";			
 		}			

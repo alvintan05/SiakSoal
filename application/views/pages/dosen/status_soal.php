@@ -236,7 +236,7 @@
                               </td>
                               <td>
                                 <?php 
-                                  $datedb =  $row->create_at;
+                                  $datedb =  $row->update_at;
                                   $newDate = date("d F Y", strtotime($datedb));
                                   echo $newDate;
                                 ?>
@@ -379,7 +379,7 @@
                               </td>
                               <td>
                                 <?php 
-                                  $datedb =  $row->create_at;
+                                  $datedb =  $row->update_at;
                                   $newDate = date("d F Y", strtotime($datedb));
                                   echo $newDate;
                                 ?>
@@ -412,8 +412,10 @@
               $nama = $row->namamk;
               $jenisujian = "UTS";
               $jenissoal = $row2->jenis_soal;              
-              $datedb =  $row2->create_at;
-              $tanggal = date("d F Y", strtotime($datedb));                                  
+              $create_date =  $row2->create_at;
+              $tanggalUpload = date("d F Y", strtotime($create_date));
+              $edit_date =  $row2->update_at;
+              $tanggalUpdate = date("d F Y", strtotime($edit_date));
               $file = $row2->file;
           ?>
            <!-- Modal Detail UTS -->
@@ -447,7 +449,11 @@
                       </tr>
                       <tr>
                         <th>Tanggal Upload</th>                        
-                        <td><p><?php echo $tanggal ?></p></td>
+                        <td><p><?php echo $tanggalUpload ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Tanggal Update</th>                        
+                        <td><p><?php echo $tanggalUpdate ?></p></td>
                       </tr>
                       <tr>
                         <th>File Soal</th>
@@ -473,8 +479,10 @@
               $nama = $row->namamk;
               $jenisujian = "UAS";
               $jenissoal = $row3->jenis_soal;              
-              $datedb =  $row3->create_at;
-              $tanggal = date("d F Y", strtotime($datedb));                                  
+              $create_date =  $row3->create_at;
+              $tanggalUpload = date("d F Y", strtotime($create_date));
+              $edit_date =  $row3->update_at;
+              $tanggalUpdate = date("d F Y", strtotime($edit_date));
               $file = $row3->file;
           ?>
            <!-- Modal Detail UAS -->
@@ -508,7 +516,11 @@
                       </tr>
                       <tr>
                         <th>Tanggal Upload</th>                        
-                        <td><p><?php echo $tanggal ?></p></td>
+                        <td><p><?php echo $tanggalUpload ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Tanggal Update</th>                        
+                        <td><p><?php echo $tanggalUpdate ?></p></td>
                       </tr>
                       <tr>
                         <th>File Soal</th>

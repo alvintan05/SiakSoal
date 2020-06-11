@@ -24,7 +24,7 @@
             <!-- <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div> -->
           </div>
           <div class="card-body">
-          <form action="<?php echo base_url(). 'dosen/post_upload' ?>" method="post" enctype="multipart/form-data" >
+          <form action="<?php echo base_url(). 'dosen/edit_upload' ?>" method="post" enctype="multipart/form-data" >
               <input type="hidden" value="<?php echo $data_matkul[0]->kode_soal;?>" name="id">
               <input type="hidden" value="<?php echo $data_matkul[0]->file;?>" name="oldFileName">
               <div class="form-group">
