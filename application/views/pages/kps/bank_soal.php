@@ -13,33 +13,11 @@
 
             </div>
             <div class="card-body">
-                <form action="<? echo_site_url('#')?>" method="">
-                    <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="">Program Studi</label>
-                            <select name="" id="">
-                            <option selected>Pilih...</option>
-                            <option value="ti">Teknik Informatika</option>
-                            <option value="tmd">Teknik Multimedia</option>
-                            <option value="tmj">Teknik Multimedia Jaringan</option>
-                            <option value="tkj">Teknik Komputer Jaringan</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="">Tingkat</label><br>
-                            <select name="" id="">
-                            <option selected>Pilih...</option>
-                            <option value="tingkat1">Tingkat 1</option>
-                            <option value="tingkat2">Tingkat 2</option>
-                            <option value="tingkat3">Tingkat 3</option>
-                            <option value="tingkat4">Tingkat 4</option>
-                            </select>
-                        </div>
-                    </div>
+                <form action="<? echo base_url(). 'Kps/dashboard' ?>" method="post" >
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="">Tahun Ajaran</label><br>
-                            <select name="" id="">
+                            <select name="tahun" id="">
                             <option selected>Pilih...</option>
                             <option value="t2015">2015</option>
                             <option value="t2016">2016</option>
@@ -49,14 +27,40 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="">Semester</label><br>
+                            <select name="semester" id="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- <div class="form-group col-md-4">
+                            <label for="">Program Studi</label>
                             <select name="" id="">
-                            <option value="ganjil">Ganjil</option>
-                            <option value="">Genap</option>
+                            <option selected>Pilih...</option>
+                            <option value="ti">Teknik Informatika</option>
+                            <option value="tmd">Teknik Multimedia</option>
+                            <option value="tmj">Teknik Multimedia Jaringan</option>
+                            <option value="tkj">Teknik Komputer Jaringan</option>
+                            </select>
+                        </div> -->
+                        <div class="form-group col-md-4">
+                            <label for="">Jenis Soal</label><br>
+                            <select name="jenissoal" id="">
+                            <option disabled selected>Pilih...</option>
+                            <option value="UTS">UTS</option>
+                            <option value="UAS">UAS</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                    <input type="submit" class="btn btn-primary" name="" value="Cari">
+                    <input type="submit" class="btn btn-primary" name="submit" value="Cari">
                     </div>
                 </form>
             </div>
