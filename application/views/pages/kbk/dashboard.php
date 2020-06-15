@@ -85,10 +85,10 @@
                       <td>Anggi Widayano</td>
                       <td>TI 2A</td>
                       <td>
-                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                       <div class="box-button">
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -98,10 +98,10 @@
                       <td>Iklima Putri</td>
                       <td>TI 4A</td>
                       <td>
-                       <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                      <div class="box-button">
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -112,9 +112,9 @@
                       <td>TI 6A</td>
                       <td>
                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye skin-black"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -124,11 +124,11 @@
                       <td>Candra Heri</td>
                       <td>TI 2B</td>
                       <td>
-                       <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
-                      </div>
+                      <div class="box-button">
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
+                        </div>
                       </td>
                     </tr>
                      <tr>
@@ -138,9 +138,9 @@
                       <td>TI 6B</td>
                       <td>
                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -215,9 +215,9 @@
                       <td>TI 2A</td>
                       <td>
                         <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -228,9 +228,9 @@
                       <td>TI 4A</td>
                       <td>
                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -241,9 +241,9 @@
                       <td>TI 6A</td>
                       <td>
                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye skin-black"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
                         </div>
                       </td>
                     </tr>
@@ -254,10 +254,10 @@
                       <td>TI 2B</td>
                       <td>
                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
-                      </div>
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
+                        </div>
                       </td>
                     </tr>
                      <tr>
@@ -267,9 +267,9 @@
                       <td>TI 6B</td>
                       <td>
                        <div class="box-button">
-                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
                         </div>
                       </td>
                     </tr>
