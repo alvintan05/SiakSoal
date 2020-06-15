@@ -1,8 +1,6 @@
 <div class="content-header">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
   <div class="container-fluid">
         <div class="row callout callout bg-light">
           <div class="col-1" align="right">
@@ -26,51 +24,7 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-
-       <!-- Info boxes -->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-text">Total Matkul</span>
-                <span class="info-box-number">5</span>
-              </div>
-            </div>
-
-          </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hourglass-half"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-text">Processing</span>
-                <span class="info-box-number">5</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon badge-success elevation-1"><i class="fas fa-check"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-text">Verified</span>
-                <span class="info-box-number">5</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon badge-danger elevation-1"><i class="fas fa-times"></i></span>
-              <div class="info-box-content">
-                <span class="info-box-text">Rejected</span>
-                <span class="info-box-number">5</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-    <!-- TABLE: LATEST ORDERS -->
+    <!-- TABLE: LATEST ORDERS UTS-->
             <div class="card">
               <div class="card-header">
                 <div class="card-tools" align="float-sm-right">
@@ -78,11 +32,41 @@
                     <i class="fas fa-minus"></i>
                   </button>
                 </div>
-                <h4 class="card-title"><big><b>Daftar Soal</b></big></h4>
+                <h4 class="card-title"><big><b>Daftar Soal UTS</b></big></h4>
               </div>
             
               <!-- /.card-header -->
               <div class="card-body p-2">
+               <!-- Info boxes -->
+                <div class="row">
+                  <div class="col-12 col-sm-6 col-md-3">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box mb-3 bg-info">
+                      <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Total Matkul</span>
+                        <!-- <span class="info-box-number"><?php echo count($data_status_uts); ?></span> -->
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+
+                  <div class="col-12 col-sm-6 col-md-3">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box mb-3 bg-warning">
+                      <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Processing</span>
+                        <!-- <span class="info-box-number"><?php echo $proccess_uts; ?></span> -->
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                </div>
                <div class="table table-striped" >
                   <table id="example" class="display" style="width:100%">
                     <thead>
@@ -167,6 +151,142 @@
               </div>
               <!-- /.card-body -->
           </div>
+         
+    <!-- TABLE: LATEST ORDERS UAS-->
+           <div class="card">
+              <div class="card-header">
+                <div class="card-tools" align="float-sm-right">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                </div>
+                <h4 class="card-title"><big><b>Daftar Soal UAS</b></big></h4>
+              </div>
+            
+              <!-- /.card-header -->
+              <div class="card-body p-2">
+               <!-- Info boxes -->
+                <div class="row">
+                  <div class="col-12 col-sm-6 col-md-3">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box mb-3 bg-info">
+                      <span class="info-box-icon"><i class="fas fa-tag"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Total Matkul</span>
+                        <!-- <span class="info-box-number"><?php echo count($data_status_uts); ?></span> -->
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+
+                  <div class="col-12 col-sm-6 col-md-3">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box mb-3 bg-warning">
+                      <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Processing</span>
+                        <!-- <span class="info-box-number"><?php echo $proccess_uts; ?></span> -->
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                </div>
+
+               <div class="table table-striped" >
+                  <table id="example" class="display" style="width:100%">
+                    <thead>
+                    <tr>
+                      <th>Kode</th>
+                      <th>Mata Kuliah</th>
+                      <th>Dosen</th>
+                      <th>Kelas</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>MK001</td>
+                      <td>Data Mining</td>
+                      <td>Anggi Widayano</td>
+                      <td>TI 2A</td>
+                      <td>
+                        <div class="box-button">
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>MK002</td>
+                      <td>Datawarehouse</td>
+                      <td>Iklima Putri</td>
+                      <td>TI 4A</td>
+                      <td>
+                       <div class="box-button">
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                        </div>
+                      </td>
+                    </tr>
+                     <tr>
+                      <td>MK003</td>
+                      <td>Database 1</td>
+                      <td>Elizabet</td>
+                      <td>TI 6A</td>
+                      <td>
+                       <div class="box-button">
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye skin-black"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                        </div>
+                      </td>
+                    </tr>
+                     <tr>
+                      <td>MK004</td>
+                      <td>WEB 1</td>
+                      <td>Candra Heri</td>
+                      <td>TI 2B</td>
+                      <td>
+                       <div class="box-button">
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                      </div>
+                      </td>
+                    </tr>
+                     <tr>
+                      <td>MK005</td>
+                      <td>Statisika</td>
+                      <td>Euis Salsabilla</td>
+                      <td>TI 6B</td>
+                      <td>
+                       <div class="box-button">
+                          <a class="btn" data-toggle="modal" data-target="#detailModal"><i class="fa fa-eye"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check"></i></a>
+                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"></i></a>
+                        </div>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.table-responsive -->
+              </div>
+              <!-- /.card-body -->
+          </div>
+
+
+
+
+
+
+
 
 
            <!-- Modal Detail-->
