@@ -16,6 +16,7 @@
         </div>
         <div class="info">
           <a href="<?php echo site_url('kps')?>" class="d-block"><?php echo $this->session->nama; ?></a>
+          <span data-toggle="tooltip" title="Sebagai" class="badge badge-warning">KPS</span>
         </div>
       </div>
 
@@ -40,22 +41,6 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?php echo site_url('kps/bank_soal'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kps/bank_soal') {echo "active" ;} ?>">
-              <i class="nav-icon fas fa-clock"></i>
-              <p>
-                Bank Soal
-              </p>
-            </a>
-          </li>
-          <!-- <li class="nav-item">
-            <a href="<?php echo site_url('dosen/status_soal'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'dosen/status_soal') {echo "active" ;} ?>">
-              <i class="nav-icon fas fa-file"></i>
-              <p>
-                Status Soal
-              </p>
-            </a>
-          </li> -->
 
 
 

@@ -11,9 +11,6 @@
 
       <div class="card">
           <div class="card-header">
-            <div class="card-tools" align="float-sm-right">
-              <a href="<?php echo site_url('dosen/dashboard') ?>"><input class="btn btn-sm btn-warning" type="button" name="kembali" value="Kembali"></a>
-            </div>
             
             <h1 class="card-title"><big><b>Upload Soal</b></big></h1>
             <!-- <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div> -->

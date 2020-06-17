@@ -16,6 +16,7 @@
         </div>
         <div class="info">
           <a href="<?php echo site_url('panitia')?>" class="d-block"><?php echo $this->session->nama; ?></a>
+          <span data-toggle="tooltip" title="Sebagai" class="badge badge-warning">Panitia</span>
         </div>
       </div>
 

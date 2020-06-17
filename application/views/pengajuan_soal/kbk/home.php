@@ -23,7 +23,7 @@
 		<div class="content-wrapper">
 			<!-- pages -->
 			
-			<?php $this->load->view('layouts/breadcrumb')?>
+			
 			<?php $this->load->view('pages/kbk/home') ?>
 			<!-- END pages -->
 		</div>

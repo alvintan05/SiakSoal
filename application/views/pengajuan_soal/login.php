@@ -5,16 +5,12 @@
   <?php $this->load->view('layouts/head') ?>
   <link rel="stylesheet" href="<?php echo base_url();?>assets/pengajuan_soal/styles.css " type="text/css">
 </head>
-<body class="hold-transition sidebar-mini sidebar-collapse layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition layout-top-nav">
 	<div class="wrapper">
 
 		<!-- navbar -->
 			<?php $this->load->view('layouts/navbar/navbar_login') ?>
 		<!-- END navbar -->
-		
-		<!-- sidebar -->
-			<?php $this->load->view('layouts/sidebar/sidebar_login')?>
-		<!-- END sidebar -->
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">

@@ -123,7 +123,7 @@
           <img src="<?php echo base_url();?>assets/dist/img/user4-128x128.jpg" class="user-image img-circle elevation-2" alt="User Image">
         </div>
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
           <a href="<?php echo site_url('kps/logout') ?>" class="dropdown-item">
             <i class="fas fa-sign-out-alt mr-2" aria-hidden="true"></i> Logout

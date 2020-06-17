@@ -25,12 +25,12 @@
     
           <!-- /.col -->
         </div>
-    	<!-- TABLE: LATEST ORDERS -->
-            <div class="card">
+    	<!-- TABLE: LATEST ORDERS --> 
+            <div class="card collapsed-card">
               <div class="card-header border-bottom">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
+                    <i class="fas fa-plus"></i>
                   </button>
                 </div>
                 <h1 class="card-title "><b>Deadline Pengumpulan Soal UTS</b></h1>
@@ -72,11 +72,11 @@
               </div>
               <!-- /.card-body -->
           </div>
-          <div class="card">
+          <div class="card collapsed-card">
               <div class="card-header border-bottom">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
+                    <i class="fas fa-plus"></i>
                   </button>
                 </div>
                 <h1 class="card-title "><b>Deadline Pengumpulan Soal UAS</b></h1>

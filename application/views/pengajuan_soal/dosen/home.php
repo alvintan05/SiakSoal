@@ -9,7 +9,7 @@
 	<div class="wrapper">
 
 		<!-- navbar -->
-			<?php $this->load->view('layouts/navbar/navbar_sebelum_login') ?>
+			<?php $this->load->view('layouts/navbar/navbar_dosen') ?>
 		<!-- END navbar -->
 		
 		<!-- sidebar -->
