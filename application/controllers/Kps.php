@@ -25,12 +25,37 @@ class Kps extends CI_Controller
 	function dashboard()
 	{
 		$data['title'] = 'Dashboard | KPS';
-		// $s_data['tahun'] = $this->input->post('tahun');
-		// $s_data['semester'] = $this->input->post('semester');
-		// $s_data['jenissoal'] = $this->input->post('jenissoal');
-		$data_soal = json_decode($this->curl->simple_get($this->API.'/kps'));
-		$data['data_soal'] = $data_soal->data;
-		$data['pages'] = $this->load->view('pages/kps/bank_soal','',true);
+
+		if ($this->input->get('tahun')) {
+			$filter = array(
+				'tahun' => $this->input->get('tahun'),
+				'semester' => $this->input->get('semester'),
+				'jenissoal' => $this->input->get('jenissoal')
+			);
+			
+			$data_soal = json_decode($this->curl->simple_get($this->API.'/kps/search', $filter));
+			var_dump($data_soal);
+			$data['data_soal'] = $data_soal->data;
+			
+			// $this->session->set_listsoal('data_soal', $data['data_soal']);
+
+		} else {
+			echo "Filter gagal";
+		}
+
+		// $data['pages'] = $this->load->view('pages/kps/dashboard','',true);
+		// $this->load->view('pengajuan_soal/kps/dashboard.php', array('main'=>$data));
+	}
+
+	function get_search(){
+		echo "TES";
+	}
+
+	function banksoal()
+	{
+		$data['title'] = 'Dashboard | KPS';
+
+		$data['pages'] = $this->load->view('pages/kps/dashboard','',true);
 		$this->load->view('pengajuan_soal/kps/dashboard.php', array('main'=>$data));
 	}
 

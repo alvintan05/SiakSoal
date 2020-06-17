@@ -22,7 +22,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/kps/bank_soal') ?>
+			<?php $this->load->view('pages/kps/dashboard', $main) ?>
 			tes
 			<!-- END pages -->
 		</div>

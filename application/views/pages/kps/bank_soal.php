@@ -13,7 +13,7 @@
 
             </div>
             <div class="card-body">
-                <form action="<? echo base_url(). 'Kps/dashboard' ?>" method="post" >
+                <form action="<?php echo base_url(). 'Kps/dashboard' ?>" method="get" >
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="">Tahun Ajaran</label><br>
@@ -60,7 +60,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                    <input type="submit" class="btn btn-primary" name="submit" value="Cari">
+                    <!-- <input type="submit" class="btn btn-primary" name="submit" value="Cari"> -->
+                    <button class="btn btn-primary" type="submit">Cari</button>
                     </div>
                 </form>
             </div>
