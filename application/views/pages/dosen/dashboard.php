@@ -1,5 +1,4 @@
 <div class="content-header">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 	<div class="container-fluid ">
     <div class="row callout callout bg-light">
           <div class="col-1" align="right">
@@ -76,7 +75,7 @@
                 <br><p></p> -->
               <div class="card-body p-2">
                 <div class="table table-striped" >
-                  <table id="example" class="display" style="width:100%">
+                  <table id="example1" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>
@@ -135,4 +134,29 @@
           </div>
       </div>
   </section>
+
+  <div class="content-header">
+  <div class="container-fluid">
+        
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+  <script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 

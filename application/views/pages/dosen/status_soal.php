@@ -196,7 +196,7 @@
 
                 <!-- TABLE : UTS -->
                 <div class="table table-striped">
-                  <table class="table m-0">
+                  <table id="example1" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>
@@ -339,7 +339,7 @@
 
                 <!-- TABLE : UAS -->
                 <div class="table table-striped">
-                  <table class="table m-0">
+                  <table id="example1" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>
@@ -562,3 +562,28 @@
 
       </div>
   </section>
+
+  <div class="content-header">
+  <div class="container-fluid">
+        
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+  <script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>

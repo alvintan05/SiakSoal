@@ -1,6 +1,6 @@
 <div class="content-header"> 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> -->
   <div class="container-fluid">
@@ -105,7 +105,7 @@
               <!-- /.card-header -->
               <div class="card-body p-2">
                 <div class="table table-striped">
-                  <table id="example" class="display" style="width:100%">
+                  <table id="example1" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>
@@ -181,5 +181,29 @@
       </div>
   </section>
 
+<div class="content-header">
+<div class="container-fluid">
+        
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+ <script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 
 

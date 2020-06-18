@@ -15,8 +15,8 @@
             <h1 class="card-title"><big><b>Upload Soal</b></big></h1>
             <!-- <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div> -->
           </div>
-          <div class="card-body">                        
-            <form action="<?php echo base_url(). 'dosen/post_upload' ?>" method="post" enctype="multipart/form-data" >
+          <form action="<?php echo base_url(). 'dosen/post_upload' ?>" method="post" enctype="multipart/form-data" >
+          <div class="card-body">                          
            <!--  <h6 class="card-description text-muted">Mata Kuliah: <?php echo $data_matkul[0]->namamk;?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kelas: <?php echo $data_matkul[0]->namaklas;?></h6> -->
               <div class="form-group">
               <?php echo $this->session->flashdata('upload')?> 
@@ -43,6 +43,7 @@
                     <option value="none" selected>Pilih...</option>
                     <option value="Tertulis">Tertulis</option>
                     <option value="Praktikum">Praktikum</option>
+                    <option value="Praktikum">Proyek</option>
                   </select>
                 </div>
                 <div class="form-group col-md-4">
@@ -60,19 +61,24 @@
               <div class="form-group">
                 <label for="file1">File Soal Ujian</label>
                 <input class="form-control-file" type="file" name="file1" />                
-              </div>                         
-
-              <div align="right">
-                <br>
-                <a href="<?php echo site_url('dosen/dashboard') ?>"><input class="btn btn-danger" type="button" name="kemali" value="Cancel"></a>
-                &nbsp;&nbsp;
-                <input class="btn btn-success" type="submit" name="submit" value="Upload" />
-              </div>
+              </div> 
+            </div>
+            <div class="card-footer" align="right">
+              <a href="<?php echo site_url('dosen/dashboard') ?>"><input class="btn btn-danger" type="button" name="kemali" value="Kembali"></a>
+                &nbsp;
+              <input class="btn btn-success" type="submit" name="submit" value="Upload" />
+            </div>                        
             </form>            
-          </div>
         </div>
     </div>
 </section>
+
+<div class="content-header">
+  <div class="container-fluid">
+        
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
 
 
 
