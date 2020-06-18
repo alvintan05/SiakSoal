@@ -54,15 +54,15 @@
                     <tbody>
                     <tr>
                       <td>Pengumpulan Soal UTS</td>
-                      <td>
-                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Awal">
+                      <td>                    
+                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Awal" value="<?php echo $data_batas[0]->batas_awal; ?>" disabled>
                       </td>
                       <td>
-                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Akhir">
+                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Akhir" value="<?php echo $data_batas[0]->batas_akhir; ?>" disabled >
                       </td>
                       <td>
                       <div class="box-button">
-								      <a class="btn" data-toggle="modal" data-target="#editModal"><i class="fa fa-pen"></i></a>
+								      <a class="btn" data-toggle="modal" data-target="#editModal<?php echo $data_batas[0]->id;?>"><i class="fa fa-pen"></i></a>
                       </td>
                     </tr>
                     </tbody>
@@ -101,14 +101,14 @@
                     <tr>
                       <td>Pengumpulan Soal UAS</td>
                       <td>
-                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Awal">
+                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Awal" value="<?php echo $data_batas[1]->batas_awal; ?>" disabled >
                       </td>
                       <td>
-                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Akhir">
+                      <input type="date" id="daterangepicker" class="form-control" placeholder="Batas Akhir" value="<?php echo $data_batas[1]->batas_akhir; ?>" disabled >
                       </td>
                       <td>
                       <div class="box-button">
-								      <a class="btn" data-toggle="modal" data-target="#editModal"><i class="fa fa-pen"></i></a>
+								      <a class="btn" data-toggle="modal" data-target="#editModal<?php echo $data_batas[1]->id;?>"><i class="fa fa-pen"></i></a>
                       </td>
                     </tr>
                     </tbody>
@@ -119,8 +119,14 @@
               <!-- /.card-body -->
           </div>
       </div>
+
+
+      <?php
+        foreach($data_batas as $row) 
+        {          
+      ?>
       <!-- Modal Edit-->
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
+      <div class="modal fade" id="editModal<?php echo $row->id ;?>" tabindex="-1" role="dialog" aria-labelledby="editModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -130,31 +136,34 @@
                   </button>
                 </div>
                 <div class="modal-body">
+                <form action="<?php echo base_url(). 'panitia/updateBatas' ?>" method="post" enctype="multipart/form-data" >
                   <div class="card">
                     <table class="table table-sm table-hover">
                       <tr>
                         <th>Pengumpulan Soal</th>
-                        <td><p>UTS</p></td>
+                        <td><p><?php echo $row->jenis_ujian; ?></p></td>
+                        <input type="hidden" name="jenis" value="<?php echo $row->jenis_ujian; ?>">
                       </tr>
                       <tr>
                         <th>Batas Awal</th>
-                        <td><p><input type="date" id="daterangepicker" class="form-control" placeholder="Batas Awal"></p></td>
+                        <td><p><input type="date" name="batas_awal" id="daterangepicker" class="form-control" placeholder="Batas Awal" value="<?php echo $row->batas_awal; ?>"></p></td>
                       </tr>
                       <tr>
                         <th>Batas Akhir</th>
-                        <td><p><input type="date" id="daterangepicker" class="form-control" placeholder="Batas Akhir"></p></td>
+                        <td><p><input type="date" name="batas_akhir" id="daterangepicker" class="form-control" placeholder="Batas Akhir" value="<?php echo $row->batas_akhir; ?>"></p></td>
                       </tr>
                     </table>
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Update</button>
+                  <input class="btn btn-primary" type="submit" name="submit" value="Update" />
+                  </form>                  
                   <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
                 </div>
               </div>
             </div>
           </div>
+        <?php
+        }
+        ?>
   </section>
-
-
-

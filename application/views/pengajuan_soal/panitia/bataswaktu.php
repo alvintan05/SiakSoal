@@ -22,7 +22,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/panitia/bataswaktu') ?>
+			<?php $this->load->view('pages/panitia/bataswaktu', $main) ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->

@@ -20,6 +20,9 @@ class Dosen extends CI_Controller
 
 	function index()
 	{
+		if($this->session->isLogin == false || $this->session->role != 'Dosen'){
+			redirect('.');
+		}
 		$data['title'] = 'Home | Dosen';		
 		$this->load->view('pengajuan_soal/dosen/home.php', array('main'=>$data));
 	}

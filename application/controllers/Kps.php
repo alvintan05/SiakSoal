@@ -17,6 +17,9 @@ class Kps extends CI_Controller
 
 	function index()
 	{
+		if($this->session->isLogin == false || $this->session->role != 'KPS'){
+			redirect('.');
+		}
 		$data['title'] = 'Home | KPS';
 		$data['pages'] = $this->load->view('pages/kps/bank_soal','',true);
 		$this->load->view('pengajuan_soal/kps/bank_soal.php', array('main'=>$data));
