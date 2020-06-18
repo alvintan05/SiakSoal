@@ -25,7 +25,7 @@ class Kps extends CI_Controller
 	function dashboard()
 	{
 		$data['title'] = 'Dashboard | KPS';
-
+		$data['data_soal'] = null;
 		if ($this->input->get('tahun')) {
 			$filter = array(
 				'tahun' => $this->input->get('tahun'),
@@ -34,21 +34,15 @@ class Kps extends CI_Controller
 			);
 			
 			$data_soal = json_decode($this->curl->simple_get($this->API.'/kps/search', $filter));
-			var_dump($data_soal);
-			$data['data_soal'] = $data_soal->data;
 			
-			// $this->session->set_listsoal('data_soal', $data['data_soal']);
+			$data['data_soal'] = $data_soal->data;
 
 		} else {
 			echo "Filter gagal";
 		}
 
-		// $data['pages'] = $this->load->view('pages/kps/dashboard','',true);
-		// $this->load->view('pengajuan_soal/kps/dashboard.php', array('main'=>$data));
-	}
-
-	function get_search(){
-		echo "TES";
+		$data['pages'] = $this->load->view('pages/kps/dashboard','',true);
+		$this->load->view('pengajuan_soal/kps/dashboard.php', array('main'=>$data));
 	}
 
 	function banksoal()

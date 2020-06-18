@@ -19,10 +19,10 @@
                             <label for="">Tahun Ajaran</label><br>
                             <select name="tahun" id="">
                             <option selected>Pilih...</option>
-                            <option value="t2015">2015</option>
-                            <option value="t2016">2016</option>
-                            <option value="t2017">2017</option>
-                            <option value="t2018">2018</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
                             </select>
                         </div>
                         <div class="form-group col-md-4">

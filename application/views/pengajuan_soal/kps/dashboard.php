@@ -22,8 +22,10 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/kps/dashboard', $main) ?>
-			tes
+			<?php if($main['data_soal']) 
+			{  $this->load->view('pages/kps/dashboard', $main); }
+			else { echo "&nbsp tidak ada history pencarian"; }
+			?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
