@@ -8,13 +8,13 @@
   
   foreach($data_status_uts as $row) {
       switch($row->status){
-        case "Verified":
+        case "Diterima":
           $verified_uts++;
           break;
-        case "Processing":
+        case "Proses":
           $proccess_uts++;
           break;
-        case "Rejected":
+        case "Ditolak":
           $rejected_uts++;
           break;
       }
@@ -22,13 +22,13 @@
 
   foreach($data_status_uas as $row) {
     switch($row->status){
-      case "Verified":
+      case "Diterima":
         $verified_uas++;
         break;
-      case "Processing":
+      case "Proses":
         $proccess_uas++;
         break;
-      case "Rejected":
+      case "Ditolak":
         $rejected_uas++;
         break;
     }
@@ -49,8 +49,30 @@
           </div>
           <div class="col-2">
             <?php $this->load->view('layouts/breadcrumb')?>
-          </div>
+          </div>          
         </div><!-- /.row -->
+        
+        <!-- Option tahun dan semester -->
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3">
+            <select id="listTahun" name="listTahun" class="form-control">
+              <?php 
+                foreach($tahun as $row){ 
+                  ?>        
+                  <option value="<?php echo $row->tahun_akad ?>"><?php echo $row->tahun_akad ?></option>
+                <?php 
+                }
+              ?>            
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <select id="listSemester" name="listSemester" class="form-control">
+              <option value="ganjil" selected>Ganjil</option>
+              <option value="genap">Genap</option>
+            </select>
+          </div>
+        </div>
+        
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
@@ -157,7 +179,7 @@
                       <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Processing</span>
+                        <span class="info-box-text">Proses</span>
                         <span class="info-box-number"><?php echo $proccess_uts; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -171,7 +193,7 @@
                       <span class="info-box-icon"><i class="fas fa-check"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Verified</span>
+                        <span class="info-box-text">Diterima</span>
                         <span class="info-box-number"><?php echo $verified_uts; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -185,7 +207,7 @@
                       <span class="info-box-icon"><i class="fas fa-times"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Rejected</span>
+                        <span class="info-box-text">Ditolak</span>
                         <span class="info-box-number"><?php echo $rejected_uts; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -219,13 +241,13 @@
                                 <span class="badge 
                                   <?php  
                                     switch($row->status){
-                                      case "Verified":
+                                      case "Diterima":
                                         echo 'badge-success';
                                         break;
-                                      case "Processing":
+                                      case "Proses":
                                         echo 'badge-warning';
                                         break;
-                                      case "Rejected":
+                                      case "Ditolak":
                                         echo 'badge-danger';
                                         break;
                                     }
@@ -300,7 +322,7 @@
                       <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Processing</span>
+                        <span class="info-box-text">Proses</span>
                         <span class="info-box-number"><?php echo $proccess_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -314,7 +336,7 @@
                       <span class="info-box-icon"><i class="fas fa-check"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Verified</span>
+                        <span class="info-box-text">Diterima</span>
                         <span class="info-box-number"><?php echo $verified_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -328,7 +350,7 @@
                       <span class="info-box-icon"><i class="fas fa-times"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Rejected</span>
+                        <span class="info-box-text">Ditolak</span>
                         <span class="info-box-number"><?php echo $rejected_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -362,13 +384,13 @@
                                 <span class="badge 
                                   <?php  
                                     switch($row->status){
-                                      case "Verified":
+                                      case "Diterima":
                                         echo 'badge-success';
                                         break;
-                                      case "Processing":
+                                      case "Proses":
                                         echo 'badge-warning';
                                         break;
-                                      case "Rejected":
+                                      case "Ditolak":
                                         echo 'badge-danger';
                                         break;
                                     }

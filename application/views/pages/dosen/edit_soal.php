@@ -49,6 +49,7 @@
                   <option selected>Pilih...</option>
                   <option value="Tertulis" <?php echo set_select('jenisUjian', 'Tertulis', (!empty($jenis_soal) && $jenis_soal == "Tertulis" ? TRUE: FALSE)); ?>>Tertulis</option>
                   <option value="Praktikum" <?php echo set_select('jenisUjian', 'Praktikum', (!empty($jenis_soal) && $jenis_soal == "Praktikum" ? TRUE: FALSE)); ?>>Praktikum</option>
+                  <option value="Proyek" <?php echo set_select('jenisUjian', 'Proyek', (!empty($jenis_soal) && $jenis_soal == "Proyek" ? TRUE: FALSE)); ?>>Proyek</option>
                 </select>
               </div>
               <div class="form-group col-md-4">

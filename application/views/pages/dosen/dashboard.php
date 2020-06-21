@@ -22,6 +22,28 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
+      <!-- Option tahun dan semester -->
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-3">
+          <select id="listTahun" name="listTahun" class="form-control">
+            <?php 
+              foreach($tahun as $row){ 
+                ?>        
+                <option value="<?php echo $row->tahun_akad ?>"><?php echo $row->tahun_akad ?></option>
+              <?php 
+              }
+             ?>            
+          </select>
+        </div>
+        <div class="col-12 col-sm-6 col-md-3">
+          <select id="listSemester" name="listSemester" class="form-control">
+            <option value="ganjil" selected>Ganjil</option>
+            <option value="genap">Genap</option>
+          </select>
+        </div>
+      </div>
+
+      <br>
 
       <!-- Info boxes -->
         <div class="row">
@@ -59,20 +81,7 @@
                 <!-- <div class="card-description text-muted subjudul">
                   Dosen : Raisa Andriana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div> -->
-              </div>
-              <!-- /.card-header -->
-
-              <!-- <div class="card-body p-2">
-                <div class="card-tools">
-                  <div class="input-group input-group-sm float-right" style="width: 200px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
-                  </div>
-                </div>
-                <br><p></p> -->
+              </div>              
               <div class="card-body p-2">
                 <div class="table table-striped" >
                   <table id="example1" class="display" style="width:100%">
@@ -85,7 +94,7 @@
                       <th>Action</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="show_jadwal">
                       <?php  
                         foreach($data_jadwal as $row) {
                           ?>
@@ -102,29 +111,7 @@
                           </tr>
                           <?php                         
                         }       
-                      ?>                                         
-                    <!-- <tr>
-                      <td>MK001</td>
-                      <td>Data Mining</td>
-                      <td>T1 2A</td>
-                      <td>AA 301</td>
-                      <td>
-                      	<div class="box-button">
-								<a href='<?php echo site_url('dosen/upload_soal'); ?>' class="btn btn-info btn-sm">Upload</a>
-						</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MK002</td>
-                      <td>Datawarehouse</td>
-                      <td>T1 4A</td>
-                      <td>AA 302</td>
-                      <td>
-                      	<div class="box-button">
-								<a href='<?php echo site_url('dosen/upload_soal'); ?>' class="btn btn-info btn-sm">Upload</a>
-						</div>
-                      </td>
-                    </tr> -->
+                      ?>                                                              
                     </tbody>
                   </table>
                 </div>
@@ -142,7 +129,7 @@
 </div>
 <!-- /.content-header -->
 
-  <script>
+<script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true,
@@ -158,5 +145,67 @@
       "responsive": true,
     });
   });
-</script>
 
+  // $(document).ready(function() {
+
+  //   var tahun = document.getElementById("listTahun");
+  //   var tahunValue = tahun.options[tahun.selectedIndex].value;
+  //   var semester = document.getElementById("listSemester");
+  //   var semesterValue = semester.options[semester.selectedIndex].value;
+
+  //   function tampil_matkul(){
+  //     $.ajax({
+  //       url : '<?php echo base_url()?>dosen/filter_jadwal',
+  //       data : {tahun: tahun, semester:semester},
+  //       async : true,
+  //       dataType : 'json',
+  //       success : function(data){
+  //         var i;
+  //         var html = '';
+  //         var cell = '';
+  //         var cell2 = '';
+  //         var count_nilai = data.length;
+  //         var count_mhs = <?php echo count($data);?>;		                      
+
+  //         <?php 
+	// 				foreach ($data as $key => $value) {
+  //         ?>
+  //           var row = document.createElement("tr");
+  //           cell = document.createElement("td");
+  //           var cellText = document.createTextNode("-");
+  //           var cellText2 = document.createTextNode("-");
+  //           cell2 = document.createElement("td");
+  //           cell.appendChild(cellText);
+  //           cell2.appendChild(cellText2);
+
+  //           for(i=0;i<count_nilai;i++){
+  //             if (<?php echo $value->kodejdwl;?>==data[i].kodejdwl) {
+  //               cell = document.createElement("td");
+  //               var cellText = document.createTextNode(data[i].total_nilai);
+  //               cell2 = document.createElement("td");
+  //               var cellText2 = document.createTextNode(data[i].angka_nilai);
+  //               cell.appendChild(cellText);
+  //               cell2.appendChild(cellText2);
+  //             }
+  //           }
+
+  //           row.appendChild(cell);
+  //           row.appendChild(cell2);
+
+  //           document.getElementById("show_jadwal").appendChild(row);
+  //           $("#example1").DataTable({
+  //             paging: false,
+  //             info: false,
+  //             searching: false,
+  //             retrieve: true,
+  //             ordering: false
+  //           });
+  //         <?php
+  //           }
+  //         ?>
+  //       }
+  //     });
+  //   }
+
+  // });
+</script>

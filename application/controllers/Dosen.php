@@ -30,10 +30,23 @@ class Dosen extends CI_Controller
 	function dashboard()
 	{
 		$data['title'] = 'Dashboard | Dosen';
-		$id = array('nip'=>$this->session->nip);
-		$data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen', $id));		
+		$id = array('nip'=>$this->session->nip);		
+		$data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen', $id));			
+		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
 		$data['data_jadwal'] = $data_jadwal->data;
+		$data['tahun'] = $data_tahun->data;
 		$this->load->view('pengajuan_soal/dosen/dashboard.php', array('main'=>$data));
+	}
+
+	function filter_jadwal($tahun, $semester)
+	{
+		$data = array(
+			'nip'=>$this->session->nip,
+			'tahun'=>$tahun,
+			'semester'=>$semester
+		);
+		$response = $this->curl->simple_get($this->API.'/dosen/jadwal_by', $data);
+		echo $response;
 	}
 
 	function upload_soal()
@@ -60,8 +73,10 @@ class Dosen extends CI_Controller
 		$id = array('nip'=>$this->session->nip);
 		$data_status_uts = json_decode($this->curl->simple_get($this->API.'/dosen/daftarstatusuts', $id));
 		$data_status_uas = json_decode($this->curl->simple_get($this->API.'/dosen/daftarstatusuas', $id));
+		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
 		$data['data_status_uts'] = $data_status_uts->data;
 		$data['data_status_uas'] = $data_status_uas->data;
+		$data['tahun'] = $data_tahun->data;
 		$this->load->view('pengajuan_soal/dosen/status_soal.php', array('main'=>$data));
 	}
 
