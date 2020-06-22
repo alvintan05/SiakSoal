@@ -50,10 +50,10 @@
                   <label for="kbk">KBK</label>                  
                   <select id="kbk" name="kbk" class="form-control">
                     <option value="none" selected>Pilih KBK...</option>
-                    <option value="kbkTI">KBK TI</option>
-                    <option value="kbkTMD">KBK TMD</option>
-                    <option value="kbkTMJ">KBK TMJ</option>
-                    <option value="kbkCB">KBK Character Building</option>
+                    <option value="kbkRPL">KBK RPL</option>
+                    <option value="kbkMultimedia">KBK Multimedia</option>
+                    <option value="kbkCB">KBK Character Building dan K3</option>
+                    <option value="kbkJE">KBK Jaringan dan Embedded</option>
                   </select>
                 </div>
               </div>

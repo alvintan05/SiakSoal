@@ -14,7 +14,7 @@ class Kbk extends CI_Controller
 
 	function index()
 	{
-		if($this->session->isLogin == false || substr($this->session->role, 0, 3) != 'Kbk'){
+		if($this->session->isLogin == false || substr($this->session->role, 0, 3) != 'KBK'){
 			redirect('.');
 		}
 		$data['title'] = 'Home | KBK';

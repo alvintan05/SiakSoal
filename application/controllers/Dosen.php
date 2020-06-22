@@ -177,35 +177,48 @@ class Dosen extends CI_Controller
 
 	function edit_upload()
 	{
-		$file = $this->input->post('oldFileName');
-		$config = array(
-			'upload_path'=>'uploads/soal/',
-			'allowed_types'=>'doc|docx|pdf',
-			'overwrite'=>'true',
-			'max_size'=>2048
-		);
-
-		$this->upload->initialize($config);
-
-		$this->deleteFile($file);
-
-		if ($this->upload->do_upload('file1'))
-		{
-			$data_upload = $this->upload->data();
-			$filename = $data_upload['file_name'];
-			
+		if($_FILES["file1"]["error"] == 4){
 			$data = array(
 				'kode' => $this->input->post('id'),
 				'jenis_ujian' =>  $this->input->post('utsuas'),
 				'jenis_soal' =>  $this->input->post('jenisUjian'),
-				'file' =>  $filename								
+				'kbk_nip' =>  $this->input->post('kbk')							
 			);			
 	
 			$insert =  $this->curl->simple_put($this->API.'/dosen/editupload', $data);
 			redirect('dosen/status_soal');
 		} else {
-			echo "Gagal Upload";			
-		}			
+			$file = $this->input->post('oldFileName');
+			$config = array(
+				'upload_path'=>'uploads/soal/',
+				'allowed_types'=>'doc|docx|pdf',
+				'overwrite'=>'true',
+				'max_size'=>2048
+			);
+
+			$this->upload->initialize($config);
+
+			$this->deleteFile($file);
+
+			if ($this->upload->do_upload('file1'))
+			{
+				$data_upload = $this->upload->data();
+				$filename = $data_upload['file_name'];
+				
+				$data = array(
+					'kode' => $this->input->post('id'),
+					'jenis_ujian' =>  $this->input->post('utsuas'),
+					'jenis_soal' =>  $this->input->post('jenisUjian'),
+					'kbk_nip' =>  $this->input->post('kbk'),
+					'file' =>  $filename								
+				);			
+		
+				$insert =  $this->curl->simple_put($this->API.'/dosen/editupload', $data);
+				redirect('dosen/status_soal');
+			} else {
+				echo "Gagal Upload";			
+			}			
+		}		
 	}
 
 	private function deleteFile($filename)

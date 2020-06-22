@@ -79,70 +79,7 @@
  
 <!-- Main content -->
 <section class="content">
-    <div class="container-fluid">
-
-       <!-- Info boxes STYLE 1-->
-       <!--  <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Total Matkul</span>
-                <span class="info-box-number">
-                <?php echo count($data_status); ?>
-                </span>
-              </div> -->
-              <!-- /.info-box-content -->
-           <!--  </div> -->
-            <!-- /.info-box -->
-         <!--  </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hourglass-half"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Processing</span>
-                <span class="info-box-number">
-                  <?php echo $proccess; ?>
-                </span>
-              </div> -->
-              <!-- /.info-box-content -->
-           <!--  </div> -->
-            <!-- /.info-box -->
-          <!-- </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon badge-success elevation-1"><i class="fas fa-check"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Verified</span>
-                <span class="info-box-number">
-                  <?php echo $verified; ?>
-                </span>
-              </div> -->
-              <!-- /.info-box-content -->
-          <!--   </div> -->
-            <!-- /.info-box -->
-         <!--  </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon badge-danger elevation-1"><i class="fas fa-times"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Rejected</span>
-                <span class="info-box-number">
-                  <?php echo $rejected; ?>
-                </span>
-              </div> -->
-              <!-- /.info-box-content -->
-           <!--  </div> -->
-            <!-- /.info-box -->
-        <!--   </div> -->
-          <!-- /.col -->
-    <!--     </div>
-      </div> -->
-
+    <div class="container-fluid">       
 
     	<!-- UTS -->
             <div class="card collapsed-card">
@@ -268,7 +205,7 @@
                                   <!-- Detail icon -->
                                   <a class="btn" data-toggle="modal" data-target="#detailModalUts<?php echo $row->kode_soal;?>"> <i class="fa fa-eye"></i></a>
                                   <!-- Edit Icon -->
-                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal);?>" <?php if($row->status == "Verified" || $row->status == "Rejected") echo 'hidden';?>>
+                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal);?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
                                     <i class="fa fa-edit"></i>
                                   </a>
                                   <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->
@@ -409,7 +346,7 @@
                               <td>
                                 <div class="box-button">
                                   <a class="btn" data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>"><i class="fa fa-eye"></i></a>
-                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal); ?>" <?php if($row->status == "Verified" || $row->status == "Rejected") echo 'hidden';?>>
+                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal); ?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
                                     <i class="fa fa-edit"></i>
                                   </a>
                                   <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->
@@ -434,6 +371,8 @@
               $nama = $row->namamk;
               $jenisujian = "UTS";
               $jenissoal = $row2->jenis_soal;              
+              $kbk = $row2->bagian;
+              $note = $row2->note;
               $create_date =  $row2->create_at;
               $tanggalUpload = date("d F Y", strtotime($create_date));
               $edit_date =  $row2->update_at;
@@ -442,7 +381,7 @@
           ?>
            <!-- Modal Detail UTS -->
           <div class="modal fade" id="detailModalUts<?php echo $row2->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="detailModalTitle">Detail Soal</h5>
@@ -468,6 +407,14 @@
                       <tr>
                         <th>UTS / UAS</th>
                         <td><p><?php echo $jenisujian ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>KBK</th>
+                        <td><p><?php echo $kbk ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Catatan dari KBK</th>
+                        <td><p><?php echo $note ?></p></td>
                       </tr>
                       <tr>
                         <th>Tanggal Upload</th>                        
@@ -500,7 +447,9 @@
               $kode = $row3->matakuliah_kodemk;
               $nama = $row->namamk;
               $jenisujian = "UAS";
-              $jenissoal = $row3->jenis_soal;              
+              $jenissoal = $row3->jenis_soal;
+              $kbk = $row3->bagian;              
+              $note = $row3->note;
               $create_date =  $row3->create_at;
               $tanggalUpload = date("d F Y", strtotime($create_date));
               $edit_date =  $row3->update_at;
@@ -509,7 +458,7 @@
           ?>
            <!-- Modal Detail UAS -->
           <div class="modal fade" id="detailModalUas<?php echo $row3->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="detailModalTitle">Detail Soal</h5>
@@ -535,6 +484,14 @@
                       <tr>
                         <th>UTS / UAS</th>
                         <td><p><?php echo $jenisujian ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>KBK</th>
+                        <td><p><?php echo $kbk ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Catatan dari KBK</th>
+                        <td><p><?php echo $note ?></p></td>
                       </tr>
                       <tr>
                         <th>Tanggal Upload</th>                        
