@@ -28,28 +28,22 @@
                         <div class="form-group col-md-4">
                             <label for="">Semester</label><br>
                             <select name="semester" id="">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
+                            <option value="ganjil">Ganjil</option>
+                            <option value="genap">Genap</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
-                        <!-- <div class="form-group col-md-4">
+                        <div class="form-group col-md-4">
                             <label for="">Program Studi</label>
-                            <select name="" id="">
-                            <option selected>Pilih...</option>
-                            <option value="ti">Teknik Informatika</option>
-                            <option value="tmd">Teknik Multimedia</option>
-                            <option value="tmj">Teknik Multimedia Jaringan</option>
-                            <option value="tkj">Teknik Komputer Jaringan</option>
+                            <select name="namaprodi" id="">
+                            <option disabled selected>Pilih...</option>
+                            <option value="Teknik Informatika">Teknik Informatika</option>
+                            <option value="TMD">Teknik Multimedia</option>
+                            <option value="TMJ">Teknik Multimedia Jaringan</option>
+                            <option value="TKJ">Teknik Komputer Jaringan</option>
                             </select>
-                        </div> -->
+                        </div>
                         <div class="form-group col-md-4">
                             <label for="">Jenis Soal</label><br>
                             <select name="jenissoal" id="">

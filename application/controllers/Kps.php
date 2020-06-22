@@ -33,7 +33,8 @@ class Kps extends CI_Controller
 			$filter = array(
 				'tahun' => $this->input->get('tahun'),
 				'semester' => $this->input->get('semester'),
-				'jenissoal' => $this->input->get('jenissoal')
+				'jenissoal' => $this->input->get('jenissoal'),
+				'namaprodi' => $this->input->get('namaprodi')
 			);
 			
 			$data_soal = json_decode($this->curl->simple_get($this->API.'/kps/search', $filter));
