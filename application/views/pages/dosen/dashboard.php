@@ -23,53 +23,81 @@
 <section class="content">
     <div class="container-fluid">
       <!-- Option tahun dan semester -->
-      <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-          <select id="listTahun" name="listTahun" class="form-control">
-            <?php 
-              foreach($tahun as $row){ 
-                ?>        
-                <option value="<?php echo $row->tahun_akad ?>"><?php echo $row->tahun_akad ?></option>
+      <form action="<?php echo base_url(). 'dosen/dashboard' ?>" method="post">
+        <div class="row">        
+          <div class="col-12 col-sm-6 col-md-3">
+            <select id="listTahun" name="listTahun" class="form-control">
+              <option value="default" selected>Pilih Tahun Akademik</option>
               <?php 
-              }
-             ?>            
-          </select>
+                foreach($tahun_list as $row){ 
+                  ?>        
+                  <option value="<?php echo $row->tahun_akad ?>"><?php echo $row->tahun_akad ?></option>
+                <?php 
+                }
+              ?>            
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <select id="listSemester" name="listSemester" class="form-control">
+              <option value="default" selected>Pilih Semester</option>
+              <option value="ganjil">Ganjil</option>
+              <option value="genap">Genap</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">            
+            <input class="btn btn-primary" type="submit" name="filter" value="Filter" />            
+          </div>        
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <select id="listSemester" name="listSemester" class="form-control">
-            <option value="ganjil" selected>Ganjil</option>
-            <option value="genap">Genap</option>
-          </select>
-        </div>
-      </div>
+      </form> 
 
       <br>
 
+      <div class="row" <?php if(!$notif) echo 'hidden'; ?>>
+        <div class="col-12 col-sm-6 col-md-6">           
+          <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <!-- <h4><i class="icon fa fa-ban"></i> Alert!</h4> -->
+            Parameter untuk melakukan filter tidak lengkap! 
+            <br>
+            Harap Lengkapi!
+          </div>         
+        </div>                
+      </div>
+      
+      <!-- Error Parameter boxes -->
+      <div class="row" <?php if(!$isFilterResultNull) echo 'hidden'; ?>>
+        <div class="col-12 col-sm-7 col-md-7">
+          <div class="alert alert-danger alert-dismissible"> 
+            <?php  
+              echo "Data Mata Kuliah Tahun Akademik ".$tahun." Semester ".$semester. " Tidak Ditemukan";
+              echo "</br>";
+              echo "Harap Coba Lagi!";
+              ?>                           
+          </div>
+        </div>          
+      </div>
+
       <!-- Info boxes -->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Info Boxes Style 2 -->
+        <div class="row" <?php if($isFilterResultNull) echo 'hidden'; ?>>
+          <div class="col-12 col-sm-6 col-md-3">            
             <div class="info-box mb-3 bg-info">
               <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Total Matkul</span>
+                <span class="info-box-text">Total Mata Kuliah</span>
 
                 <span class="info-box-number">
                   <?php echo count($data_jadwal) ?>
                 </span>
                 
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
+              </div>              
+            </div>            
+          </div>          
         </div>
 
 
     	<!-- TABLE: LATEST ORDERS -->
-            <div class="card">
+            <div class="card" <?php if($isFilterResultNull) echo 'hidden'; ?>>
               <div class="card-header">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -77,10 +105,20 @@
                   </button>
                 </div>
 
-                <h5 class="card-title"><big><b>Jadwal Dosen</b></big></h5>
-                <!-- <div class="card-description text-muted subjudul">
-                  Dosen : Raisa Andriana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </div> -->
+                <h5 class="card-title">
+                  <big>
+                    <b>
+                      <?php 
+                        if($tahun != null && $semester != null){
+                          echo "Jadwal Mata Kuliah Tahun Akademik ".$tahun." Semester ".$semester;
+                        } else {
+                          echo "Jadwal Semua Mata Kuliah";
+                        }
+                       ?>
+                    </b>
+                  </big>
+                </h5>
+
               </div>              
               <div class="card-body p-2">
                 <div class="table table-striped" >
@@ -128,84 +166,18 @@
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
-  $(function () {
+  $(document).ready(function() {   
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
-    });
-    $('#example2').DataTable({
+      "order": [[ 1, "asc" ]],
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
+      "lengthChange": true,
+      "searching": true,
       "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-
-  // $(document).ready(function() {
-
-  //   var tahun = document.getElementById("listTahun");
-  //   var tahunValue = tahun.options[tahun.selectedIndex].value;
-  //   var semester = document.getElementById("listSemester");
-  //   var semesterValue = semester.options[semester.selectedIndex].value;
-
-  //   function tampil_matkul(){
-  //     $.ajax({
-  //       url : '<?php echo base_url()?>dosen/filter_jadwal',
-  //       data : {tahun: tahun, semester:semester},
-  //       async : true,
-  //       dataType : 'json',
-  //       success : function(data){
-  //         var i;
-  //         var html = '';
-  //         var cell = '';
-  //         var cell2 = '';
-  //         var count_nilai = data.length;
-  //         var count_mhs = <?php echo count($data);?>;		                      
-
-  //         <?php 
-	// 				foreach ($data as $key => $value) {
-  //         ?>
-  //           var row = document.createElement("tr");
-  //           cell = document.createElement("td");
-  //           var cellText = document.createTextNode("-");
-  //           var cellText2 = document.createTextNode("-");
-  //           cell2 = document.createElement("td");
-  //           cell.appendChild(cellText);
-  //           cell2.appendChild(cellText2);
-
-  //           for(i=0;i<count_nilai;i++){
-  //             if (<?php echo $value->kodejdwl;?>==data[i].kodejdwl) {
-  //               cell = document.createElement("td");
-  //               var cellText = document.createTextNode(data[i].total_nilai);
-  //               cell2 = document.createElement("td");
-  //               var cellText2 = document.createTextNode(data[i].angka_nilai);
-  //               cell.appendChild(cellText);
-  //               cell2.appendChild(cellText2);
-  //             }
-  //           }
-
-  //           row.appendChild(cell);
-  //           row.appendChild(cell2);
-
-  //           document.getElementById("show_jadwal").appendChild(row);
-  //           $("#example1").DataTable({
-  //             paging: false,
-  //             info: false,
-  //             searching: false,
-  //             retrieve: true,
-  //             ordering: false
-  //           });
-  //         <?php
-  //           }
-  //         ?>
-  //       }
-  //     });
-  //   }
-
-  // });
+      "info": true      
+    });    
+  }); 
 </script>

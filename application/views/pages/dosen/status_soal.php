@@ -6,7 +6,8 @@
   $verified_uas = 0;
   $rejected_uas = 0;
   
-  foreach($data_status_uts as $row) {
+  if(isset($data_status_uts)){
+    foreach($data_status_uts as $row) {
       switch($row->status){
         case "Diterima":
           $verified_uts++;
@@ -18,20 +19,23 @@
           $rejected_uts++;
           break;
       }
-  }
-
-  foreach($data_status_uas as $row) {
-    switch($row->status){
-      case "Diterima":
-        $verified_uas++;
-        break;
-      case "Proses":
-        $proccess_uas++;
-        break;
-      case "Ditolak":
-        $rejected_uas++;
-        break;
+  }  
+  
+  if(isset($data_status_uas)){
+    foreach($data_status_uas as $row) {
+      switch($row->status){
+        case "Diterima":
+          $verified_uas++;
+          break;
+        case "Proses":
+          $proccess_uas++;
+          break;
+        case "Ditolak":
+          $rejected_uas++;
+          break;
+      }
     }
+  }
 }
 ?>
 <div class="content-header">
@@ -53,24 +57,73 @@
         </div><!-- /.row -->
         
         <!-- Option tahun dan semester -->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <select id="listTahun" name="listTahun" class="form-control">
-              <?php 
-                foreach($tahun as $row){ 
-                  ?>        
-                  <option value="<?php echo $row->tahun_akad ?>"><?php echo $row->tahun_akad ?></option>
+        <form action="<?php echo base_url(). 'dosen/status_soal' ?>" method="post">
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+              <select id="listTahun" name="listTahun" class="form-control">
+                <option value="default" selected>Pilih Tahun Akademik</option>
                 <?php 
+                  foreach($tahun_list as $row){ 
+                    ?>        
+                    <option value="<?php echo $row->tahun_akad ?>"><?php echo $row->tahun_akad ?></option>
+                  <?php 
+                  }
+                ?>            
+              </select>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+              <select id="listSemester" name="listSemester" class="form-control">
+              <option value="default" selected>Pilih Semester</option>
+                <option value="ganjil">Ganjil</option>
+                <option value="genap">Genap</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">            
+              <input class="btn btn-primary" type="submit" name="filter" value="Filter" />            
+            </div>        
+          </div>
+        </form>    
+
+        <br>
+
+        <div class="row" <?php if(!$notif) echo 'hidden'; ?>>          
+          <div class="col-12 col-sm-6 col-md-6">           
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <!-- <h4><i class="icon fa fa-ban"></i> Alert!</h4> -->
+              Parameter untuk melakukan filter tidak lengkap! 
+              <br>
+              Harap Lengkapi!
+            </div>         
+          </div>                
+        </div>
+
+         <!-- Error Parameter boxes -->
+        <div class="row" <?php if(!$isUtsResultNull || !$isUasResultNull) echo 'hidden'; ?>>
+          <div class="col-12 col-sm-7 col-md-7">
+            <div class="alert alert-danger alert-dismissible"> 
+              <?php  
+                echo "Data Status Soal Tahun Akademik ".$tahun." Semester ".$semester. " Tidak Ditemukan";
+                echo "</br>";
+                echo "Harap Coba Lagi!";
+                ?>                           
+            </div>
+          </div>          
+        </div>
+
+        <!-- Info Parameter boxes -->
+        <div class="row" <?php if($isUtsResultNull && $isUasResultNull) echo 'hidden'; ?>>
+           <div class="col-12 col-sm-12 col-md-12">
+            <div class="alert alert-info alert-dismissible"> 
+              <?php  
+                if(empty($tahun) && empty($semester)){
+                  echo "Data Semua Status Soal"; 
+                } else {
+                  echo "Data Status Soal Tahun Akademik ".$tahun." Semester ".$semester; 
                 }
-              ?>            
-            </select>
-          </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <select id="listSemester" name="listSemester" class="form-control">
-              <option value="ganjil" selected>Ganjil</option>
-              <option value="genap">Genap</option>
-            </select>
-          </div>
+                ?>                           
+            </div>
+          </div>          
         </div>
         
     </div><!-- /.container-fluid -->
@@ -82,7 +135,7 @@
     <div class="container-fluid">       
 
     	<!-- UTS -->
-            <div class="card collapsed-card">
+            <div class="card collapsed-card" <?php if($isUtsResultNull) echo 'hidden'; ?>>
               <div class="card-header border-transparent">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -225,7 +278,7 @@
 
 
         <!-- UAS -->            
-            <div class="card collapsed-card">
+            <div class="card collapsed-card" <?php if($isUasResultNull) echo 'hidden'; ?>>
               <div class="card-header border-transparent">
                 <div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -298,7 +351,7 @@
 
                 <!-- TABLE : UAS -->
                 <div class="table table-striped">
-                  <table id="example1" class="display" style="width:100%">
+                  <table id="example2" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>
@@ -365,19 +418,21 @@
           </div>
 
           <?php          
-            foreach($data_status_uts as $row2) 
-            {
-              $kode = $row2->matakuliah_kodemk;
-              $nama = $row->namamk;
-              $jenisujian = "UTS";
-              $jenissoal = $row2->jenis_soal;              
-              $kbk = $row2->bagian;
-              $note = $row2->note;
-              $create_date =  $row2->create_at;
-              $tanggalUpload = date("d F Y", strtotime($create_date));
-              $edit_date =  $row2->update_at;
-              $tanggalUpdate = date("d F Y", strtotime($edit_date));
-              $file = $row2->file;
+            if(isset($data_status_uts)){
+              foreach($data_status_uts as $row2) 
+              {
+                $kode = $row2->matakuliah_kodemk;
+                $nama = $row2->namamk;
+                $kelas = $row2->namaklas;
+                $jenisujian = "UTS";
+                $jenissoal = $row2->jenis_soal;              
+                $kbk = $row2->bagian;
+                $note = $row2->note;
+                $create_date =  $row2->create_at;
+                $tanggalUpload = date("d F Y", strtotime($create_date));
+                $edit_date =  $row2->update_at;
+                $tanggalUpdate = date("d F Y", strtotime($edit_date));
+                $file = $row2->file;            
           ?>
            <!-- Modal Detail UTS -->
           <div class="modal fade" id="detailModalUts<?php echo $row2->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
@@ -399,6 +454,10 @@
                       <tr>
                         <th>Nama Matkul</th>
                         <td><p><?php echo $nama ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Kelas</th>
+                        <td><p><?php echo $kelas ?></p></td>
                       </tr>                      
                       <tr>
                         <th>Jenis Ujian</th>
@@ -438,23 +497,26 @@
             </div>
           </div>
           <?php
+            }
           }
           ?>
 
           <?php
-            foreach($data_status_uas as $row3) 
-            {
-              $kode = $row3->matakuliah_kodemk;
-              $nama = $row->namamk;
-              $jenisujian = "UAS";
-              $jenissoal = $row3->jenis_soal;
-              $kbk = $row3->bagian;              
-              $note = $row3->note;
-              $create_date =  $row3->create_at;
-              $tanggalUpload = date("d F Y", strtotime($create_date));
-              $edit_date =  $row3->update_at;
-              $tanggalUpdate = date("d F Y", strtotime($edit_date));
-              $file = $row3->file;
+            if(isset($data_status_uas)){
+              foreach($data_status_uas as $row3) 
+              {
+                $kode = $row3->matakuliah_kodemk;
+                $nama = $row3->namamk;
+                $kelas = $row3->namaklas;
+                $jenisujian = "UAS";
+                $jenissoal = $row3->jenis_soal;
+                $kbk = $row3->bagian;              
+                $note = $row3->note;
+                $create_date =  $row3->create_at;
+                $tanggalUpload = date("d F Y", strtotime($create_date));
+                $edit_date =  $row3->update_at;
+                $tanggalUpdate = date("d F Y", strtotime($edit_date));
+                $file = $row3->file;            
           ?>
            <!-- Modal Detail UAS -->
           <div class="modal fade" id="detailModalUas<?php echo $row3->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
@@ -476,6 +538,10 @@
                       <tr>
                         <th>Nama Matkul</th>
                         <td><p><?php echo $nama ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Kelas</th>
+                        <td><p><?php echo $kelas ?></p></td>
                       </tr>
                       <tr>
                         <th>Jenis Ujian</th>
@@ -515,6 +581,7 @@
             </div>
           </div>
           <?php
+            }
           }
           ?>
 
@@ -548,21 +615,29 @@
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-
-  <script>
-  $(function () {
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
-    });
-    $('#example2').DataTable({
+      "order": [[ 1, "asc" ]],
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
+      "lengthChange": true,
+      "searching": true,
       "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+      "info": true  
     });
+
+    $("#example2").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+      "order": [[ 1, "asc" ]],
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true  
+    });  
   });
 </script>

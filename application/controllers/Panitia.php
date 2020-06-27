@@ -7,16 +7,18 @@ class Panitia extends CI_Controller
 	function __construct()
 	{					
 		parent::__construct();
+		
+		if($this->session->isLogin == false || $this->session->role != 'Panitia'){
+			redirect('.');
+		}
+
 		$this->API="http://localhost/siaksoal-api/api";		
 		$this->load->library('curl');        
 		$this->load->helper('url');
 	}
 
 	function index()
-	{
-		if($this->session->isLogin == false || $this->session->role != 'Panitia'){
-			redirect('.');
-		}
+	{		
 		$data['title'] = 'Home | Panitia';
 		$data['pages'] = $this->load->view('pages/panitia/home','',true);
 		$this->load->view('pengajuan_soal/panitia/dashboard.php', array('main'=>$data));

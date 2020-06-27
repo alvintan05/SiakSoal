@@ -42,7 +42,7 @@ class Main extends CI_Controller {
 			} else if(substr($role, 0, 3) == 'KBK')
 			{			
 				redirect('kbk');
-			} else if($role == 'panitia')
+			} else if($role == 'Panitia')
 			{				
 				redirect('panitia');
 			} else if($role == 'kps')

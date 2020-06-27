@@ -34,10 +34,9 @@
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-			<!-- pages -->
-			
+			<!-- pages -->						
 
-			<?php $this->load->view('pages/dosen/dashboard', $main) ?>
+			<?php $this->load->view('pages/dosen/dashboard', $main); ?>
 			
 			<!-- END pages -->
 		</div>
@@ -61,7 +60,7 @@
 	<!-- END javascript -->
 
 	<!-- jQuery -->
-	<script src="<?php echo base_url();?>assets/plugins/jquery/jquery.min.js"></script>
+	<script src="<?php echo base_url();?>assets/plugins/jquery/jquery.min.js"></script>	
 	<!-- DataTables -->
 	<script src="<?php echo base_url();?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
