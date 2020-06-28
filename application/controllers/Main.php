@@ -39,10 +39,10 @@ class Main extends CI_Controller {
 			if($role == 'Dosen')
 			{				
 				redirect('dosen');
-			} else if(substr($role, 0, 3) == 'Kbk')
+			} else if(substr($role, 0, 3) == 'KBK')
 			{			
 				redirect('kbk');
-			} else if($role == 'panitia')
+			} else if($role == 'Panitia')
 			{				
 				redirect('panitia');
 			} else if($role == 'kps')
@@ -85,7 +85,7 @@ class Main extends CI_Controller {
 				$this->session->set_userdata($session);
 
 				redirect('dosen');
-			} else if(substr($role, 0, 3) == 'Kbk')
+			} else if(substr($role, 0, 3) == 'KBK')
 			{
 				$session = array(
 					'isLogin'=> true,					

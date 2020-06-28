@@ -1,5 +1,4 @@
 <div class="content-header">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 	<div class="container-fluid ">
     <div class="row callout callout bg-light">
           <div class="col-1" align="right">
@@ -23,32 +22,82 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
+      <!-- Option tahun dan semester -->
+      <form action="<?php echo base_url(). 'dosen/dashboard' ?>" method="post">
+        <div class="row">        
+          <div class="col-12 col-sm-6 col-md-3">
+            <select id="listTahun" name="listTahun" class="form-control">
+              <option value="default" selected>Pilih Tahun Akademik</option>
+              <?php 
+                foreach($tahun_list as $row){ 
+                  ?>        
+                  <option value="<?php echo $row->tahun_akad ?>"><?php echo $row->tahun_akad ?></option>
+                <?php 
+                }
+              ?>            
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <select id="listSemester" name="listSemester" class="form-control">
+              <option value="default" selected>Pilih Semester</option>
+              <option value="ganjil">Ganjil</option>
+              <option value="genap">Genap</option>
+            </select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">            
+            <input class="btn btn-primary" type="submit" name="filter" value="Filter" />            
+          </div>        
+        </div>
+      </form> 
+
+      <br>
+
+      <div class="row" <?php if(!$notif) echo 'hidden'; ?>>
+        <div class="col-12 col-sm-6 col-md-6">           
+          <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <!-- <h4><i class="icon fa fa-ban"></i> Alert!</h4> -->
+            Parameter untuk melakukan filter tidak lengkap! 
+            <br>
+            Harap Lengkapi!
+          </div>         
+        </div>                
+      </div>
+      
+      <!-- Error Parameter boxes -->
+      <div class="row" <?php if(!$isFilterResultNull) echo 'hidden'; ?>>
+        <div class="col-12 col-sm-7 col-md-7">
+          <div class="alert alert-danger alert-dismissible"> 
+            <?php  
+              echo "Data Mata Kuliah Tahun Akademik ".$tahun." Semester ".$semester. " Tidak Ditemukan";
+              echo "</br>";
+              echo "Harap Coba Lagi!";
+              ?>                           
+          </div>
+        </div>          
+      </div>
 
       <!-- Info boxes -->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <!-- Info Boxes Style 2 -->
+        <div class="row" <?php if($isFilterResultNull) echo 'hidden'; ?>>
+          <div class="col-12 col-sm-6 col-md-3">            
             <div class="info-box mb-3 bg-info">
               <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Total Matkul</span>
+                <span class="info-box-text">Total Mata Kuliah</span>
 
                 <span class="info-box-number">
                   <?php echo count($data_jadwal) ?>
                 </span>
                 
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
+              </div>              
+            </div>            
+          </div>          
         </div>
 
 
     	<!-- TABLE: LATEST ORDERS -->
-            <div class="card">
+            <div class="card" <?php if($isFilterResultNull) echo 'hidden'; ?>>
               <div class="card-header">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -56,27 +105,24 @@
                   </button>
                 </div>
 
-                <h5 class="card-title"><big><b>Jadwal Dosen</b></big></h5>
-                <!-- <div class="card-description text-muted subjudul">
-                  Dosen : Raisa Andriana &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </div> -->
-              </div>
-              <!-- /.card-header -->
+                <h5 class="card-title">
+                  <big>
+                    <b>
+                      <?php 
+                        if($tahun != null && $semester != null){
+                          echo "Jadwal Mata Kuliah Tahun Akademik ".$tahun." Semester ".$semester;
+                        } else {
+                          echo "Jadwal Semua Mata Kuliah";
+                        }
+                       ?>
+                    </b>
+                  </big>
+                </h5>
 
-              <!-- <div class="card-body p-2">
-                <div class="card-tools">
-                  <div class="input-group input-group-sm float-right" style="width: 200px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
-                  </div>
-                </div>
-                <br><p></p> -->
+              </div>              
               <div class="card-body p-2">
                 <div class="table table-striped" >
-                  <table id="example" class="display" style="width:100%">
+                  <table id="example1" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>
@@ -86,7 +132,7 @@
                       <th>Action</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="show_jadwal">
                       <?php  
                         foreach($data_jadwal as $row) {
                           ?>
@@ -103,29 +149,7 @@
                           </tr>
                           <?php                         
                         }       
-                      ?>                                         
-                    <!-- <tr>
-                      <td>MK001</td>
-                      <td>Data Mining</td>
-                      <td>T1 2A</td>
-                      <td>AA 301</td>
-                      <td>
-                      	<div class="box-button">
-								<a href='<?php echo site_url('dosen/upload_soal'); ?>' class="btn btn-info btn-sm">Upload</a>
-						</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MK002</td>
-                      <td>Datawarehouse</td>
-                      <td>T1 4A</td>
-                      <td>AA 302</td>
-                      <td>
-                      	<div class="box-button">
-								<a href='<?php echo site_url('dosen/upload_soal'); ?>' class="btn btn-info btn-sm">Upload</a>
-						</div>
-                      </td>
-                    </tr> -->
+                      ?>                                                              
                     </tbody>
                   </table>
                 </div>
@@ -136,3 +160,24 @@
       </div>
   </section>
 
+  <div class="content-header">
+  <div class="container-fluid">
+        
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {   
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+      "order": [[ 1, "asc" ]],
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true      
+    });    
+  }); 
+</script>

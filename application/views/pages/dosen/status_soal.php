@@ -6,32 +6,36 @@
   $verified_uas = 0;
   $rejected_uas = 0;
   
-  foreach($data_status_uts as $row) {
+  if(isset($data_status_uts)){
+    foreach($data_status_uts as $row) {
       switch($row->status){
-        case "Verified":
+        case "Diterima":
           $verified_uts++;
           break;
-        case "Processing":
+        case "Proses":
           $proccess_uts++;
           break;
-        case "Rejected":
+        case "Ditolak":
           $rejected_uts++;
           break;
       }
-  }
-
-  foreach($data_status_uas as $row) {
-    switch($row->status){
-      case "Verified":
-        $verified_uas++;
-        break;
-      case "Processing":
-        $proccess_uas++;
-        break;
-      case "Rejected":
-        $rejected_uas++;
-        break;
+  }  
+  
+  if(isset($data_status_uas)){
+    foreach($data_status_uas as $row) {
+      switch($row->status){
+        case "Diterima":
+          $verified_uas++;
+          break;
+        case "Proses":
+          $proccess_uas++;
+          break;
+        case "Ditolak":
+          $rejected_uas++;
+          break;
+      }
     }
+  }
 }
 ?>
 <div class="content-header">
@@ -49,81 +53,89 @@
           </div>
           <div class="col-2">
             <?php $this->load->view('layouts/breadcrumb')?>
-          </div>
+          </div>          
         </div><!-- /.row -->
+        
+        <!-- Option tahun dan semester -->
+        <form action="<?php echo base_url(). 'dosen/status_soal' ?>" method="post">
+          <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+              <select id="listTahun" name="listTahun" class="form-control">
+                <option value="default" selected>Pilih Tahun Akademik</option>
+                <?php 
+                  foreach($tahun_list as $row){ 
+                    ?>        
+                    <option value="<?php echo $row->tahun_akad ?>"><?php echo $row->tahun_akad ?></option>
+                  <?php 
+                  }
+                ?>            
+              </select>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+              <select id="listSemester" name="listSemester" class="form-control">
+              <option value="default" selected>Pilih Semester</option>
+                <option value="ganjil">Ganjil</option>
+                <option value="genap">Genap</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">            
+              <input class="btn btn-primary" type="submit" name="filter" value="Filter" />            
+            </div>        
+          </div>
+        </form>    
+
+        <br>
+
+        <div class="row" <?php if(!$notif) echo 'hidden'; ?>>          
+          <div class="col-12 col-sm-6 col-md-6">           
+            <div class="alert alert-danger alert-dismissible">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+              <!-- <h4><i class="icon fa fa-ban"></i> Alert!</h4> -->
+              Parameter untuk melakukan filter tidak lengkap! 
+              <br>
+              Harap Lengkapi!
+            </div>         
+          </div>                
+        </div>
+
+         <!-- Error Parameter boxes -->
+        <div class="row" <?php if(!$isUtsResultNull || !$isUasResultNull) echo 'hidden'; ?>>
+          <div class="col-12 col-sm-7 col-md-7">
+            <div class="alert alert-danger alert-dismissible"> 
+              <?php  
+                echo "Data Status Soal Tahun Akademik ".$tahun." Semester ".$semester. " Tidak Ditemukan";
+                echo "</br>";
+                echo "Harap Coba Lagi!";
+                ?>                           
+            </div>
+          </div>          
+        </div>
+
+        <!-- Info Parameter boxes -->
+        <div class="row" <?php if($isUtsResultNull && $isUasResultNull) echo 'hidden'; ?>>
+           <div class="col-12 col-sm-12 col-md-12">
+            <div class="alert alert-info alert-dismissible"> 
+              <?php  
+                if(empty($tahun) && empty($semester)){
+                  echo "Data Semua Status Soal"; 
+                } else {
+                  echo "Data Status Soal Tahun Akademik ".$tahun." Semester ".$semester; 
+                }
+                ?>                           
+            </div>
+          </div>          
+        </div>
+        
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
  
 <!-- Main content -->
 <section class="content">
-    <div class="container-fluid">
-
-       <!-- Info boxes STYLE 1-->
-       <!--  <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-tasks"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Total Matkul</span>
-                <span class="info-box-number">
-                <?php echo count($data_status); ?>
-                </span>
-              </div> -->
-              <!-- /.info-box-content -->
-           <!--  </div> -->
-            <!-- /.info-box -->
-         <!--  </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hourglass-half"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Processing</span>
-                <span class="info-box-number">
-                  <?php echo $proccess; ?>
-                </span>
-              </div> -->
-              <!-- /.info-box-content -->
-           <!--  </div> -->
-            <!-- /.info-box -->
-          <!-- </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon badge-success elevation-1"><i class="fas fa-check"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Verified</span>
-                <span class="info-box-number">
-                  <?php echo $verified; ?>
-                </span>
-              </div> -->
-              <!-- /.info-box-content -->
-          <!--   </div> -->
-            <!-- /.info-box -->
-         <!--  </div>
-           <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box">
-              <span class="info-box-icon badge-danger elevation-1"><i class="fas fa-times"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Rejected</span>
-                <span class="info-box-number">
-                  <?php echo $rejected; ?>
-                </span>
-              </div> -->
-              <!-- /.info-box-content -->
-           <!--  </div> -->
-            <!-- /.info-box -->
-        <!--   </div> -->
-          <!-- /.col -->
-    <!--     </div>
-      </div> -->
-
+    <div class="container-fluid">       
 
     	<!-- UTS -->
-            <div class="card collapsed-card">
+            <div class="card collapsed-card" <?php if($isUtsResultNull) echo 'hidden'; ?>>
               <div class="card-header border-transparent">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -157,7 +169,7 @@
                       <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Processing</span>
+                        <span class="info-box-text">Proses</span>
                         <span class="info-box-number"><?php echo $proccess_uts; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -171,7 +183,7 @@
                       <span class="info-box-icon"><i class="fas fa-check"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Verified</span>
+                        <span class="info-box-text">Diterima</span>
                         <span class="info-box-number"><?php echo $verified_uts; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -185,7 +197,7 @@
                       <span class="info-box-icon"><i class="fas fa-times"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Rejected</span>
+                        <span class="info-box-text">Ditolak</span>
                         <span class="info-box-number"><?php echo $rejected_uts; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -196,7 +208,7 @@
 
                 <!-- TABLE : UTS -->
                 <div class="table table-striped">
-                  <table class="table m-0">
+                  <table id="example1" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>
@@ -219,13 +231,13 @@
                                 <span class="badge 
                                   <?php  
                                     switch($row->status){
-                                      case "Verified":
+                                      case "Diterima":
                                         echo 'badge-success';
                                         break;
-                                      case "Processing":
+                                      case "Proses":
                                         echo 'badge-warning';
                                         break;
-                                      case "Rejected":
+                                      case "Ditolak":
                                         echo 'badge-danger';
                                         break;
                                     }
@@ -246,7 +258,7 @@
                                   <!-- Detail icon -->
                                   <a class="btn" data-toggle="modal" data-target="#detailModalUts<?php echo $row->kode_soal;?>"> <i class="fa fa-eye"></i></a>
                                   <!-- Edit Icon -->
-                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal);?>" <?php if($row->status == "Verified" || $row->status == "Rejected") echo 'hidden';?>>
+                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal);?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
                                     <i class="fa fa-edit"></i>
                                   </a>
                                   <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->
@@ -266,7 +278,7 @@
 
 
         <!-- UAS -->            
-            <div class="card collapsed-card">
+            <div class="card collapsed-card" <?php if($isUasResultNull) echo 'hidden'; ?>>
               <div class="card-header border-transparent">
                 <div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -300,7 +312,7 @@
                       <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Processing</span>
+                        <span class="info-box-text">Proses</span>
                         <span class="info-box-number"><?php echo $proccess_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -314,7 +326,7 @@
                       <span class="info-box-icon"><i class="fas fa-check"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Verified</span>
+                        <span class="info-box-text">Diterima</span>
                         <span class="info-box-number"><?php echo $verified_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -328,7 +340,7 @@
                       <span class="info-box-icon"><i class="fas fa-times"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Rejected</span>
+                        <span class="info-box-text">Ditolak</span>
                         <span class="info-box-number"><?php echo $rejected_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -339,7 +351,7 @@
 
                 <!-- TABLE : UAS -->
                 <div class="table table-striped">
-                  <table class="table m-0">
+                  <table id="example2" class="display" style="width:100%">
                     <thead>
                     <tr>
                       <th>Kode</th>
@@ -362,13 +374,13 @@
                                 <span class="badge 
                                   <?php  
                                     switch($row->status){
-                                      case "Verified":
+                                      case "Diterima":
                                         echo 'badge-success';
                                         break;
-                                      case "Processing":
+                                      case "Proses":
                                         echo 'badge-warning';
                                         break;
-                                      case "Rejected":
+                                      case "Ditolak":
                                         echo 'badge-danger';
                                         break;
                                     }
@@ -387,7 +399,7 @@
                               <td>
                                 <div class="box-button">
                                   <a class="btn" data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>"><i class="fa fa-eye"></i></a>
-                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal); ?>" <?php if($row->status == "Verified" || $row->status == "Rejected") echo 'hidden';?>>
+                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal); ?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
                                     <i class="fa fa-edit"></i>
                                   </a>
                                   <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->
@@ -406,21 +418,25 @@
           </div>
 
           <?php          
-            foreach($data_status_uts as $row2) 
-            {
-              $kode = $row2->matakuliah_kodemk;
-              $nama = $row->namamk;
-              $jenisujian = "UTS";
-              $jenissoal = $row2->jenis_soal;              
-              $create_date =  $row2->create_at;
-              $tanggalUpload = date("d F Y", strtotime($create_date));
-              $edit_date =  $row2->update_at;
-              $tanggalUpdate = date("d F Y", strtotime($edit_date));
-              $file = $row2->file;
+            if(isset($data_status_uts)){
+              foreach($data_status_uts as $row2) 
+              {
+                $kode = $row2->matakuliah_kodemk;
+                $nama = $row2->namamk;
+                $kelas = $row2->namaklas;
+                $jenisujian = "UTS";
+                $jenissoal = $row2->jenis_soal;              
+                $kbk = $row2->bagian;
+                $note = $row2->note;
+                $create_date =  $row2->create_at;
+                $tanggalUpload = date("d F Y", strtotime($create_date));
+                $edit_date =  $row2->update_at;
+                $tanggalUpdate = date("d F Y", strtotime($edit_date));
+                $file = $row2->file;            
           ?>
            <!-- Modal Detail UTS -->
           <div class="modal fade" id="detailModalUts<?php echo $row2->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="detailModalTitle">Detail Soal</h5>
@@ -438,6 +454,10 @@
                       <tr>
                         <th>Nama Matkul</th>
                         <td><p><?php echo $nama ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Kelas</th>
+                        <td><p><?php echo $kelas ?></p></td>
                       </tr>                      
                       <tr>
                         <th>Jenis Ujian</th>
@@ -448,6 +468,14 @@
                         <td><p><?php echo $jenisujian ?></p></td>
                       </tr>
                       <tr>
+                        <th>KBK</th>
+                        <td><p><?php echo $kbk ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Catatan dari KBK</th>
+                        <td><p><?php echo $note ?></p></td>
+                      </tr>
+                      <tr>
                         <th>Tanggal Upload</th>                        
                         <td><p><?php echo $tanggalUpload ?></p></td>
                       </tr>
@@ -469,25 +497,30 @@
             </div>
           </div>
           <?php
+            }
           }
           ?>
 
           <?php
-            foreach($data_status_uas as $row3) 
-            {
-              $kode = $row3->matakuliah_kodemk;
-              $nama = $row->namamk;
-              $jenisujian = "UAS";
-              $jenissoal = $row3->jenis_soal;              
-              $create_date =  $row3->create_at;
-              $tanggalUpload = date("d F Y", strtotime($create_date));
-              $edit_date =  $row3->update_at;
-              $tanggalUpdate = date("d F Y", strtotime($edit_date));
-              $file = $row3->file;
+            if(isset($data_status_uas)){
+              foreach($data_status_uas as $row3) 
+              {
+                $kode = $row3->matakuliah_kodemk;
+                $nama = $row3->namamk;
+                $kelas = $row3->namaklas;
+                $jenisujian = "UAS";
+                $jenissoal = $row3->jenis_soal;
+                $kbk = $row3->bagian;              
+                $note = $row3->note;
+                $create_date =  $row3->create_at;
+                $tanggalUpload = date("d F Y", strtotime($create_date));
+                $edit_date =  $row3->update_at;
+                $tanggalUpdate = date("d F Y", strtotime($edit_date));
+                $file = $row3->file;            
           ?>
            <!-- Modal Detail UAS -->
           <div class="modal fade" id="detailModalUas<?php echo $row3->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="detailModalTitle">Detail Soal</h5>
@@ -507,12 +540,24 @@
                         <td><p><?php echo $nama ?></p></td>
                       </tr>
                       <tr>
+                        <th>Kelas</th>
+                        <td><p><?php echo $kelas ?></p></td>
+                      </tr>
+                      <tr>
                         <th>Jenis Ujian</th>
                         <td><p><?php echo $jenissoal ?></p></td>
                       </tr>
                       <tr>
                         <th>UTS / UAS</th>
                         <td><p><?php echo $jenisujian ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>KBK</th>
+                        <td><p><?php echo $kbk ?></p></td>
+                      </tr>
+                      <tr>
+                        <th>Catatan dari KBK</th>
+                        <td><p><?php echo $note ?></p></td>
                       </tr>
                       <tr>
                         <th>Tanggal Upload</th>                        
@@ -536,6 +581,7 @@
             </div>
           </div>
           <?php
+            }
           }
           ?>
 
@@ -562,3 +608,36 @@
 
       </div>
   </section>
+
+  <div class="content-header">
+  <div class="container-fluid">
+        
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+      "order": [[ 1, "asc" ]],
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true  
+    });
+
+    $("#example2").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+      "order": [[ 1, "asc" ]],
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true  
+    });  
+  });
+</script>

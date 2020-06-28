@@ -8,6 +8,11 @@ class Dosen extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
+
+		if($this->session->isLogin == false || $this->session->role != 'Dosen'){
+			redirect('.');
+		}
+
 		$this->API="http://localhost/siaksoal-api/api";		
 		$this->BASE_URL_FILE="http://localhost/SiakSoal/uploads/soal/";
         $this->load->library('curl');        
@@ -19,10 +24,7 @@ class Dosen extends CI_Controller
 	}
 
 	function index()
-	{
-		if($this->session->isLogin == false || $this->session->role != 'Dosen'){
-			redirect('.');
-		}
+	{		
 		$data['title'] = 'Home | Dosen';		
 		$this->load->view('pengajuan_soal/dosen/home.php', array('main'=>$data));
 	}
@@ -30,9 +32,50 @@ class Dosen extends CI_Controller
 	function dashboard()
 	{
 		$data['title'] = 'Dashboard | Dosen';
-		$id = array('nip'=>$this->session->nip);
-		$data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen', $id));		
-		$data['data_jadwal'] = $data_jadwal->data;
+		$id = array('nip'=>$this->session->nip);		
+
+		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
+		$data['tahun_list'] = $data_tahun->data;
+
+		// ini default value
+		$data['isFilterResultNull'] = false;
+		$data['notif'] = false;
+		$data['tahun'] = null;
+		$data['semester'] = null;
+
+		$filter = $this->input->post('filter');		
+        $tahun  = $this->input->post('listTahun');
+        $semester = $this->input->post('listSemester');
+
+        if (isset($filter)) {
+			if($tahun != 'default' && $semester != 'default') {
+				$data_filter = array(
+					'nip'=>$this->session->nip,
+					'tahun'=>$tahun,
+					'semester'=>$semester
+				);			
+				$data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen/jadwal_by', $data_filter));
+				$data['notif'] = false;	
+				$data['tahun'] = $tahun;
+				$data['semester'] = $semester;
+				
+				// check data jadwal null or not
+				if(empty($data_jadwal->data)){
+					$data['isFilterResultNull'] = true;
+				} else {					
+					$data['data_jadwal'] = $data_jadwal->data;
+				}			
+			} else {
+				$data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen', $id));
+				$data['notif'] = true;
+				$data['data_jadwal'] = $data_jadwal->data;							
+			}              					
+		} else {
+			$data['notif'] = false;			
+            $data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen', $id));
+			$data['data_jadwal'] = $data_jadwal->data;						
+		}
+
 		$this->load->view('pengajuan_soal/dosen/dashboard.php', array('main'=>$data));
 	}
 
@@ -58,10 +101,69 @@ class Dosen extends CI_Controller
 	{
 		$data['title'] = 'Status Soal | Dosen';
 		$id = array('nip'=>$this->session->nip);
-		$data_status_uts = json_decode($this->curl->simple_get($this->API.'/dosen/daftarstatusuts', $id));
-		$data_status_uas = json_decode($this->curl->simple_get($this->API.'/dosen/daftarstatusuas', $id));
-		$data['data_status_uts'] = $data_status_uts->data;
-		$data['data_status_uas'] = $data_status_uas->data;
+
+		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
+		$data['tahun_list'] = $data_tahun->data;
+
+		// ini default value
+		$data['isUtsResultNull'] = false;
+		$data['isUasResultNull'] = false;
+		$data['notif'] = false;
+		$data['tahun'] = null;
+		$data['semester'] = null;
+
+		$filter = $this->input->post('filter');		
+        $tahun  = $this->input->post('listTahun');
+        $semester = $this->input->post('listSemester');
+
+        if (isset($filter)) {
+			if($tahun != 'default' && $semester != 'default') {
+				$data_filter = array(
+					'nip'=>$this->session->nip,
+					'tahun'=>$tahun,
+					'semester'=>$semester
+				);			
+				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/status_soal_by', $data_filter));
+				$data['notif'] = false;	
+				$data['tahun'] = $tahun;
+				$data['semester'] = $semester;
+				
+				// check data jadwal null or not											
+				if (empty($data_status_soal->data->data_uts) && empty($data_status_soal->data->data_uas)){
+					$data['isUtsResultNull'] = true;
+					$data['isUasResultNull'] = true;
+				} else if (empty($data_status_soal->data->data_uts) || empty($data_status_soal->data->data_uas)){
+					if(empty($data_status_soal->data->data_uts)){
+						$data['isUtsResultNull'] = true;
+						$data['isUasResultNull'] = false;
+						$data['data_status_uas'] = $data_status_soal->data->data_uas;					
+					}
+	
+					if(empty($data_status_soal->data->data_uas)){
+						$data['isUasResultNull'] = true;
+						$data['isUtsResultNull'] = false;
+						$data['data_status_uts'] = $data_status_soal->data->data_uts;
+					}
+				} else if(!empty($data_status_soal->data->data_uts) && !empty($data_status_soal->data->data_uas)) {
+					$data['isUtsResultNull'] = false;
+					$data['isUasResultNull'] = false;				
+					$data['data_status_uts'] = $data_status_soal->data->data_uts;	
+					$data['data_status_uas'] = $data_status_soal->data->data_uas;
+				}
+
+			} else {				
+				$data['notif'] = true;				
+				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal', $id));				
+				$data['data_status_uts'] = $data_status_soal->data->data_uts;
+				$data['data_status_uas'] = $data_status_soal->data->data_uas;						
+			}              					
+		} else {
+			$data['notif'] = false;			
+            $data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal', $id));				
+			$data['data_status_uts'] = $data_status_soal->data->data_uts;
+			$data['data_status_uas'] = $data_status_soal->data->data_uas;
+		}
+				
 		$this->load->view('pengajuan_soal/dosen/status_soal.php', array('main'=>$data));
 	}
 
@@ -162,35 +264,48 @@ class Dosen extends CI_Controller
 
 	function edit_upload()
 	{
-		$file = $this->input->post('oldFileName');
-		$config = array(
-			'upload_path'=>'uploads/soal/',
-			'allowed_types'=>'doc|docx|pdf',
-			'overwrite'=>'true',
-			'max_size'=>2048
-		);
-
-		$this->upload->initialize($config);
-
-		$this->deleteFile($file);
-
-		if ($this->upload->do_upload('file1'))
-		{
-			$data_upload = $this->upload->data();
-			$filename = $data_upload['file_name'];
-			
+		if($_FILES["file1"]["error"] == 4){
 			$data = array(
 				'kode' => $this->input->post('id'),
 				'jenis_ujian' =>  $this->input->post('utsuas'),
 				'jenis_soal' =>  $this->input->post('jenisUjian'),
-				'file' =>  $filename								
+				'kbk_nip' =>  $this->input->post('kbk')							
 			);			
 	
 			$insert =  $this->curl->simple_put($this->API.'/dosen/editupload', $data);
 			redirect('dosen/status_soal');
 		} else {
-			echo "Gagal Upload";			
-		}			
+			$file = $this->input->post('oldFileName');
+			$config = array(
+				'upload_path'=>'uploads/soal/',
+				'allowed_types'=>'doc|docx|pdf',
+				'overwrite'=>'true',
+				'max_size'=>2048
+			);
+
+			$this->upload->initialize($config);
+
+			$this->deleteFile($file);
+
+			if ($this->upload->do_upload('file1'))
+			{
+				$data_upload = $this->upload->data();
+				$filename = $data_upload['file_name'];
+				
+				$data = array(
+					'kode' => $this->input->post('id'),
+					'jenis_ujian' =>  $this->input->post('utsuas'),
+					'jenis_soal' =>  $this->input->post('jenisUjian'),
+					'kbk_nip' =>  $this->input->post('kbk'),
+					'file' =>  $filename								
+				);			
+		
+				$insert =  $this->curl->simple_put($this->API.'/dosen/editupload', $data);
+				redirect('dosen/status_soal');
+			} else {
+				echo "Gagal Upload";			
+			}			
+		}		
 	}
 
 	private function deleteFile($filename)
