@@ -19,13 +19,19 @@ class Panitia extends CI_Controller
 		}
 		$data['title'] = 'Home | Panitia';
 		$data['pages'] = $this->load->view('pages/panitia/home','',true);
-		$this->load->view('pengajuan_soal/panitia/dashboard.php', array('main'=>$data));
+		$this->load->view('pengajuan_soal/panitia/home.php', array('main'=>$data));
 	}
 
 	function dashboard()
 	{
 		$data['title'] = 'Dashboard | Panitia';
 		$this->load->view('pengajuan_soal/panitia/dashboard.php', array('main'=>$data));
+	}
+
+	function dashboard2()
+	{
+		$data['title'] = 'Dashboard | Panitia';
+		$this->load->view('pengajuan_soal/panitia/dashboard2.php', array('main'=>$data));
 	}
 
 	function bataswaktu()

@@ -35,9 +35,17 @@
           </li>
            <li class="nav-item">
             <a href="<?php echo site_url('panitia/dashboard'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'panitia/dashboard') {echo "active" ;} ?>">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
-                Dashboard
+                Soal UTS
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo site_url('panitia/dashboard2'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'panitia/dashboard2') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Soal UAS
               </p>
             </a>
           </li>
