@@ -92,6 +92,44 @@
                 
               </div>              
             </div>            
+          </div>  
+
+           <div class="col-12 col-sm-6 col-md-4">
+            <div class="info-box mb-3 bg-green">            
+              <div class="info-box-content">
+                <span class="info-box-text">Jadwal Pengumpulan Soal UTS</span>
+                <span class="info-box-number">
+                  <?php 
+                    if(empty($data_batas[0]->batas_awal) && empty($data_batas[0]->batas_akhir)){
+                      echo '-';
+                    } else {
+                      $batas_awal = date("d F Y", strtotime($data_batas[0]->batas_awal));
+                      $batas_akhir = date("d F Y", strtotime($data_batas[0]->batas_akhir));
+                      echo $batas_awal . ' - ' . $batas_akhir;
+                    }
+                  ?>
+                </span>                
+              </div>              
+            </div>            
+          </div>  
+
+           <div class="col-12 col-sm-6 col-md-4">            
+            <div class="info-box mb-3 bg-green">
+              <div class="info-box-content">
+                <span class="info-box-text">Jadwal Pengumpulan Soal UAS</span>
+                <span class="info-box-number">
+                  <?php 
+                    if(empty($data_batas[1]->batas_awal) && empty($data_batas[1]->batas_akhir)){
+                      echo '-';
+                    } else {
+                      $batas_awal = date("d F Y", strtotime($data_batas[1]->batas_awal));
+                      $batas_akhir = date("d F Y", strtotime($data_batas[1]->batas_akhir));
+                      echo $batas_awal . ' - ' . $batas_akhir;
+                    }
+                  ?>
+                </span>                
+              </div>              
+            </div>            
           </div>          
         </div>
 
@@ -166,9 +204,8 @@
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
-  $(document).ready(function() {   
+  $(document).ready(function() {       
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
