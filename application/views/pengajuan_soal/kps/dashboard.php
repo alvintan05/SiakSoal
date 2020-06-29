@@ -24,7 +24,7 @@
 			<!-- pages -->
 			<?php if($main['data_soal']) 
 			{  $this->load->view('pages/kps/dashboard', $main); }
-			else { echo "&nbsp tidak ada history pencarian"; }
+			else { echo "&nbsp tidak ada riwayat pencarian"; }
 			?>
 			<!-- END pages -->
 		</div>
