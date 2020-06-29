@@ -13,7 +13,7 @@
 
             </div>
             <div class="card-body">
-                <form action="<?php echo base_url(). 'Kps/dashboard' ?>" method="get" >
+                <form action="<?php echo base_url(). 'Kps/search' ?>" method="get" >
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="">Tahun Ajaran</label><br>
