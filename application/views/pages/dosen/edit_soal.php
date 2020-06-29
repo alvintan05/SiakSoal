@@ -64,8 +64,8 @@
               <input class="form-control" type="text" name="oldFileName" value="<?php echo $data_matkul[0]->file;?>" disabled>              
             </div>
             <div class="form-group">
-              <label for="file1">Ganti File Soal Ujian</label>
-              <input class="form-control-file" type="file" name="file1"/>
+              <label for="file1">Ganti File Soal Ujian (.doc .docx .pdf)</label>
+              <input class="form-control-file" type="file" name="file1" accept=".pdf,.doc,.docx"/>
             </div>
           </div>
           <div class="card-footer" align="right">

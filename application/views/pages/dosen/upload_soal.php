@@ -59,7 +59,7 @@
               </div>
 
               <div class="form-group">
-                <label for="file1">File Soal Ujian</label>
+                <label for="file1">File Soal Ujian (.doc .docx .pdf)</label>
                 <input 
                   class="form-control-file" 
                   type="file" 

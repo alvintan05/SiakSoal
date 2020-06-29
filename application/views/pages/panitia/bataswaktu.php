@@ -8,8 +8,8 @@
             </span>
           </div>
           <div class="col-9">
-            <div class="text-secondary"><b>Dashboard</b></div>
-            <small class="content text-gray">Halaman ini menampilkan daftar soal yang telah di upload dosen. </small>
+            <div class="text-secondary"><b>Batas Waktu</b></div>
+            <small class="content text-gray">Halaman ini untuk mengatur batas waktu pengumpulan soal UTS dan UAS.</small>
           </div>
           <div class="col-2">
             <?php $this->load->view('layouts/breadcrumb')?>
@@ -34,10 +34,7 @@
                   </button>
                 </div>
                 <h1 class="card-title "><b>Deadline Pengumpulan Soal UTS</b></h1>
-                <br>
-                <!-- <h6 class="card-description text-muted">Dosen : Raisa Andriana</h6> -->
-                <!-- <p></p> -->
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Dosen : Raisa Andriana</h6> -->
+                <br>                
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">
@@ -80,10 +77,7 @@
                   </button>
                 </div>
                 <h1 class="card-title "><b>Deadline Pengumpulan Soal UAS</b></h1>
-                <br>
-                <!-- <h6 class="card-description text-muted">Dosen : Raisa Andriana</h6> -->
-                <!-- <p></p> -->
-                <!-- <h6 class="card-subtitle mb-2 text-muted">Dosen : Raisa Andriana</h6> -->
+                <br>                
               </div>
               <!-- /.card-header -->
               <div class="card-body p-0">

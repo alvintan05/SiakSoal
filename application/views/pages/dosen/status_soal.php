@@ -155,7 +155,7 @@
                       <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Total Matkul</span>
+                        <span class="info-box-text">Total Mata Kuliah</span>
                         <span class="info-box-number"><?php echo count($data_status_uts); ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -298,7 +298,7 @@
                       <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Total Matkul</span>
+                        <span class="info-box-text">Total Mata Kuliah</span>
                         <span class="info-box-number"><?php echo count($data_status_uas); ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -448,11 +448,11 @@
                   <div class="card">
                     <table class="table table-sm table-hover">
                       <tr>
-                        <th>Kode Matkul</th>
+                        <th>Kode Mata Kuliah</th>
                         <td><p><?php echo $kode ?></p></td>
                       </tr>
                       <tr>
-                        <th>Nama Matkul</th>
+                        <th>Nama Mata Kuliah</th>
                         <td><p><?php echo $nama ?></p></td>
                       </tr>
                       <tr>
@@ -485,7 +485,8 @@
                       </tr>
                       <tr>
                         <th>File Soal</th>
-                        <td><a href="<?php echo site_url('dosen/download/'.$file); ?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>
+                        <td><a href="<?php echo base_url(). 'index.php/download/'. $file;?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>                        
+                        <!-- <td><a href="<?php echo site_url('dosen/download/'.$file); ?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td> -->
                       </tr>
                     </table>
                   </div>
@@ -532,11 +533,11 @@
                   <div class="card">
                     <table class="table table-sm table-hover">
                       <tr>
-                        <th>Kode Matkul</th>
+                        <th>Kode Mata Kuliah</th>
                         <td><p><?php echo $kode ?></p></td>
                       </tr>
                       <tr>
-                        <th>Nama Matkul</th>
+                        <th>Nama Mata Kuliah</th>
                         <td><p><?php echo $nama ?></p></td>
                       </tr>
                       <tr>
@@ -569,7 +570,7 @@
                       </tr>
                       <tr>
                         <th>File Soal</th>
-                        <td><a href="<?php echo site_url('dosen/download/'.$file); ?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>
+                        <td><a href="<?php echo base_url(). 'index.php/download/'. $file;?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>
                       </tr>
                     </table>
                   </div>
@@ -586,7 +587,7 @@
           ?>
 
           <!-- Modal Hapus-->
-          <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
+          <!-- <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -604,7 +605,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
       </div>
   </section>

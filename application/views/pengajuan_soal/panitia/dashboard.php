@@ -34,7 +34,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/panitia/dashboard') ?>
+			<?php $this->load->view('pages/panitia/dashboard', $main) ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
@@ -67,8 +67,5 @@
   <script src="<?php echo base_url();?>assets/dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?php echo base_url();?>assets/dist/js/demo.js"></script>
-
- 
-
 </body>
 </html>

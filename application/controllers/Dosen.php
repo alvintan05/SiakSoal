@@ -337,11 +337,11 @@ class Dosen extends CI_Controller
 		return array_map('unlink', glob(FCPATH."uploads/soal/$filename"));
 	}
 
-	function download($file = NULL)
-	{					
-		$filepath = $this->BASE_URL_FILE . $file;		
-		redirect($filepath);		
-	}
+	// function download($file = NULL)
+	// {					
+	// 	$filepath = $this->BASE_URL_FILE . $file;		
+	// 	redirect($filepath);		
+	// }
 
 	function logout()
 	{
