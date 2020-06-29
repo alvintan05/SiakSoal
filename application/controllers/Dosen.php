@@ -20,12 +20,17 @@ class Dosen extends CI_Controller
 		$this->load->helper('form');			
 		$this->load->library('upload');
 		$this->load->library('form_validation');
+		$this->load->library('session');
 		$this->load->helper('download');		
 	}
 
 	function index()
 	{		
-		$data['title'] = 'Home | Dosen';		
+		$data['title'] = 'Home | Dosen';
+		$data_batas = json_decode($this->curl->simple_get($this->API.'/panitia/batas_waktu'));
+		$data['data_batas'] = $data_batas->data;
+		$this->session->set_userdata('batas_waktu', $data['data_batas']);
+
 		$this->load->view('pengajuan_soal/dosen/home.php', array('main'=>$data));
 	}
 
@@ -36,8 +41,7 @@ class Dosen extends CI_Controller
 
 		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
 		$data['tahun_list'] = $data_tahun->data;
-		$data_batas = json_decode($this->curl->simple_get($this->API.'/panitia/batas_waktu'));
-		$data['data_batas'] = $data_batas->data;
+		$data['data_batas'] = $this->session->userdata('batas_waktu');
 
 		// ini default value
 		$data['isFilterResultNull'] = false;
@@ -83,20 +87,39 @@ class Dosen extends CI_Controller
 
 	function upload_soal()
 	{
-		$data['title'] = 'Upload Soal | Dosen';
-		$params = array('kode'=>  $this->uri->segment(3));
-		$data_matkul = json_decode($this->curl->simple_get($this->API.'/dosen/upload', $params));
-		$data['data_matkul'] = $data_matkul->data;
-		$this->load->view('pengajuan_soal/dosen/upload_soal.php', array('main'=>$data));
+		$batas_waktu = $this->session->userdata('batas_waktu');
+
+		if($batas_waktu[0]->batas_awal <= date('Y-m-d') && $batas_waktu[0]->batas_akhir >= date('Y-m-d')
+			|| $batas_waktu[1]->batas_awal <= date('Y-m-d') && $batas_waktu[1]->batas_akhir >= date('Y-m-d'))
+		{
+			$data['title'] = 'Upload Soal | Dosen';
+			$params = array('kode'=>  $this->uri->segment(3));
+			$data_matkul = json_decode($this->curl->simple_get($this->API.'/dosen/upload', $params));
+			$data['data_matkul'] = $data_matkul->data;
+			$this->load->view('pengajuan_soal/dosen/upload_soal.php', array('main'=>$data));
+		}
+		else
+		{
+			echo "tidak dapat mengupload soal karena tidak sesuai jadwal pengumpulan soal";
+		}
 	}
 
 	function edit_soal()
 	{
-		$data['title'] = 'Edit Soal | Dosen';
-		$params = array('kode'=>  $this->uri->segment(3));
-		$data_matkul = json_decode($this->curl->simple_get($this->API.'/dosen/editupload', $params));
-		$data['data_matkul'] = $data_matkul->data;
-		$this->load->view('pengajuan_soal/dosen/edit_soal.php', array('main'=>$data));
+		$batas_waktu = $this->session->userdata('batas_waktu');
+
+		if($batas_waktu[0]->batas_awal <= date('Y-m-d') && $batas_waktu[0]->batas_akhir >= date('Y-m-d')
+			|| $batas_waktu[1]->batas_awal <= date('Y-m-d') && $batas_waktu[1]->batas_akhir >= date('Y-m-d')){
+			$data['title'] = 'Edit Soal | Dosen';
+			$params = array('kode'=>  $this->uri->segment(3));
+			$data_matkul = json_decode($this->curl->simple_get($this->API.'/dosen/editupload', $params));
+			$data['data_matkul'] = $data_matkul->data;
+			$this->load->view('pengajuan_soal/dosen/edit_soal.php', array('main'=>$data));
+		}
+		else {
+			echo "tidak dapat mengupload soal karena tidak sesuai jadwal pengumpulan soal";
+		}
+		
 	}
 
 	function status_soal()
@@ -106,6 +129,7 @@ class Dosen extends CI_Controller
 
 		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
 		$data['tahun_list'] = $data_tahun->data;
+		$data['data_batas'] = $this->session->userdata('batas_waktu');
 
 		// ini default value
 		$data['isUtsResultNull'] = false;

@@ -181,7 +181,16 @@
                             <td><?php echo $row->ruangan_namaruang;?></td>
                             <td>
                               <div class="box-button">
-								                <a href='<?php echo site_url('dosen/upload_soal/'.$row->kodejdwl); ?>' class="btn btn-info btn-sm">Upload</a>
+								                <a href='<?php echo site_url('dosen/upload_soal/'.$row->kodejdwl); ?>'
+                                <?php if($data_batas[0]->batas_awal <= date('Y-m-d') && $data_batas[0]->batas_akhir >= date('Y-m-d')
+                                         || $data_batas[1]->batas_awal <= date('Y-m-d') && $data_batas[1]->batas_akhir >= date('Y-m-d')){
+                                    echo 'class="btn btn-info btn-sm"';
+                                  }
+                                  else {
+                                    echo 'class="btn btn-info btn-sm disabled"';
+                                  }
+                                ?>
+                                >Upload</a>
 						                  </div>
                             </td>
                           </tr>
