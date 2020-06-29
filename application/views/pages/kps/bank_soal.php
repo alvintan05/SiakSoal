@@ -38,7 +38,7 @@
                             <label for="">Program Studi</label>
                             <select name="namaprodi" id="">
                             <option disabled selected>Pilih...</option>
-                            <option value="Teknik Informatika">Teknik Informatika</option>
+                            <option value="TI">Teknik Informatika</option>
                             <option value="TMD">Teknik Multimedia</option>
                             <option value="TMJ">Teknik Multimedia Jaringan</option>
                             <option value="TKJ">Teknik Komputer Jaringan</option>
