@@ -104,7 +104,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="<?php echo site_url('kps/logout') ?>" class="dropdown-item">
+          <a href="<?php echo site_url('kbk/logout') ?>" class="dropdown-item">
             <i class="fas fa-sign-out-alt mr-2" aria-hidden="true"></i> Logout
           </a>
           <div class="dropdown-divider"></div>
