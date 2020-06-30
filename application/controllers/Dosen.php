@@ -18,14 +18,17 @@ class Dosen extends CI_Controller
         $this->load->library('curl');        
 		$this->load->helper('url');
 		$this->load->helper('form');			
-		$this->load->library('upload');
-		$this->load->library('form_validation');
+		$this->load->library('upload');			
 		$this->load->helper('download');		
 	}
 
 	function index()
 	{		
-		$data['title'] = 'Home | Dosen';		
+		$data['title'] = 'Home | Dosen';
+		$data_batas = json_decode($this->curl->simple_get($this->API.'/panitia/batas_waktu'));
+		$data['data_batas'] = $data_batas->data;
+		$this->session->set_userdata('batas_waktu', $data['data_batas']);
+
 		$this->load->view('pengajuan_soal/dosen/home.php', array('main'=>$data));
 	}
 
@@ -36,8 +39,7 @@ class Dosen extends CI_Controller
 
 		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
 		$data['tahun_list'] = $data_tahun->data;
-		$data_batas = json_decode($this->curl->simple_get($this->API.'/panitia/batas_waktu'));
-		$data['data_batas'] = $data_batas->data;
+		$data['data_batas'] = $this->session->userdata('batas_waktu');
 
 		// ini default value
 		$data['isFilterResultNull'] = false;
@@ -83,20 +85,39 @@ class Dosen extends CI_Controller
 
 	function upload_soal()
 	{
-		$data['title'] = 'Upload Soal | Dosen';
-		$params = array('kode'=>  $this->uri->segment(3));
-		$data_matkul = json_decode($this->curl->simple_get($this->API.'/dosen/upload', $params));
-		$data['data_matkul'] = $data_matkul->data;
-		$this->load->view('pengajuan_soal/dosen/upload_soal.php', array('main'=>$data));
+		$batas_waktu = $this->session->userdata('batas_waktu');
+
+		if($batas_waktu[0]->batas_awal <= date('Y-m-d') && $batas_waktu[0]->batas_akhir >= date('Y-m-d')
+			|| $batas_waktu[1]->batas_awal <= date('Y-m-d') && $batas_waktu[1]->batas_akhir >= date('Y-m-d'))
+		{
+			$data['title'] = 'Upload Soal | Dosen';
+			$params = array('kode'=>  $this->uri->segment(3));
+			$data_matkul = json_decode($this->curl->simple_get($this->API.'/dosen/upload', $params));
+			$data['data_matkul'] = $data_matkul->data;
+			$this->load->view('pengajuan_soal/dosen/upload_soal.php', array('main'=>$data));
+		}
+		else
+		{
+			echo "<script>alert('Tidak dapat mengupload soal karena tidak sesuai jadwal pengumpulan soal') ; window.location.href ='".base_url()."dosen/dashboard'</script>";			
+		}
 	}
 
 	function edit_soal()
 	{
-		$data['title'] = 'Edit Soal | Dosen';
-		$params = array('kode'=>  $this->uri->segment(3));
-		$data_matkul = json_decode($this->curl->simple_get($this->API.'/dosen/editupload', $params));
-		$data['data_matkul'] = $data_matkul->data;
-		$this->load->view('pengajuan_soal/dosen/edit_soal.php', array('main'=>$data));
+		$batas_waktu = $this->session->userdata('batas_waktu');
+
+		if($batas_waktu[0]->batas_awal <= date('Y-m-d') && $batas_waktu[0]->batas_akhir >= date('Y-m-d')
+			|| $batas_waktu[1]->batas_awal <= date('Y-m-d') && $batas_waktu[1]->batas_akhir >= date('Y-m-d')){
+			$data['title'] = 'Edit Soal | Dosen';
+			$params = array('kode'=>  $this->uri->segment(3));
+			$data_matkul = json_decode($this->curl->simple_get($this->API.'/dosen/editupload', $params));
+			$data['data_matkul'] = $data_matkul->data;
+			$this->load->view('pengajuan_soal/dosen/edit_soal.php', array('main'=>$data));
+		}
+		else {
+			echo "<script>alert('Tidak dapat merubah soal karena tidak sesuai jadwal pengumpulan soal') ; window.location.href ='".base_url()."dosen/status_soal'</script>";			
+		}
+		
 	}
 
 	function status_soal()
@@ -106,6 +127,7 @@ class Dosen extends CI_Controller
 
 		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
 		$data['tahun_list'] = $data_tahun->data;
+		$data['data_batas'] = $this->session->userdata('batas_waktu');
 
 		// ini default value
 		$data['isUtsResultNull'] = false;
@@ -200,94 +222,14 @@ class Dosen extends CI_Controller
 			);			
 	
 			$insert =  $this->curl->simple_post($this->API.'/dosen/upload', $data); 
-			echo "<script>alert('Sukses Upload'); window.location.href ='".base_url()."dosen/dashboard'</script>";
-			// redirect('dosen/dashboard');
-		} else {
-			//echo "Gagal Upload";
+			echo "<script>alert('Sukses Upload'); window.location.href ='".base_url()."dosen/dashboard'</script>";			
+		} else {			
 			echo "<script>alert('Gagal Upload, Harap Coba Lagi !') ; window.location.href ='".base_url()."dosen/upload_soal/".$this->input->post('id')."'</script>";
 		}		
-		
-		// $this->load->library('form_validation');
-		// $this->load->helper('file');		
-		
-		// $data = array(
-		// 	'success' => false,
-		// 	'messages' => array()
-		// );		
-
-		// $this->form_validation->set_rules('file1','file','required|callback_file_check');
-
-		// if($this->form_validation->run() == TRUE) {
-		// 	$data['success'] = true;
-		// } else {
-		// 	foreach($_POST as $key => $value){
-		// 		$data['messages'][$key] = form_error($key);
-		// 	}
-		// }
-
-		// echo json_encode($data);
-
-		// if($this->form_validation->run())
-		// {
-		// 	$config = array(
-		// 		'upload_path'=>'uploads/soal/',
-		// 		'allowed_types'=>'doc|docx|pdf',
-		// 		'max_size'=>2048
-		// 	);
-
-		// 	$this->upload->initialize($config);
-
-		//  	if ($this->upload->do_upload('file1'))
-		// 	{
-		// 		$data_upload = $this->upload->data();
-		// 		$filename = $data_upload['file_name'];
-				
-		// 		$data = array(
-		// 			'jenis_ujian' =>  $this->input->post('utsuas'),
-		// 			'jenis_soal' =>  $this->input->post('jenisUjian'),
-		// 			'file' =>  $filename,
-		// 			'kbk_nip' =>  $this->input->post('kbk'),
-		// 			'uts_uas_kodejdwl' => $this->input->post('id')
-		// 		);			
-		
-		// 		// $insert =  $this->curl->simple_post($this->API.'/dosen/upload', $data);     
-		// 		// redirect('dosen/dashboard');
-		// 	} else {
-		// 		echo "Gagal Upload";
-		// 		$data['error_msg'] = $this->upload->display_errors();
-		// 	}				
-		// }			
-	}
-
-	function check_default($post_string)
-	{
-		return $post_string == 'none' ? FALSE : TRUE;
-	}
-
-	function file_check($str)
-	{
-		$allowed_mime_type_arr = array('application/pdf', 'application/doc', 'application/docx');
-		$mime = get_mime_by_extension($_FILES['file1']['name']);
-
-		if(isset($_FILES['file1']['name']) && $_FILES['file1']['name'] != '')
-		{
-			if(in_array($mime, $allowed_mime_type_arr))
-			{
-				return TRUE;
-			} else 
-			{
-				$this->form_validation->set_message('file_check', 'Hanya menerima format file doc/docx/pdf');
-				return FALSE;
-			}
-		} else 
-		{
-			$this->form_validation->set_message('file_check', 'Pilih file yang ingin di upload.');
-			return FALSE;
-		}
 	}
 
 	function edit_upload()
-	{
+	{		
 		if($_FILES["file1"]["error"] == 4){
 			$data = array(
 				'kode' => $this->input->post('id'),
@@ -307,14 +249,14 @@ class Dosen extends CI_Controller
 				'max_size'=>2048
 			);
 
-			$this->upload->initialize($config);
-
-			$this->deleteFile($file);
+			$this->upload->initialize($config);			
 
 			if ($this->upload->do_upload('file1'))
 			{
 				$data_upload = $this->upload->data();
 				$filename = $data_upload['file_name'];
+
+				$this->deleteFile($file);
 				
 				$data = array(
 					'kode' => $this->input->post('id'),
@@ -324,24 +266,18 @@ class Dosen extends CI_Controller
 					'file' =>  $filename								
 				);			
 		
-				$insert =  $this->curl->simple_put($this->API.'/dosen/editupload', $data);
-				redirect('dosen/status_soal');
-			} else {
-				echo "Gagal Upload";			
+				$insert =  $this->curl->simple_put($this->API.'/dosen/editupload', $data);				
+				echo "<script>alert('Sukses Mengedit Data'); window.location.href ='".base_url()."dosen/status_soal'</script>";
+			} else {				
+				echo "<script>alert('Gagal Upload, Harap Coba Lagi !') ; window.location.href ='".base_url()."dosen/edit_soal/".$this->input->post('id')."'</script>";		
 			}			
 		}		
 	}
 
-	private function deleteFile($filename)
+	function deleteFile($file)
 	{
-		return array_map('unlink', glob(FCPATH."uploads/soal/$filename"));
+		return array_map('unlink', glob(FCPATH."/uploads/soal/$file"));
 	}
-
-	// function download($file = NULL)
-	// {					
-	// 	$filepath = $this->BASE_URL_FILE . $file;		
-	// 	redirect($filepath);		
-	// }
 
 	function logout()
 	{

@@ -258,7 +258,15 @@
                                   <!-- Detail icon -->
                                   <a class="btn" data-toggle="modal" data-target="#detailModalUts<?php echo $row->kode_soal;?>"> <i class="fa fa-eye"></i></a>
                                   <!-- Edit Icon -->
-                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal);?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
+                                  <a <?php if($data_batas[0]->batas_awal <= date('Y-m-d') && $data_batas[0]->batas_akhir >= date('Y-m-d')
+                                         || $data_batas[1]->batas_awal <= date('Y-m-d') && $data_batas[1]->batas_akhir >= date('Y-m-d')){
+                                    echo 'class="btn"';
+                                  }
+                                  else {
+                                    echo 'class="btn disabled"';
+                                  }
+                                  ?>
+                                   href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal);?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
                                     <i class="fa fa-edit"></i>
                                   </a>
                                   <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->
@@ -399,7 +407,15 @@
                               <td>
                                 <div class="box-button">
                                   <a class="btn" data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>"><i class="fa fa-eye"></i></a>
-                                  <a class="btn" href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal); ?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
+                                  <a <?php if($data_batas[0]->batas_awal <= date('Y-m-d') && $data_batas[0]->batas_akhir >= date('Y-m-d')
+                                         || $data_batas[1]->batas_awal <= date('Y-m-d') && $data_batas[1]->batas_akhir >= date('Y-m-d')){
+                                    echo 'class="btn"';
+                                  }
+                                  else {
+                                    echo 'class="btn disabled"';
+                                  }
+                                  ?>
+                                  href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal); ?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
                                     <i class="fa fa-edit"></i>
                                   </a>
                                   <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->

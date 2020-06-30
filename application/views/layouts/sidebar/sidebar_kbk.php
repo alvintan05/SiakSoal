@@ -32,11 +32,22 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?php echo site_url('kbk/dashboard'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/dashboard') {echo "active" ;} ?>">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+    
+        <!--soal uts-->
+         <li class="nav-item">
+            <a href="<?php echo site_url('kbk/soal_uts'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/soal_uts') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-book"></i>
               <p>
-                Dashboard
+                Soal UTS
+              </p>
+            </a>
+          </li>
+          <!--soal uas-->
+          <li class="nav-item">
+            <a href="<?php echo site_url('kbk/soal_uas'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/soal_uas') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Soal UAS
               </p>
             </a>
           </li>
