@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
               <label for="oldFile">File Soal Ujian</label>
-              <input class="form-control" type="text" name="oldFileName" value="<?php echo $data_matkul[0]->file;?>" disabled>              
+              <input class="form-control" type="text" name="oldFileName" value="<?php echo $data_matkul[0]->file;?>" readonly>              
             </div>
             <div class="form-group">
               <label for="file1">Ganti File Soal Ujian (.doc .docx .pdf)</label>
