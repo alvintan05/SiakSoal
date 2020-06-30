@@ -24,10 +24,16 @@ class Kbk extends CI_Controller
 		$this->load->view('pengajuan_soal/kbk/home.php', array('main'=>$data));
 	}
 
-	function dashboard()
+	function soal_uts()
 	{
-		$data['title'] = 'Dashboard | KBK';
-		$this->load->view('pengajuan_soal/kbk/dashboard.php', array('main'=>$data));
+		$data['title'] = 'Soal UTS | KBK';
+		$this->load->view('pengajuan_soal/kbk/soal_uts.php', array('main'=>$data));
+	}
+
+	function soal_uas()
+	{
+		$data['title'] = 'Soal UAS | KBK';
+		$this->load->view('pengajuan_soal/kbk/soal_uas.php', array('main'=>$data));
 	}
 
 	function upload_form_soal()

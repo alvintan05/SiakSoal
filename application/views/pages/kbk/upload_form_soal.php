@@ -26,10 +26,6 @@
                 </div>
               </div>   
               <div class="form-group">
-                <label for="deskripsi">Deskripsi</label>
-                <textarea class="form-control" id="deskripsi" rows="5"></textarea>
-              </div>
-              <div class="form-group">
                 <label for="file1">File Soal Ujian</label>
                 <input class="form-control-file" type="file" name="file1" />
               </div>
