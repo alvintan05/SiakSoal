@@ -87,7 +87,7 @@
                           <td><?php echo $row->namaklas;?></td>
                           <td>
                               <div class="box-button">                        
-                                  <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                                  <a class="btn"data-toggle="modal" data-target="#detailModalUts<?php echo $row->kode_soal;?>"><i class="fa fa-eye"></i></a>
                                   <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
                                   <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
                               </div>            
@@ -122,7 +122,7 @@
 
 
            <!-- Modal Detail-->
-          <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+          <div class="modal fade" id="detailModalUts<?php echo $row->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
               <div class="modal-content">
                 <div class="modal-header">
