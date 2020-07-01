@@ -501,8 +501,7 @@
                       </tr>
                       <tr>
                         <th>File Soal</th>
-                        <td><a href="<?php echo base_url(). 'index.php/download/'. $file;?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>                        
-                        <!-- <td><a href="<?php echo site_url('dosen/download/'.$file); ?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td> -->
+                        <td><a href="<?php echo base_url(). 'index.php/download/'. $file;?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>
                       </tr>
                     </table>
                   </div>
