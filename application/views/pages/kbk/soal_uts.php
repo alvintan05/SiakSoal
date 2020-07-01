@@ -228,7 +228,7 @@
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <input type="hidden" value="<?= $kode_soal;?>" name="kode_soal">
                     <input type="hidden" value="Ditolak" name="status">
-                    <button class="btn btn-danger" type="submit" name="Ditolak">Send message</button>
+                  <button class="btn btn-danger" type="submit" name="Ditolak">Send message</button>
                   </form>
                 </div>
               </div>

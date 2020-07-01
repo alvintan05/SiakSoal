@@ -216,18 +216,17 @@
                 </div>
                 <div class="modal-body">
                   <form id="formDitolak" action="<?php echo base_url(). 'Kbk/verifikasi_soal_uas' ?>" method="post">
-                  <form>
                     <div class="form-group">
                       <label for="message-text" class="control-label">Message:</label>
-                      <textarea class="form-control" id="message-text"></textarea>
+                      <textarea class="form-control" id="message-text" name="catatan"></textarea>
                     </div>
-                  </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <input type="hidden" value="<?= $kode_soal;?>" name="kode_soal">
                     <input type="hidden" value="Ditolak" name="status">
-                  <button type="button" class="btn btn-danger">Send message</button>
+                  <button class="btn btn-danger" type="submit" name="Ditolak">Send message</button>
+                  </form>
                 </div>
               </div>
             </div>
