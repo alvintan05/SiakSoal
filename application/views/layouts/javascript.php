@@ -27,6 +27,8 @@
 <!--Data Table-->
 <script src="<?php echo base_url();?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>/assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- DataTables -->
+<link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 
 <script>
 $(function () { 
