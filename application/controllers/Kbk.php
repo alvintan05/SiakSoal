@@ -49,17 +49,26 @@ class Kbk extends CI_Controller
 
 	}
 
-	function Verifikasisoal_uts()
+	function verifikasi_soal_uts()
 	{
-		$data['title'] = 'Dashboard | KBK';
-		$verifikasisoal_uts = json_decode($this->curl->simple_get($this->API.'/kbk/approval', $id));
+		$data = array(
+			'kode' => $this->input->post('kode_soal'),
+			'status' =>  $this->input->post('status'),	
+			'note' => $this->input->post('catatan')		
+		);
+		
+		$verifikasisoal_uts = json_decode($this->curl->simple_put($this->API.'/kbk/approval', $data));
+		$respon = $verifikasisoal_uts->data;
 
-		$this->load->view('pengajuan_soal/kbk/soal_uts.php', array('main'=>$data));
-
+		if($verifikasisoal_uts){
+			echo "<script>alert('$respon Mengedit Data'); window.location.href ='".base_url()."kbk/soal_uts'</script>";
+		} else {
+			echo "<script>alert('$respon Mengedit Data'); window.location.href ='".base_url()."kbk/soal_uts'</script>";
+		}
 
 	}
 
-	function Verifikasisoal_uas()
+	function verifikasi_soal_uas()
 	{
 		$data['title'] = 'Soal UAS | KBK';
 		$verifikasisoal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/approval', $id));
