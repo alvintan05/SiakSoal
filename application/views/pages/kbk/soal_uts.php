@@ -115,6 +115,7 @@
                 $kelas = $row->namaklas;
                 $jenisujian = "UAS";
                 $jenis_soal = $row->jenis_soal;
+                $create_date =  $row->create_at;
                 $tanggalUpload = date("d F Y", strtotime($create_date));
                 $file = $row->file;            
           ?>
@@ -143,7 +144,7 @@
                       </tr>
                       <tr>
                         <th>Dosen Pengajar</th>
-                        <td><<p><?php echo $row->nama;?></p></td>
+                        <td><p><?php echo $row->nama;?></p></td>
                       </tr>
                       <tr>
                         <th>Jenis Ujian</th>
