@@ -33,7 +33,7 @@
               </p>
             </a>
           </li>
-           <li class="nav-item">
+          <li class="nav-item">
             <a href="<?php echo site_url('kps/dashboard'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kps/dashboard') {echo "active" ;} ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>

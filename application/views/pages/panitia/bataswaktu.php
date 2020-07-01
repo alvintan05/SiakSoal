@@ -45,7 +45,7 @@
                       <th>Deadline</th>
                       <th>Batas Awal</th>
                       <th>Batas Akhir</th>
-                      <th>Action</th>
+                      <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>

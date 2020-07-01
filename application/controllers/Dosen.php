@@ -120,9 +120,9 @@ class Dosen extends CI_Controller
 		
 	}
 
-	function status_soal()
+	function status_soal_uts()
 	{
-		$data['title'] = 'Status Soal | Dosen';
+		$data['title'] = 'Status Soal UTS | Dosen';
 		$id = array('nip'=>$this->session->nip);
 
 		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
@@ -188,7 +188,78 @@ class Dosen extends CI_Controller
 			$data['data_status_uas'] = $data_status_soal->data->data_uas;
 		}
 				
-		$this->load->view('pengajuan_soal/dosen/status_soal.php', array('main'=>$data));
+		$this->load->view('pengajuan_soal/dosen/status_soal_uts.php', array('main'=>$data));
+	}
+
+	function status_soal_uas()
+	{
+		$data['title'] = 'Status Soal UAS | Dosen';
+		$id = array('nip'=>$this->session->nip);
+
+		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
+		$data['tahun_list'] = $data_tahun->data;
+		$data['data_batas'] = $this->session->userdata('batas_waktu');
+
+		// ini default value
+		$data['isUtsResultNull'] = false;
+		$data['isUasResultNull'] = false;
+		$data['notif'] = false;
+		$data['tahun'] = null;
+		$data['semester'] = null;
+
+		$filter = $this->input->post('filter');		
+        $tahun  = $this->input->post('listTahun');
+        $semester = $this->input->post('listSemester');
+
+        if (isset($filter)) {
+			if($tahun != 'default' && $semester != 'default') {
+				$data_filter = array(
+					'nip'=>$this->session->nip,
+					'tahun'=>$tahun,
+					'semester'=>$semester
+				);			
+				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/status_soal_by', $data_filter));
+				$data['notif'] = false;	
+				$data['tahun'] = $tahun;
+				$data['semester'] = $semester;
+				
+				// check data jadwal null or not											
+				if (empty($data_status_soal->data->data_uts) && empty($data_status_soal->data->data_uas)){
+					$data['isUtsResultNull'] = true;
+					$data['isUasResultNull'] = true;
+				} else if (empty($data_status_soal->data->data_uts) || empty($data_status_soal->data->data_uas)){
+					if(empty($data_status_soal->data->data_uts)){
+						$data['isUtsResultNull'] = true;
+						$data['isUasResultNull'] = false;
+						$data['data_status_uas'] = $data_status_soal->data->data_uas;					
+					}
+	
+					if(empty($data_status_soal->data->data_uas)){
+						$data['isUasResultNull'] = true;
+						$data['isUtsResultNull'] = false;
+						$data['data_status_uts'] = $data_status_soal->data->data_uts;
+					}
+				} else if(!empty($data_status_soal->data->data_uts) && !empty($data_status_soal->data->data_uas)) {
+					$data['isUtsResultNull'] = false;
+					$data['isUasResultNull'] = false;				
+					$data['data_status_uts'] = $data_status_soal->data->data_uts;	
+					$data['data_status_uas'] = $data_status_soal->data->data_uas;
+				}
+
+			} else {				
+				$data['notif'] = true;				
+				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal', $id));				
+				$data['data_status_uts'] = $data_status_soal->data->data_uts;
+				$data['data_status_uas'] = $data_status_soal->data->data_uas;						
+			}              					
+		} else {
+			$data['notif'] = false;			
+            $data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal', $id));				
+			$data['data_status_uts'] = $data_status_soal->data->data_uts;
+			$data['data_status_uas'] = $data_status_soal->data->data_uas;
+		}
+				
+		$this->load->view('pengajuan_soal/dosen/status_soal_uas.php', array('main'=>$data));
 	}
 
 	function home_setelah_login()

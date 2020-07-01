@@ -18,25 +18,23 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- css -->
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/pengajuan_soal/styles.css " type="text/css">
+	<link rel="stylesheet" href="">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 	<div class="wrapper">
 
 		<!-- navbar -->
-			<?php $this->load->view('layouts/navbar/navbar_kps')?>
+			<?php $this->load->view('layouts/navbar/navbar_dosen')?>
 		<!-- END navbar -->
 		
 		<!-- sidebar -->
-			<?php $this->load->view('layouts/sidebar/sidebar_kps')?>
+			<?php $this->load->view('layouts/sidebar/sidebar_dosen')?>
 		<!-- END sidebar -->
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php if($main['data_soal']) 
-			{  $this->load->view('pages/kps/bank_soal', $main); }
-			else { echo "&nbsp tidak ada riwayat pencarian"; }
-			?>
+			<?php $this->load->view('pages/dosen/status_soal_uas', $main) ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
@@ -59,7 +57,7 @@
 	<!-- END javascript -->
 
 	<!-- jQuery -->
-	<script src="<?php echo base_url();?>assets/plugins/jquery/jquery.min.js"></script>	
+	<script src="<?php echo base_url();?>assets/plugins/jquery/jquery.min.js"></script>
 	<!-- DataTables -->
 	<script src="<?php echo base_url();?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -69,5 +67,6 @@
 	<!-- <script src="<?php echo base_url();?>assets/dist/js/adminlte.min.js"></script> -->
 	<!-- AdminLTE for demo purposes -->
 	<script src="<?php echo base_url();?>assets/dist/js/demo.js"></script>
+	
 </body>
 </html>
