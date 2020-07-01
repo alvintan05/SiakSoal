@@ -172,10 +172,7 @@
             </div>
           </div>
 
-          <?php
-           }
-          }
-          ?>
+          
 
           <!-- Modal Verifikasi-->
           <div class="modal fade" id="verifikasiModalUts<?php echo $row->kode_soal;?>" tabindex="-1" role="dialog">
@@ -192,11 +189,20 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-success">Yes</button>
+                  <form action="<?php echo base_url(). 'kbk/verifikasi_soal_uts' ?>" method="post">
+                    <input type="hidden" name="kode_soal" value="<?=$kode_soal;?>">
+                    <input type="hidden" name="status" value="Diterima">
+                  </form>
+                  <button type="button" class="btn btn-success"><input>Yes</button>
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
           </div><!-- /.modal -->
+
+          <?php
+           }
+          }
+          ?>
 
           <!-- Modal Reject-->
           <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
