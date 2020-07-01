@@ -49,6 +49,26 @@ class Kbk extends CI_Controller
 
 	}
 
+	function Verifikasisoal_uts()
+	{
+		$data['title'] = 'Dashboard | KBK';
+		$verifikasisoal_uts = json_decode($this->curl->simple_get($this->API.'/kbk/approval', $id));
+
+		$this->load->view('pengajuan_soal/kbk/soal_uts.php', array('main'=>$data));
+
+
+	}
+
+	function Verifikasisoal_uas()
+	{
+		$data['title'] = 'Soal UAS | KBK';
+		$verifikasisoal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/approval', $id));
+
+		$this->load->view('pengajuan_soal/kbk/soal_uas.php', array('main'=>$data));
+
+
+	}
+
 	function upload_form_soal()
 	{
 		$data['title'] = 'Format Soal | KBK';
