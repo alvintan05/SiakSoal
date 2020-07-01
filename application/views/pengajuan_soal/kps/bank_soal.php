@@ -22,7 +22,10 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/kps/bank_soal') ?>
+			<?php if($main['data_soal']) 
+			{  $this->load->view('pages/kps/bank_soal', $main); }
+			else { echo "&nbsp tidak ada riwayat pencarian"; }
+			?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->

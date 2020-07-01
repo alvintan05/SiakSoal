@@ -22,7 +22,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/kps/dashboard') ?>
+			<?php $this->load->view('pages/kps/home') ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
@@ -45,6 +45,3 @@
 	<!-- END javascript -->
 </body>
 </html>
-
-
-

@@ -34,7 +34,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/dosen/status_soal', $main) ?>
+			<?php $this->load->view('pages/dosen/status_soal_uts', $main) ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
