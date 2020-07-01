@@ -34,7 +34,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/dosen/status_soal', $main) ?>
+			<?php $this->load->view('pages/dosen/status_soal_uts', $main) ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
@@ -64,7 +64,7 @@
 	<script src="<?php echo base_url();?>assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 	<script src="<?php echo base_url();?>assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 	<!-- AdminLTE App -->
-	<script src="<?php echo base_url();?>assets/dist/js/adminlte.min.js"></script>
+	<!-- <script src="<?php echo base_url();?>assets/dist/js/adminlte.min.js"></script> -->
 	<!-- AdminLTE for demo purposes -->
 	<script src="<?php echo base_url();?>assets/dist/js/demo.js"></script>
 	

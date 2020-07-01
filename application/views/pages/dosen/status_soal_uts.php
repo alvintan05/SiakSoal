@@ -44,20 +44,20 @@
           <div class="col-1" align="right">
             <span class="fa-stack fa-lg">
               <i class="fas fa-square fa-stack-2x" style="color: #ffff"></i>
-              <i class="fas fa-file fa-stack-1x " style="color: #17a2b8"></i>
+              <i class="fas fa-book fa-stack-1x " style="color: #17a2b8"></i>
             </span>
           </div>
-          <div class="col-9">
-            <div class="text-secondary"><b>Status Soal</b></div>
-            <small class="content text-gray">Halaman ini menampilkan status soal yang telah di upload oleh dosen. </small>
+          <div class="col-8">
+            <div class="text-secondary"><b>Status Soal UTS</b></div>
+            <small class="content text-gray">Halaman ini menampilkan status soal UTS yang telah di upload oleh dosen. </small>
           </div>
-          <div class="col-2">
+          <div class="col-3">
             <?php $this->load->view('layouts/breadcrumb')?>
           </div>          
         </div><!-- /.row -->
         
         <!-- Option tahun dan semester -->
-        <form action="<?php echo base_url(). 'dosen/status_soal' ?>" method="post">
+        <form action="<?php echo base_url(). 'dosen/status_soal_uts' ?>" method="post">
           <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
               <select id="listTahun" name="listTahun" class="form-control">
@@ -135,11 +135,11 @@
     <div class="container-fluid">       
 
     	<!-- UTS -->
-            <div class="card collapsed-card" <?php if($isUtsResultNull) echo 'hidden'; ?>>
+            <div class="card" <?php if($isUtsResultNull) echo 'hidden'; ?>>
               <div class="card-header border-transparent">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-plus"></i>
+                    <i class="fas fa-minus"></i>
                   </button>
                 </div>
                 <h1 class="card-title "><b>Status Pengumpulan Soal UTS</b></h1>
@@ -215,8 +215,8 @@
                       <th>Mata Kuliah</th>
                       <th>File</th>
                       <th>Status</th>
-                      <th>Waktu Upload</th>
-                      <th>Action</th>
+                      <th>Tanggal Upload</th>
+                      <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -283,155 +283,6 @@
               </div>
               <!-- /.card-body -->
           </div>    
-
-
-        <!-- UAS -->            
-            <div class="card collapsed-card" <?php if($isUasResultNull) echo 'hidden'; ?>>
-              <div class="card-header border-transparent">
-                <div class="card-tools" align="float-sm-right">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-plus"></i>
-                  </button>
-                </div>
-                <h1 class="card-title "><b>Status Pengumpulan Soal UAS</b></h1>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-2">
-
-                <!-- Info boxes -->
-                <div class="row">
-                  <div class="col-12 col-sm-6 col-md-3">
-                    <!-- Info Boxes Style 2 -->
-                    <div class="info-box mb-3 bg-info">
-                      <span class="info-box-icon"><i class="fas fa-tag"></i></span>
-
-                      <div class="info-box-content">
-                        <span class="info-box-text">Total Mata Kuliah</span>
-                        <span class="info-box-number"><?php echo count($data_status_uas); ?></span>
-                      </div>
-                      <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                  </div>
-
-                  <div class="col-12 col-sm-6 col-md-3">
-                    <!-- Info Boxes Style 2 -->
-                    <div class="info-box mb-3 bg-warning">
-                      <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
-
-                      <div class="info-box-content">
-                        <span class="info-box-text">Proses</span>
-                        <span class="info-box-number"><?php echo $proccess_uas; ?></span>
-                      </div>
-                      <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                  </div>
-
-                  <div class="col-12 col-sm-6 col-md-3">
-                    <!-- Info Boxes Style 2 -->
-                    <div class="info-box mb-3 bg-success">
-                      <span class="info-box-icon"><i class="fas fa-check"></i></span>
-
-                      <div class="info-box-content">
-                        <span class="info-box-text">Diterima</span>
-                        <span class="info-box-number"><?php echo $verified_uas; ?></span>
-                      </div>
-                      <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                  </div>
-
-                  <div class="col-12 col-sm-6 col-md-3">
-                    <!-- Info Boxes Style 2 -->
-                    <div class="info-box mb-3 bg-danger">
-                      <span class="info-box-icon"><i class="fas fa-times"></i></span>
-
-                      <div class="info-box-content">
-                        <span class="info-box-text">Ditolak</span>
-                        <span class="info-box-number"><?php echo $rejected_uas; ?></span>
-                      </div>
-                      <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                  </div>
-                </div>
-
-                <!-- TABLE : UAS -->
-                <div class="table table-striped">
-                  <table id="example2" class="display" style="width:100%">
-                    <thead>
-                    <tr>
-                      <th>Kode</th>
-                      <th>Mata Kuliah</th>
-                      <th>File</th>
-                      <th>Status</th>
-                      <th>Waktu Upload</th>
-                      <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                      <?php  
-                          foreach($data_status_uas as $row) {
-                            ?>
-                            <tr>
-                              <td><?php echo $row->matakuliah_kodemk;?></td>
-                              <td><?php echo $row->namamk;?></td>
-                              <td><?php echo $row->file;?></td>                                                      
-                              <td>
-                                <span class="badge 
-                                  <?php  
-                                    switch($row->status){
-                                      case "Diterima":
-                                        echo 'badge-success';
-                                        break;
-                                      case "Proses":
-                                        echo 'badge-warning';
-                                        break;
-                                      case "Ditolak":
-                                        echo 'badge-danger';
-                                        break;
-                                    }
-                                  ?>
-                                  ">                                  
-                                  <?php echo $row->status ?>
-                                </span>
-                              </td>
-                              <td>
-                                <?php 
-                                  $datedb =  $row->update_at;
-                                  $newDate = date("d F Y", strtotime($datedb));
-                                  echo $newDate;
-                                ?>
-                              </td>
-                              <td>
-                                <div class="box-button">
-                                  <a class="btn" data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>"><i class="fa fa-eye"></i></a>
-                                  <a <?php if($data_batas[0]->batas_awal <= date('Y-m-d') && $data_batas[0]->batas_akhir >= date('Y-m-d')
-                                         || $data_batas[1]->batas_awal <= date('Y-m-d') && $data_batas[1]->batas_akhir >= date('Y-m-d')){
-                                    echo 'class="btn"';
-                                  }
-                                  else {
-                                    echo 'class="btn disabled"';
-                                  }
-                                  ?>
-                                  href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal); ?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
-                                    <i class="fa fa-edit"></i>
-                                  </a>
-                                  <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->
-                                </div>
-                              </td>
-                            </tr>
-                            <?php                         
-                          }       
-                      ?>                                                
-                    </tbody>
-                  </table>
-                </div>
-                <!--  /.table-responsive -->
-              </div>
-              <!-- /.card-body -->
-          </div>
 
           <?php          
             if(isset($data_status_uts)){

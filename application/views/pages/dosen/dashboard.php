@@ -167,7 +167,7 @@
                       <th>Mata Kuliah</th>
                       <th>Kelas</th>
                       <th>Ruang</th>
-                      <th>Action</th>
+                      <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody id="show_jadwal">

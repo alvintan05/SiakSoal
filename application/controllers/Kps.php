@@ -25,13 +25,13 @@ class Kps extends CI_Controller
 	function index()
 	{		
 		$data['title'] = 'Home | KPS';
-		$data['pages'] = $this->load->view('pages/kps/bank_soal','',true);
-		$this->load->view('pengajuan_soal/kps/bank_soal.php', array('main'=>$data));
+		$data['pages'] = $this->load->view('pages/kps/home','',true);
+		$this->load->view('pengajuan_soal/kps/home.php', array('main'=>$data));
 	}
 
 	function search()
 	{
-		$data['title'] = 'Dashboard | KPS';
+		$data['title'] = 'Bank Soal | KPS';
 		$data['data_soal'] = null;
 		if ($this->input->get('tahun')) {
 			$filter = array(
@@ -49,8 +49,8 @@ class Kps extends CI_Controller
 			echo "Filter gagal";
 		}
 
-		$data['pages'] = $this->load->view('pages/kps/dashboard','',true);
-		$this->load->view('pengajuan_soal/kps/dashboard.php', array('main'=>$data));
+		$data['pages'] = $this->load->view('pages/kps/bank_soal','',true);
+		$this->load->view('pengajuan_soal/kps/bank_soal.php', array('main'=>$data));
 	}
 
 	function dashboard()
