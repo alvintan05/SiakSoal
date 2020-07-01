@@ -89,7 +89,7 @@
                               <div class="box-button">                        
                                   <a class="btn"data-toggle="modal" data-target="#detailModalUts<?php echo $row->kode_soal;?>"><i class="fa fa-eye"></i></a>
                                   <a class="btn" data-toggle="modal" data-target="#verifikasiModalUts<?php echo $row->kode_soal;?>"><i class="fa fa-check" style="color: green"></i></a>
-                                  <a class="btn" data-toggle="modal" data-target="#rejectModal<?php echo $row->kode_soal;?>"><i class="fas fa-times"style="color: red"></i></a>
+                                  <a class="btn" data-toggle="modal" data-target="#rejectModalUts<?php echo $row->kode_soal;?>"><i class="fas fa-times"style="color: red"></i></a>
                               </div>            
                           </td>
                           </tr>
@@ -172,11 +172,7 @@
             </div>
           </div>
 
-<<<<<<< HEAD
-          
 
-=======
->>>>>>> b865c9923817672d13b553c83ee0069d76cc64a4
           <!-- Modal Verifikasi-->
           <div class="modal fade" id="verifikasiModalUts<?php echo $row->kode_soal;?>" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -192,36 +188,33 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<<<<<<< HEAD
+
                   <form action="<?php echo base_url(). 'kbk/verifikasi_soal_uts' ?>" method="post">
                     <input type="hidden" name="kode_soal" value="<?=$kode_soal;?>">
                     <input type="hidden" name="status" value="Diterima">
                   </form>
+
                   <button type="button" class="btn btn-success"><input>Yes</button>
-=======
+
                   <form action="<?php echo base_url(). 'Kbk/verifikasi_soal_uts' ?>" method="post">
                     <input type="hidden" value="<?= $kode_soal;?>" name="kode_soal">
                     <input type="hidden" value="Diterima" name="status">
                     <input type="hidden" value="" name="catatan">
-                    <button class="btn btn-success" type="submit" name="diterima">Yes</button>
+                    <button class="btn btn-success" type="submit" name="Diterima">Yes</button>
                   </form>
->>>>>>> b865c9923817672d13b553c83ee0069d76cc64a4
+
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
           </div><!-- /.modal -->
 
-          <?php
-           }
-          }
-          ?>
-
+          
           <!-- Modal Reject-->
-          <div class="modal fade" id="rejectModal<?php echo $row->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal fade" id="rejectModalUts<?php echo $row->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                <h4 class="modal-title" id="rejectModal">Menolak Soal</h4>
+                <h4 class="modal-title" id="rejectModalUts">Menolak Soal</h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -233,10 +226,9 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  
                     <input type="hidden" value="<?= $kode_soal;?>" name="kode_soal">
                     <input type="hidden" value="Ditolak" name="status">
-                    <button class="btn btn-danger" type="submit" name="ditolak">Send message</button>
+                    <button class="btn btn-danger" type="submit" name="Ditolak">Send message</button>
                   </form>
                 </div>
               </div>
@@ -246,7 +238,9 @@
            }
           }
           ?>
+          
 </section>
+
 
 <div class="content-header">
   <div class="container-fluid">

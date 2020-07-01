@@ -70,10 +70,21 @@ class Kbk extends CI_Controller
 
 	function verifikasi_soal_uas()
 	{
-		$data['title'] = 'Soal UAS | KBK';
-		$verifikasisoal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/approval', $id));
+		$data = array(
+			'kode' => $this->input->post('kode_soal'),
+			'status' =>  $this->input->post('status'),	
+			'note' => $this->input->post('catatan')		
+		);
+		
+		$verifikasisoal_uts = json_decode($this->curl->simple_put($this->API.'/kbk/approval', $data));
+		$respon = $verifikasisoal_uts->data;
 
-		$this->load->view('pengajuan_soal/kbk/soal_uas.php', array('main'=>$data));
+		if($verifikasisoal_uts){
+			echo "<script>alert('$respon Mengedit Data'); window.location.href ='".base_url()."kbk/soal_uas'</script>";
+		} else {
+			echo "<script>alert('$respon Mengedit Data'); window.location.href ='".base_url()."kbk/soal_uas'</script>";
+		}
+
 
 
 	}

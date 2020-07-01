@@ -88,8 +88,8 @@
                         <td>
                             <div class="box-button">                        
                                 <a class="btn"data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>" ><i class="fa fa-eye"></i></a>
-                                <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
-                                <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
+                                <a class="btn" data-toggle="modal" data-target="#verifikasiModalUas<?php echo $row->kode_soal;?>"><i class="fa fa-check" style="color: green"></i></a>
+                                <a class="btn" data-toggle="modal" data-target="#rejectModalUas<?php echo $row->kode_soal;?>"><i class="fas fa-times"style="color: red"></i></a>
                             </div>            
                         </td>
                         </tr>
@@ -171,14 +171,10 @@
             </div>
           </div>
 
-          <?php
-           }
-          }
-          ?>
-
+          
 
           <!-- Modal Verifikasi-->
-          <div class="modal fade" id="verifikasiModal" tabindex="-1" role="dialog">
+          <div class="modal fade" id="verifikasiModalUas<?php echo $row->kode_soal;?>" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -192,21 +188,34 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <form action="<?php echo base_url(). 'kbk/verifikasi_soal_uas' ?>" method="post">
+                    <input type="hidden" name="kode_soal" value="<?=$kode_soal;?>">
+                    <input type="hidden" name="status" value="Diterima">
+                  </form>
                   <button type="button" class="btn btn-success">Yes</button>
+                  <form action="<?php echo base_url(). 'Kbk/verifikasi_soal_uas' ?>" method="post">
+                    <input type="hidden" value="<?= $kode_soal;?>" name="kode_soal">
+                    <input type="hidden" value="Diterima" name="status">
+                    <input type="hidden" value="" name="catatan">
+                    <button class="btn btn-success" type="submit" name="Diterima">Yes</button>
+                  </form>
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
           </div><!-- /.modal -->
 
+          
+
           <!-- Modal Reject-->
-          <div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal fade" id="rejectModalUas<?php echo $row->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                <h4 class="modal-title" id="rejectModal">Menolak Soal</h4>
+                <h4 class="modal-title" id="rejectModalUas">Menolak Soal</h4>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
+                  <form id="formDitolak" action="<?php echo base_url(). 'Kbk/verifikasi_soal_uas' ?>" method="post">
                   <form>
                     <div class="form-group">
                       <label for="message-text" class="control-label">Message:</label>
@@ -216,11 +225,17 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="hidden" value="<?= $kode_soal;?>" name="kode_soal">
+                    <input type="hidden" value="Ditolak" name="status">
                   <button type="button" class="btn btn-danger">Send message</button>
                 </div>
               </div>
             </div>
           </div>
+          <?php
+           }
+          }
+          ?>
 </section>
 
 <div class="content-header">
