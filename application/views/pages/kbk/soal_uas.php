@@ -77,7 +77,26 @@
                       <th>Action</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <?php  
+                      foreach($daftar_soal_uas as $row) {
+                        ?>
+                        <tr>
+                        <td><?php echo $row->kode_soal;?></td>
+                        <td><?php echo $row->namamk;?></td>
+                        <td><?php echo $row->nama;?></td>
+                        <td><?php echo $row->namaklas;?></td>
+                        <td>
+                            <div class="box-button">                        
+                                <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
+                                <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
+                                <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
+                            </div>            
+                        </td>
+                        </tr>
+                        <?php                         
+                      }       
+                    ?>
+                    <!-- <tbody>
                     <tr>
                       <td>MK001</td>
                       <td>Data Mining</td>
@@ -143,7 +162,9 @@
                         </div>
                       </td>
                     </tr>
-                    </tbody>
+                    </tbody> -->
+
+
                   </table>
                 </div>
                 <!-- /.table-responsive -->

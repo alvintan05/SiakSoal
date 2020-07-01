@@ -34,7 +34,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/kbk/soal_uas') ?>
+			<?php $this->load->view('pages/kbk/soal_uas', $main); ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
