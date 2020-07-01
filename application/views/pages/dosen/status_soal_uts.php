@@ -44,11 +44,11 @@
           <div class="col-1" align="right">
             <span class="fa-stack fa-lg">
               <i class="fas fa-square fa-stack-2x" style="color: #ffff"></i>
-              <i class="fas fa-file fa-stack-1x " style="color: #17a2b8"></i>
+              <i class="fas fa-book fa-stack-1x " style="color: #17a2b8"></i>
             </span>
           </div>
           <div class="col-8">
-            <div class="text-secondary"><b>Status Soal</b></div>
+            <div class="text-secondary"><b>Status Soal UTS</b></div>
             <small class="content text-gray">Halaman ini menampilkan status soal UTS yang telah di upload oleh dosen. </small>
           </div>
           <div class="col-3">
@@ -215,8 +215,8 @@
                       <th>Mata Kuliah</th>
                       <th>File</th>
                       <th>Status</th>
-                      <th>Waktu Upload</th>
-                      <th>Action</th>
+                      <th>Tanggal Upload</th>
+                      <th>Aksi</th>
                     </tr>
                     </thead>
                     <tbody>

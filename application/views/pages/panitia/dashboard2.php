@@ -120,7 +120,7 @@
               <th>Dosen</th>
               <th>Kelas</th>
               <th>Tanggal Divalidasi</th>               
-              <th>Action</th>
+              <th>Aksi</th>
             </tr>
             </thead>
             <tbody>
@@ -162,6 +162,13 @@
     </div>
   </div>
 </section>
+
+<div class="content-header">
+    <div class="container-fluid">
+        
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
  <script>

@@ -43,7 +43,7 @@
           </li>
           <li class="nav-item <?php echo $this->uri->segment(2) == 'dosen/status_soal_uts' ? 'active': '' ?>">
             <a href="<?php echo site_url('dosen/status_soal_uts'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'dosen/status_soal_uts') {echo "active" ;} ?>">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Status Soal UTS
               </p>
@@ -51,7 +51,7 @@
           </li>
           <li class="nav-item <?php echo $this->uri->segment(2) == 'dosen/status_soal_uas' ? 'active': '' ?>">
             <a href="<?php echo site_url('dosen/status_soal_uas'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'dosen/status_soal_uas') {echo "active" ;} ?>">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Status Soal UAS
               </p>

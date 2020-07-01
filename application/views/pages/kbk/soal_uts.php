@@ -4,12 +4,12 @@
           <div class="col-1" align="right">
             <span class="fa-stack fa-lg">
               <i class="fas fa-square fa-stack-2x" style="color: #ffff"></i>
-              <i class="fas fa-tachometer-alt fa-stack-1x " style="color: #17a2b8"></i>
+              <i class="fas fa-book fa-stack-1x " style="color: #17a2b8"></i>
             </span>
           </div>
           <div class="col-9">
-            <div class="text-secondary"><b>Dashboard</b></div>
-            <small class="content text-gray">Halaman ini menampilkan daftar soal yang telah di upload dosen. </small>
+            <div class="text-secondary"><b>Soal UTS</b></div>
+            <small class="content text-gray">Halaman ini menampilkan daftar soal UTS yang telah di upload dosen. </small>
           </div>
           <div class="col-2">
             <?php $this->load->view('layouts/breadcrumb')?>
@@ -43,7 +43,7 @@
                       <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Total Matkul</span>
+                        <span class="info-box-text">Total Mata Kuliah</span>
                         <!-- <span class="info-box-number"><?php echo count($data_status_uts); ?></span> -->
                       </div>
                       <!-- /.info-box-content -->
@@ -57,7 +57,7 @@
                       <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Processing</span>
+                        <span class="info-box-text">Proses</span>
                         <!-- <span class="info-box-number"><?php echo $proccess_uts; ?></span> -->
                       </div>
                       <!-- /.info-box-content -->
@@ -73,7 +73,7 @@
                       <th>Mata Kuliah</th>
                       <th>Dosen</th>
                       <th>Kelas</th>
-                      <th>Action</th>
+                      <th>Aksi</th>
                     </tr>
                     </thead>
 
