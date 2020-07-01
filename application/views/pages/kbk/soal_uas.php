@@ -96,73 +96,6 @@
                         <?php                         
                       }       
                     ?>
-                    <!-- <tbody>
-                    <tr>
-                      <td>MK001</td>
-                      <td>Data Mining</td>
-                      <td>Anggi Widayano</td>
-                      <td>TI 2A</td>
-                      <td>
-                        <div class="box-button">
-                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>MK002</td>
-                      <td>Datawarehouse</td>
-                      <td>Iklima Putri</td>
-                      <td>TI 4A</td>
-                      <td>
-                       <div class="box-button">
-                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                     <tr>
-                      <td>MK003</td>
-                      <td>Database 1</td>
-                      <td>Elizabet</td>
-                      <td>TI 6A</td>
-                      <td>
-                       <div class="box-button">
-                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                     <tr>
-                      <td>MK004</td>
-                      <td>WEB 1</td>
-                      <td>Candra Heri</td>
-                      <td>TI 2B</td>
-                      <td>
-                       <div class="box-button">
-                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                     <tr>
-                      <td>MK005</td>
-                      <td>Statisika</td>
-                      <td>Euis Salsabilla</td>
-                      <td>TI 6B</td>
-                      <td>
-                       <div class="box-button">
-                          <a class="btn"data-toggle="modal" data-target="#detailModal" ><i class="fa fa-eye"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#verifikasiModal"><i class="fa fa-check" style="color: green"></i></a>
-                          <a class="btn" data-toggle="modal" data-target="#rejectModal"><i class="fas fa-times"style="color: red"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                    </tbody> -->
 
 
                   </table>
@@ -171,6 +104,20 @@
               </div>
               <!-- /.card-body -->
           </div>
+ 
+          <?php
+            if(isset($daftar_soal_uas)){
+              foreach($daftar_soal_uas as $row) 
+              {
+                $kode_soal = $row->kode_soal;
+                $nama = $row->namamk;
+                $dosen = $row->nama;
+                $kelas = $row->namaklas;
+                $jenisujian = "UAS";
+                $jenis_soal = $row->jenis_soal;
+                $tanggalUpload = date("d F Y", strtotime($create_date));
+                $file = $row->file;            
+          ?>
 
            <!-- Modal Detail-->
           <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
@@ -187,31 +134,31 @@
                     <table class="table table-sm table-hover">
                       <tr>
                         <th>Kode Matkul</th>
-                        <td><p>MK001</p></td>
+                        <td><p><?php echo $kode_soal ?></p></td>
                       </tr>
                       <tr>
                         <th>Nama Matkul</th>
-                        <td><p>Data Mining</p></td>
+                        <td><p><?php echo $row->namamk;?></p></td>
                       </tr>
                       <tr>
                         <th>Dosen Pengajar</th>
-                        <td><p>Anggi Widayano</p></td>
+                        <td><p><?php echo $row->nama;?></p></td>
                       </tr>
                       <tr>
                         <th>Jenis Ujian</th>
-                        <td><p>Tertulis</p></td>
+                        <td><p><?php echo $jenis_soal ?></p></td>
                       </tr>
                       <tr>
                         <th>UTS / UAS</th>
-                        <td><p>UTS</p></td>
+                        <td><p><?php echo $jenisujian ?></p></td>
                       </tr>
                       <tr>
                         <th>Tanggal Upload</th>
-                        <td><p>Senin, 22 Juni 2020, 07.30 AM</p></td>
+                        <td><p><?php echo $tanggalUpload ?></p></td>
                       </tr>
                       <tr>
                         <th>File Soal</th>
-                        <td><a href=""><i class="fas fa-file"></i> Data Mining.pdf </a></td>
+                        <td><a href="<?php echo base_url(). 'index.php/download/'. $file;?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>
                       </tr>
                     </table>
                   </div>
@@ -222,6 +169,12 @@
               </div>
             </div>
           </div>
+
+          <?php
+           }
+          }
+          ?>
+
 
           <!-- Modal Verifikasi-->
           <div class="modal fade" id="verifikasiModal" tabindex="-1" role="dialog">
