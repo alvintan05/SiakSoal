@@ -1,3 +1,24 @@
+<?php   
+  $proccess_uas = 0;
+  $verified_uas = 0;
+  $rejected_uas = 0;
+  
+  if(isset($daftar_soal_uas)){
+    foreach($daftar_soal_uas as $row) {
+      switch($row->status){
+        case "Diterima":
+          $verified_uas++;
+          break;
+        case "Proses":
+          $proccess_uas++;
+          break;
+        case "Ditolak":
+          $rejected_uas++;
+          break;
+      }
+    }
+  }
+?>
 <div class="content-header">
   <div class="container-fluid">
         <div class="row callout callout bg-light">
@@ -79,7 +100,37 @@
         </div>          
       </div>
 
-           <div class="card" <?php if($isFilterResultNull) echo 'hidden'; ?>>
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="info-box mb-3 bg-green">            
+          <div class="info-box-content">
+            <span class="info-box-text">Jadwal Pengumpulan Soal UAS</span>
+            <span class="info-box-number">
+              <?php 
+                if(empty($data_batas[1]->batas_awal) && empty($data_batas[1]->batas_akhir)){
+                  echo '-';
+                } else {
+                  $batas_awal = date("d F Y", strtotime($data_batas[1]->batas_awal));
+                  $batas_akhir = date("d F Y", strtotime($data_batas[1]->batas_akhir));
+                  echo $batas_awal . ' - ' . $batas_akhir;
+                }
+              ?>
+            </span>                
+          </div>              
+        </div>            
+      </div>
+
+       <!-- Error No Data API -->
+       <div class="row" <?php if(!$isApiResultNull) echo 'hidden'; ?>>
+        <div class="col-12 col-sm-7 col-md-7">
+          <div class="alert alert-danger alert-dismissible"> 
+            <?php  
+              echo "Data Soal UAS Tidak Ditemukan";              
+              ?>                           
+          </div>
+        </div>          
+      </div>
+
+           <div class="card" <?php if($isFilterResultNull || $isApiResultNull) echo 'hidden'; ?>>
               <div class="card-header">
                 <div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -112,7 +163,28 @@
 
                       <div class="info-box-content">
                         <span class="info-box-text">Total Upload</span>
-                        <span class="info-box-number"><?php echo count($daftar_soal_uas); ?></span>
+                        <span class="info-box-number">
+                          <?php 
+                            if(isset($daftar_soal_uas)) {
+                              echo count($daftar_soal_uas);
+                            } else {
+                              echo '0';
+                            }
+                          ?>
+                        </span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <div class="col-12 col-sm-6 col-md-3">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box mb-3 bg-warning">
+                      <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Proses</span>
+                        <span class="info-box-number"><?php echo $proccess_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
@@ -121,17 +193,31 @@
 
                   <div class="col-12 col-sm-6 col-md-3">
                     <!-- Info Boxes Style 2 -->
-                    <div class="info-box mb-3 bg-warning">
-                      <span class="info-box-icon"><i class="fas fa-hourglass-half"></i></span>
+                    <div class="info-box mb-3 bg-success">
+                      <span class="info-box-icon"><i class="fas fa-check"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Proses</span>
-                        <!-- <span class="info-box-number"><?php echo $proccess_uts; ?></span> -->
+                        <span class="info-box-text">Diterima</span>
+                        <span class="info-box-number"><?php echo $verified_uas; ?></span>
                       </div>
                       <!-- /.info-box-content -->
                     </div>
                     <!-- /.info-box -->
                   </div>
+
+                  <div class="col-12 col-sm-6 col-md-3">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box mb-3 bg-danger">
+                      <span class="info-box-icon"><i class="fas fa-times"></i></span>
+
+                      <div class="info-box-content">
+                        <span class="info-box-text">Ditolak</span>
+                        <span class="info-box-number"><?php echo $rejected_uas; ?></span>
+                      </div>
+                      <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                  </div>    
                 </div>
 
                <div class="table table-striped" >
@@ -176,8 +262,8 @@
                         <td>
                             <div class="box-button">                        
                                 <a class="btn"data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>" ><i class="fa fa-eye"></i></a>
-                                <a class="btn" data-toggle="modal" data-target="#verifikasiModalUas<?php echo $row->kode_soal;?>"<?php if($row->status == 'Diterima' || $row->status == 'Ditolak') echo 'hidden' ?>><i class="fa fa-check" style="color: green"></i></a>
-                                <a class="btn" data-toggle="modal" data-target="#rejectModalUas<?php echo $row->kode_soal;?>"<?php if($row->status == 'Diterima' || $row->status == 'Ditolak') echo 'hidden' ?>><i class="fas fa-times"style="color: red"></i></a>
+                                <a class="<?php if($data_batas[1]->batas_awal <= date('Y-m-d') && $data_batas[1]->batas_akhir >= date('Y-m-d')) echo 'btn'; else echo 'btn disabled'?>" data-toggle="modal" data-target="#verifikasiModalUas<?php echo $row->kode_soal;?>"<?php if($row->status == 'Diterima' || $row->status == 'Ditolak') echo 'hidden' ?>><i class="fa fa-check" style="color: green"></i></a>
+                                <a class="<?php if($data_batas[1]->batas_awal <= date('Y-m-d') && $data_batas[1]->batas_akhir >= date('Y-m-d')) echo 'btn'; else echo 'btn disabled'?>" data-toggle="modal" data-target="#rejectModalUas<?php echo $row->kode_soal;?>"<?php if($row->status == 'Diterima' || $row->status == 'Ditolak') echo 'hidden' ?>><i class="fas fa-times"style="color: red"></i></a>
                             </div>            
                         </td>
                         </tr>

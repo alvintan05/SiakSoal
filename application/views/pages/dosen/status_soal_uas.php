@@ -1,25 +1,7 @@
 <?php   
-  $proccess_uts = 0;
-  $verified_uts = 0;
-  $rejected_uts = 0;
   $proccess_uas = 0;
   $verified_uas = 0;
   $rejected_uas = 0;
-  
-  if(isset($data_status_uts)){
-    foreach($data_status_uts as $row) {
-      switch($row->status){
-        case "Diterima":
-          $verified_uts++;
-          break;
-        case "Proses":
-          $proccess_uts++;
-          break;
-        case "Ditolak":
-          $rejected_uts++;
-          break;
-      }
-  }  
   
   if(isset($data_status_uas)){
     foreach($data_status_uas as $row) {
@@ -36,7 +18,6 @@
       }
     }
   }
-}
 ?>
 <div class="content-header">
 	<div class="container-fluid">
@@ -57,7 +38,7 @@
         </div><!-- /.row -->
         
         <!-- Option tahun dan semester -->
-        <form action="<?php echo base_url(). 'dosen/status_soal_uts' ?>" method="post">
+        <form action="<?php echo base_url(). 'dosen/status_soal_uas' ?>" method="post">
           <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
               <select id="listTahun" name="listTahun" class="form-control">
@@ -99,7 +80,7 @@
         </div>
 
          <!-- Error Parameter boxes -->
-        <div class="row" <?php if(!$isUtsResultNull || !$isUasResultNull) echo 'hidden'; ?>>
+        <div class="row" <?php if(!$isFilterResultNull) echo 'hidden'; ?>>
           <div class="col-12 col-sm-7 col-md-7">
             <div class="alert alert-danger alert-dismissible"> 
               <?php  
@@ -111,20 +92,24 @@
           </div>          
         </div>
 
-        <!-- Info Parameter boxes -->
-        <div class="row" <?php if($isUtsResultNull && $isUasResultNull) echo 'hidden'; ?>>
-           <div class="col-12 col-sm-12 col-md-12">
-            <div class="alert alert-info alert-dismissible"> 
-              <?php  
-                if(empty($tahun) && empty($semester)){
-                  echo "Data Semua Status Soal"; 
-                } else {
-                  echo "Data Status Soal Tahun Akademik ".$tahun." Semester ".$semester; 
-                }
-                ?>                           
-            </div>
-          </div>          
-        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <div class="info-box mb-3 bg-green">            
+              <div class="info-box-content">
+                <span class="info-box-text">Jadwal Pengumpulan Soal UAS</span>
+                <span class="info-box-number">
+                  <?php 
+                    if(empty($data_batas[1]->batas_awal) && empty($data_batas[1]->batas_akhir)){
+                      echo '-';
+                    } else {
+                      $batas_awal = date("d F Y", strtotime($data_batas[1]->batas_awal));
+                      $batas_akhir = date("d F Y", strtotime($data_batas[1]->batas_akhir));
+                      echo $batas_awal . ' - ' . $batas_akhir;
+                    }
+                  ?>
+                </span>                
+              </div>              
+            </div>            
+          </div> 
         
     </div><!-- /.container-fluid -->
 </div>
@@ -135,14 +120,24 @@
     <div class="container-fluid">       
 
         <!-- UAS -->            
-            <div class="card" <?php if($isUasResultNull) echo 'hidden'; ?>>
+            <div class="card" <?php if($isFilterResultNull) echo 'hidden'; ?>>
               <div class="card-header border-transparent">
                 <div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-plus"></i>
                   </button>
                 </div>
-                <h1 class="card-title "><b>Status Pengumpulan Soal UAS</b></h1>
+                <h1 class="card-title ">
+                  <b>
+                    <?php 
+                      if(empty($tahun) && empty($semester)){
+                        echo "Status Pengumpulan Semua Soal UAS";
+                      } else {                        
+                        echo "Status Pengumpulan Soal UAS Tahun Akademik ".$tahun." Semester ".$semester;
+                      }
+                    ?>
+                  </b>
+                </h1>
               </div>
               <!-- /.card-header -->
               <div class="card-body p-2">
@@ -155,7 +150,7 @@
                       <span class="info-box-icon"><i class="fas fa-tag"></i></span>
 
                       <div class="info-box-content">
-                        <span class="info-box-text">Total Mata Kuliah</span>
+                        <span class="info-box-text">Total Upload</span>
                         <span class="info-box-number"><?php echo count($data_status_uas); ?></span>
                       </div>
                       <!-- /.info-box-content -->
@@ -256,8 +251,7 @@
                               <td>
                                 <div class="box-button">
                                   <a class="btn" data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>"><i class="fa fa-eye"></i></a>
-                                  <a <?php if($data_batas[0]->batas_awal <= date('Y-m-d') && $data_batas[0]->batas_akhir >= date('Y-m-d')
-                                         || $data_batas[1]->batas_awal <= date('Y-m-d') && $data_batas[1]->batas_akhir >= date('Y-m-d')){
+                                  <a <?php if($data_batas[1]->batas_awal <= date('Y-m-d') && $data_batas[1]->batas_akhir >= date('Y-m-d')){
                                     echo 'class="btn"';
                                   }
                                   else {
@@ -266,8 +260,7 @@
                                   ?>
                                   href="<?php echo site_url('dosen/edit_soal/'.$row->kode_soal); ?>" <?php if($row->status == "Diterima" || $row->status == "Ditolak") echo 'hidden';?>>
                                     <i class="fa fa-edit"></i>
-                                  </a>
-                                  <!-- <a class="btn" data-toggle="modal" data-target="#hapusModal"><i class="fa fa-trash"></i></a>                                   -->
+                                  </a>                                  
                                 </div>
                               </td>
                             </tr>
@@ -280,92 +273,7 @@
                 <!--  /.table-responsive -->
               </div>
               <!-- /.card-body -->
-          </div>
-
-          <?php          
-            if(isset($data_status_uts)){
-              foreach($data_status_uts as $row2) 
-              {
-                $kode = $row2->matakuliah_kodemk;
-                $nama = $row2->namamk;
-                $kelas = $row2->namaklas;
-                $jenisujian = "UTS";
-                $jenissoal = $row2->jenis_soal;              
-                $kbk = $row2->bagian;
-                $note = $row2->note;
-                $create_date =  $row2->create_at;
-                $tanggalUpload = date("d F Y", strtotime($create_date));
-                $edit_date =  $row2->update_at;
-                $tanggalUpdate = date("d F Y", strtotime($edit_date));
-                $file = $row2->file;            
-          ?>
-           <!-- Modal Detail UTS -->
-          <div class="modal fade" id="detailModalUts<?php echo $row2->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="detailModalTitle">Detail Soal</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="card">
-                    <table class="table table-sm table-hover">
-                      <tr>
-                        <th>Kode Mata Kuliah</th>
-                        <td><p><?php echo $kode ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>Nama Mata Kuliah</th>
-                        <td><p><?php echo $nama ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>Kelas</th>
-                        <td><p><?php echo $kelas ?></p></td>
-                      </tr>                      
-                      <tr>
-                        <th>Jenis Ujian</th>
-                        <td><p><?php echo $jenissoal ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>UTS / UAS</th>
-                        <td><p><?php echo $jenisujian ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>KBK</th>
-                        <td><p><?php echo $kbk ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>Catatan dari KBK</th>
-                        <td><p><?php echo $note ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>Tanggal Upload</th>                        
-                        <td><p><?php echo $tanggalUpload ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>Tanggal Update</th>                        
-                        <td><p><?php echo $tanggalUpdate ?></p></td>
-                      </tr>
-                      <tr>
-                        <th>File Soal</th>
-                        <td><a href="<?php echo base_url(). 'index.php/download/'. $file;?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td>                        
-                        <!-- <td><a href="<?php echo site_url('dosen/download/'.$file); ?>" target="_blank"><i class="fas fa-file"></i> <?php echo $file ?></a></td> -->
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <?php
-            }
-          }
-          ?>
+          </div>    
 
           <?php
             if(isset($data_status_uas)){
@@ -449,29 +357,7 @@
           <?php
             }
           }
-          ?>
-
-          <!-- Modal Hapus-->
-          <!-- <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="hapusModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="hapusModalLabel">Perhatian</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Apakah Anda yakin ingin menghapus data ?</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <a href="" class="btn btn-danger">Hapus</a>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
+          ?>      
       </div>
   </section>
 
@@ -484,17 +370,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
   $(document).ready(function() {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-      "order": [[ 1, "asc" ]],
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true  
-    });
-
     $("#example2").DataTable({
       "responsive": true,
       "autoWidth": false,

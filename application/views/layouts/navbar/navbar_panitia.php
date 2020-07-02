@@ -13,7 +13,7 @@
       <li class="nav-item dropdown user user-menu">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
           <div class="image">
-          <img src="<?php echo base_url();?>assets/dist/img/user4-128x128.jpg" class="user-image img-circle elevation-2" alt="User Image">
+          <img src="<?php echo base_url();?>assets/dist/img/default_user.png" class="user-image img-circle elevation-2" alt="User Image">
         </div>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">

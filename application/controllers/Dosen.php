@@ -43,6 +43,7 @@ class Dosen extends CI_Controller
 
 		// ini default value
 		$data['isFilterResultNull'] = false;
+		$data['isApiResultNull'] = false;
 		$data['notif'] = false;
 		$data['tahun'] = null;
 		$data['semester'] = null;
@@ -70,14 +71,22 @@ class Dosen extends CI_Controller
 					$data['data_jadwal'] = $data_jadwal->data;
 				}			
 			} else {
-				$data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen', $id));
 				$data['notif'] = true;
-				$data['data_jadwal'] = $data_jadwal->data;							
+				$data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen', $id));										
+				if(empty($data_jadwal->data)){
+					$data['isApiResultNull'] = true;
+				} else {					
+					$data['data_jadwal'] = $data_jadwal->data;
+				}					
 			}              					
 		} else {
 			$data['notif'] = false;			
-            $data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen', $id));
-			$data['data_jadwal'] = $data_jadwal->data;						
+            $data_jadwal = json_decode($this->curl->simple_get($this->API.'/dosen', $id));									
+			if(empty($data_jadwal->data)){
+				$data['isApiResultNull'] = true;
+			} else {					
+				$data['data_jadwal'] = $data_jadwal->data;
+			}	
 		}
 
 		$this->load->view('pengajuan_soal/dosen/dashboard.php', array('main'=>$data));
@@ -130,8 +139,8 @@ class Dosen extends CI_Controller
 		$data['data_batas'] = $this->session->userdata('batas_waktu');
 
 		// ini default value
-		$data['isUtsResultNull'] = false;
-		$data['isUasResultNull'] = false;
+		$data['isFilterResultNull'] = false;	
+		$data['isApiResultNull'] = false;
 		$data['notif'] = false;
 		$data['tahun'] = null;
 		$data['semester'] = null;
@@ -147,45 +156,35 @@ class Dosen extends CI_Controller
 					'tahun'=>$tahun,
 					'semester'=>$semester
 				);			
-				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/status_soal_by', $data_filter));
+				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/status_soal_uts_by', $data_filter));
 				$data['notif'] = false;	
 				$data['tahun'] = $tahun;
 				$data['semester'] = $semester;
 				
 				// check data jadwal null or not											
-				if (empty($data_status_soal->data->data_uts) && empty($data_status_soal->data->data_uas)){
-					$data['isUtsResultNull'] = true;
-					$data['isUasResultNull'] = true;
-				} else if (empty($data_status_soal->data->data_uts) || empty($data_status_soal->data->data_uas)){
-					if(empty($data_status_soal->data->data_uts)){
-						$data['isUtsResultNull'] = true;
-						$data['isUasResultNull'] = false;
-						$data['data_status_uas'] = $data_status_soal->data->data_uas;					
-					}
-	
-					if(empty($data_status_soal->data->data_uas)){
-						$data['isUasResultNull'] = true;
-						$data['isUtsResultNull'] = false;
-						$data['data_status_uts'] = $data_status_soal->data->data_uts;
-					}
-				} else if(!empty($data_status_soal->data->data_uts) && !empty($data_status_soal->data->data_uas)) {
-					$data['isUtsResultNull'] = false;
-					$data['isUasResultNull'] = false;				
-					$data['data_status_uts'] = $data_status_soal->data->data_uts;	
-					$data['data_status_uas'] = $data_status_soal->data->data_uas;
+				if (empty($data_status_soal->data)){
+					$data['isFilterResultNull'] = true;					
+				} else {					
+					$data['data_status_uts'] = $data_status_soal->data;						
 				}
 
 			} else {				
 				$data['notif'] = true;				
-				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal', $id));				
-				$data['data_status_uts'] = $data_status_soal->data->data_uts;
-				$data['data_status_uas'] = $data_status_soal->data->data_uas;						
+				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal_uts', $id));
+				if(empty($data_status_soal->data)){
+					$data['isApiResultNull'] = true;
+				} else {					
+					$data['data_status_uts'] = $data_status_soal->data;
+				}														
 			}              					
 		} else {
 			$data['notif'] = false;			
-            $data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal', $id));				
-			$data['data_status_uts'] = $data_status_soal->data->data_uts;
-			$data['data_status_uas'] = $data_status_soal->data->data_uas;
+            $data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal_uts', $id));				
+			if(empty($data_status_soal->data)){
+				$data['isApiResultNull'] = true;
+			} else {					
+				$data['data_status_uts'] = $data_status_soal->data;
+			}					
 		}
 				
 		$this->load->view('pengajuan_soal/dosen/status_soal_uts.php', array('main'=>$data));
@@ -201,8 +200,8 @@ class Dosen extends CI_Controller
 		$data['data_batas'] = $this->session->userdata('batas_waktu');
 
 		// ini default value
-		$data['isUtsResultNull'] = false;
-		$data['isUasResultNull'] = false;
+		$data['isFilterResultNull'] = false;	
+		$data['isApiResultNull'] = false;
 		$data['notif'] = false;
 		$data['tahun'] = null;
 		$data['semester'] = null;
@@ -218,45 +217,35 @@ class Dosen extends CI_Controller
 					'tahun'=>$tahun,
 					'semester'=>$semester
 				);			
-				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/status_soal_by', $data_filter));
+				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/status_soal_uas_by', $data_filter));
 				$data['notif'] = false;	
 				$data['tahun'] = $tahun;
 				$data['semester'] = $semester;
 				
 				// check data jadwal null or not											
-				if (empty($data_status_soal->data->data_uts) && empty($data_status_soal->data->data_uas)){
-					$data['isUtsResultNull'] = true;
-					$data['isUasResultNull'] = true;
-				} else if (empty($data_status_soal->data->data_uts) || empty($data_status_soal->data->data_uas)){
-					if(empty($data_status_soal->data->data_uts)){
-						$data['isUtsResultNull'] = true;
-						$data['isUasResultNull'] = false;
-						$data['data_status_uas'] = $data_status_soal->data->data_uas;					
-					}
-	
-					if(empty($data_status_soal->data->data_uas)){
-						$data['isUasResultNull'] = true;
-						$data['isUtsResultNull'] = false;
-						$data['data_status_uts'] = $data_status_soal->data->data_uts;
-					}
-				} else if(!empty($data_status_soal->data->data_uts) && !empty($data_status_soal->data->data_uas)) {
-					$data['isUtsResultNull'] = false;
-					$data['isUasResultNull'] = false;				
-					$data['data_status_uts'] = $data_status_soal->data->data_uts;	
-					$data['data_status_uas'] = $data_status_soal->data->data_uas;
+				if (empty($data_status_soal->data)){
+					$data['isFilterResultNull'] = true;					
+				} else {					
+					$data['data_status_uas'] = $data_status_soal->data;						
 				}
 
 			} else {				
 				$data['notif'] = true;				
-				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal', $id));				
-				$data['data_status_uts'] = $data_status_soal->data->data_uts;
-				$data['data_status_uas'] = $data_status_soal->data->data_uas;						
+				$data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal_uas', $id));				
+				if(empty($data_status_soal->data)){
+					$data['isApiResultNull'] = true;
+				} else {					
+					$data['data_status_uas'] = $data_status_soal->data;
+				}					
 			}              					
 		} else {
 			$data['notif'] = false;			
-            $data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal', $id));				
-			$data['data_status_uts'] = $data_status_soal->data->data_uts;
-			$data['data_status_uas'] = $data_status_soal->data->data_uas;
+            $data_status_soal = json_decode($this->curl->simple_get($this->API.'/dosen/daftar_status_soal_uas', $id));				
+			if(empty($data_status_soal->data)){
+				$data['isApiResultNull'] = true;
+			} else {					
+				$data['data_status_uas'] = $data_status_soal->data;
+			}
 		}
 				
 		$this->load->view('pengajuan_soal/dosen/status_soal_uas.php', array('main'=>$data));
@@ -268,8 +257,29 @@ class Dosen extends CI_Controller
 		$this->load->view('pengajuan_soal/dosen/home_setelah_login.php', array('main'=>$data));
 	}
 
+	function check_waktu_upload()
+	{
+		$jenis = $this->input->post('utsuas');
+		$batas_waktu = $this->session->userdata('batas_waktu');
+
+		if($jenis == 'UTS'){
+			if($batas_waktu[0]->batas_awal <= date('Y-m-d') && $batas_waktu[0]->batas_akhir >= date('Y-m-d')){
+				$this->post_upload();
+			} else {
+				echo "<script>alert('Tidak Dapat Melakukan Upload UTS Karena Tidak Dalam Periode Pengumpulan'); window.location.href ='".base_url()."dosen/dashboard'</script>";
+			}
+		} else if($jenis == 'UAS'){
+			if($batas_waktu[1]->batas_awal <= date('Y-m-d') && $batas_waktu[1]->batas_akhir >= date('Y-m-d')){
+				$this->post_upload();
+			} else {
+				echo "<script>alert('Tidak Dapat Melakukan Upload UAS Karena Tidak Dalam Periode Pengumpulan'); window.location.href ='".base_url()."dosen/dashboard'</script>";
+			}
+		}
+
+	}
+
 	function post_upload()
-	{	
+	{			
 		$config = array(
 			'upload_path'=>'uploads/soal/',
 			'allowed_types'=>'doc|docx|pdf',
@@ -303,14 +313,20 @@ class Dosen extends CI_Controller
 	{		
 		if($_FILES["file1"]["error"] == 4){
 			$data = array(
-				'kode' => $this->input->post('id'),
-				'jenis_ujian' =>  $this->input->post('utsuas'),
+				'kode' => $this->input->post('id'),				
 				'jenis_soal' =>  $this->input->post('jenisUjian'),
 				'kbk_nip' =>  $this->input->post('kbk')							
 			);			
 	
 			$insert =  $this->curl->simple_put($this->API.'/dosen/editupload', $data);
-			redirect('dosen/status_soal');
+
+			$jenis = $this->input->post('jenisUjianLama');
+
+			if($jenis == 'UTS'){
+				redirect('dosen/status_soal_uts');
+			} else if ($jenis == 'UAS'){
+				redirect('dosen/status_soal_uas');
+			}			
 		} else {
 			$file = $this->input->post('oldFileName');
 			$config = array(
@@ -330,15 +346,21 @@ class Dosen extends CI_Controller
 				$this->deleteFile($file);
 				
 				$data = array(
-					'kode' => $this->input->post('id'),
-					'jenis_ujian' =>  $this->input->post('utsuas'),
+					'kode' => $this->input->post('id'),					
 					'jenis_soal' =>  $this->input->post('jenisUjian'),
 					'kbk_nip' =>  $this->input->post('kbk'),
 					'file' =>  $filename								
 				);			
 		
 				$insert =  $this->curl->simple_put($this->API.'/dosen/editupload', $data);				
-				echo "<script>alert('Sukses Mengedit Data'); window.location.href ='".base_url()."dosen/status_soal'</script>";
+				
+				$jenis = $this->input->post('jenisUjianLama');
+
+				if($jenis == 'UTS'){
+					echo "<script>alert('Sukses Mengedit Data'); window.location.href ='".base_url()."dosen/status_soal_uts'</script>";
+				} else if ($jenis == 'UAS'){
+					echo "<script>alert('Sukses Mengedit Data'); window.location.href ='".base_url()."dosen/status_soal_uas'</script>";
+				}							
 			} else {				
 				echo "<script>alert('Gagal Upload, Harap Coba Lagi !') ; window.location.href ='".base_url()."dosen/edit_soal/".$this->input->post('id')."'</script>";		
 			}			

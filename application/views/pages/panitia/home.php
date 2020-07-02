@@ -1,23 +1,6 @@
 <div class="content-header">
 	<div class="container-fluid ">
-    <!-- <div class="row callout callout bg-light">
-          <div class="col-10">
-            <div class="text-secondary">
-              <span class="fa-stack fa-lg">
-                <i class="fas fa-square fa-stack-2x" style="color: #ffff"></i>
-                <i class="fas fa-home fa-stack-1x " style="color: #17a2b8"></i>
-              </span>
-              <b>Home</b>
-            </div>
-            
-          </div> -->
-          <!-- <div class="col-9">
-            <div class="text-secondary"><b>Home</b></div>
-          </div> -->
-          <!-- <div class="col-2">
-            
-          </div>
-        </div> --><!-- /.row -->
+    
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->

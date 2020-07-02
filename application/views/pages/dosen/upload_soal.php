@@ -12,10 +12,9 @@
       <div class="card">
           <div class="card-header">
             
-            <h1 class="card-title"><big><b>Upload Soal</b></big></h1>
-            <!-- <div class="card-description text-muted subjudul">Datawarehouse &nbsp; TI 4A</div> -->
+            <h1 class="card-title"><big><b>Upload Soal</b></big></h1>            
           </div>
-          <form action="<?php echo base_url(). 'dosen/post_upload' ?>" method="post" enctype="multipart/form-data" id="formUploadSoal" >
+          <form action="<?php echo base_url(). 'dosen/check_waktu_upload' ?>" method="post" enctype="multipart/form-data" id="formUploadSoal" >
           <div class="card-body">                          
            <!--  <h6 class="card-description text-muted">Mata Kuliah: <?php echo $data_matkul[0]->namamk;?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kelas: <?php echo $data_matkul[0]->namaklas;?></h6> -->
               <div class="form-group">
@@ -50,10 +49,10 @@
                   <label for="kbk">KBK</label>                  
                   <select id="kbk" name="kbk" class="form-control" required >
                     <option value="">Pilih KBK...</option>
-                    <option value="kbkRPL">KBK RPL</option>
-                    <option value="kbkMultimedia">KBK Multimedia</option>
-                    <option value="kbkCB">KBK Character Building dan K3</option>
-                    <option value="kbkJE">KBK Jaringan dan Embedded</option>
+                    <option value="KBK RPL">KBK RPL</option>
+                    <option value="KBK Multimedia">KBK Multimedia</option>
+                    <option value="KBK Character Building dan K3">KBK Character Building dan K3</option>
+                    <option value="KBK Jaringan dan Embedded">KBK Jaringan dan Embedded</option>
                   </select>
                 </div>
               </div>

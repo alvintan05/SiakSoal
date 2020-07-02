@@ -1,12 +1,6 @@
 <div class="content-header">
   <div class="container-fluid">
-        <div class="row callout callout bg-light">
-          <!-- <div class="col-1" align="right">
-            <span class="fa-stack fa-lg">
-              <i class="fas fa-square fa-stack-2x" style="color: #ffff"></i>
-              <i class="fas fa-search fa-stack-1x " style="color: #17a2b8"></i>
-            </span>
-          </div> -->
+        <div class="row callout callout bg-light">          
           <div class="col-10">
             <div class="text-secondary"><span class="fa-stack fa-lg">
               <i class="fas fa-square fa-stack-2x" style="color: #ffff"></i>
@@ -53,7 +47,7 @@
                         foreach($data_soal as $row) {
                         ?>
                         <tr>
-                            <td><?php echo $row->kode_soal; ?></td>
+                            <td><?php echo $row->matakuliah_kodemk; ?></td>
                             <td><?php echo $row->namamk;?></td>
                             <td><?php echo $row->jenis_ujian; ?></td>
                             <td><?php echo $row->semester; ?></td>
@@ -116,7 +110,7 @@
               <table class="table table-sm table-hover">
                 <tr>
                   <th>Kode Mata Kuliah</th>
-                  <td><p><?php echo $row->kode_soal ?></p></td>
+                  <td><p><?php echo $row->matakuliah_kodemk ?></p></td>
                 </tr>
                 <tr>
                   <th>Tahun Akademik</th>
@@ -135,7 +129,7 @@
                   <td><p><?php echo $row->dosen_pembuat ?></p></td>
                 </tr>
                 <tr>
-                  <th>Prodi</th>
+                  <th>Program Studi</th>
                   <td><p><?php echo $row->namaprod ?></p></td>
                 </tr>
                 <tr>
@@ -177,21 +171,18 @@
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script>
-  $(function () {
+  $(document).ready(function() {       
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
-    });
-    $('#example2').DataTable({
+      "order": [[ 1, "asc" ]],
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
+      "lengthChange": true,
+      "searching": true,
       "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
+      "info": true      
+    });        
   });
 </script>

@@ -19,8 +19,12 @@ class Kbk extends CI_Controller
 
 	function index()
 	{		
-		$data['title'] = 'Home | KBK';
-		$data['pages'] = $this->load->view('pages/kbk/home','',true);
+		$data['title'] = 'Home | KBK';		
+
+		$data_batas = json_decode($this->curl->simple_get($this->API.'/panitia/batas_waktu'));
+		$data['data_batas'] = $data_batas->data;
+		$this->session->set_userdata('batas_waktu', $data['data_batas']);
+
 		$this->load->view('pengajuan_soal/kbk/home.php', array('main'=>$data));
 	}
 
@@ -31,10 +35,12 @@ class Kbk extends CI_Controller
 		$id = array('kbk_nip'=>$this->session->nip);
 
 		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
-		$data['tahun_list'] = $data_tahun->data;		
+		$data['tahun_list'] = $data_tahun->data;
+		$data['data_batas'] = $this->session->userdata('batas_waktu');		
 
 		// ini default value
 		$data['isFilterResultNull'] = false;
+		$data['isApiResultNull'] = false;
 		$data['notif'] = false;
 		$data['tahun'] = null;
 		$data['semester'] = null;
@@ -63,14 +69,22 @@ class Kbk extends CI_Controller
 				}			
 			} else {				
 				$data['notif'] = true;				
-				$daftar_soal_uts = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluts', $id));	
-				$data['daftar_soal_uts'] = $daftar_soal_uts->data;
+				$daftar_soal_uts = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluts', $id));					
+				if(empty($daftar_soal_uts->data)){
+					$data['isApiResultNull'] = true;
+				} else {					
+					$data['daftar_soal_uts'] = $daftar_soal_uts->data;
+				}
 			}              					
 		} else {
 			$data['notif'] = false;			            
 			$daftar_soal_uts = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluts', $id));	
-			$data['daftar_soal_uts'] = $daftar_soal_uts->data;
-		}
+			if(empty($daftar_soal_uts->data)){
+				$data['isApiResultNull'] = true;
+			} else {					
+				$data['daftar_soal_uts'] = $daftar_soal_uts->data;
+			}
+		}						
 
 		$this->load->view('pengajuan_soal/kbk/soal_uts.php', array('main'=>$data));
 	}
@@ -82,9 +96,11 @@ class Kbk extends CI_Controller
 
 		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
 		$data['tahun_list'] = $data_tahun->data;		
+		$data['data_batas'] = $this->session->userdata('batas_waktu');
 
 		// ini default value
 		$data['isFilterResultNull'] = false;
+		$data['isApiResultNull'] = false;
 		$data['notif'] = false;
 		$data['tahun'] = null;
 		$data['semester'] = null;
@@ -114,12 +130,20 @@ class Kbk extends CI_Controller
 			} else {				
 				$data['notif'] = true;				
 				$daftar_soal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluas', $id));
-				$data['daftar_soal_uas'] = $daftar_soal_uas->data;
+				if(empty($daftar_soal_uas->data)){
+					$data['isApiResultNull'] = true;
+				} else {					
+					$data['daftar_soal_uas'] = $daftar_soal_uas->data;
+				}
 			}              					
 		} else {
 			$data['notif'] = false;			            
-			$daftar_soal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluas', $id));
-			$data['daftar_soal_uas'] = $daftar_soal_uas->data;
+			$daftar_soal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluas', $id));			
+			if(empty($daftar_soal_uas->data)){
+				$data['isApiResultNull'] = true;
+			} else {					
+				$data['daftar_soal_uas'] = $daftar_soal_uas->data;
+			}
 		}	
 
 		$this->load->view('pengajuan_soal/kbk/soal_uas.php', array('main'=>$data));

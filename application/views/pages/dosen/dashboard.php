@@ -77,8 +77,19 @@
         </div>          
       </div>
 
+      <!-- Error No Data API -->
+      <div class="row" <?php if(!$isApiResultNull) echo 'hidden'; ?>>
+        <div class="col-12 col-sm-7 col-md-7">
+          <div class="alert alert-danger alert-dismissible"> 
+            <?php  
+              echo "Data Jadwal Tidak Ditemukan";              
+              ?>                           
+          </div>
+        </div>          
+      </div>
+
       <!-- Info boxes -->
-        <div class="row" <?php if($isFilterResultNull) echo 'hidden'; ?>>
+        <div class="row" <?php if($isFilterResultNull || $isApiResultNull) echo 'hidden'; ?>>
           <div class="col-12 col-sm-6 col-md-3">            
             <div class="info-box mb-3 bg-info">
               <span class="info-box-icon"><i class="fas fa-tag"></i></span>
@@ -135,7 +146,7 @@
 
 
     	<!-- TABLE: LATEST ORDERS -->
-            <div class="card" <?php if($isFilterResultNull) echo 'hidden'; ?>>
+            <div class="card" <?php if($isFilterResultNull || $isApiResultNull) echo 'hidden'; ?>>
               <div class="card-header">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">

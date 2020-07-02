@@ -38,11 +38,13 @@
                      <label>Tahun Ajaran</label>
                           <select name="tahun" class="form-control select2bs4" style="width: 100%;" required>
                             <option selected="selected"></option>
-                            <option value="2015">2015</option>
-                            <option value="2016">2016</option>
-                            <option value="2017">2017</option>
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
+                            <?php 
+                              foreach($tahun_list as $row){ 
+                                ?>        
+                                <option value="<?php echo $row->tahun_akad ?>"><?php echo $row->tahun_akad ?></option>
+                              <?php 
+                              }
+                            ?> 
                           </select>
                     </div>
                     <div class="form-group">

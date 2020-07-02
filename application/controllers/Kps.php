@@ -25,7 +25,7 @@ class Kps extends CI_Controller
 	function index()
 	{		
 		$data['title'] = 'Home | KPS';
-		$data['pages'] = $this->load->view('pages/kps/home','',true);
+		$data['pages'] = $this->load->view('pages/kps/home','',true);		
 		$this->load->view('pengajuan_soal/kps/home.php', array('main'=>$data));
 	}
 
@@ -63,6 +63,8 @@ class Kps extends CI_Controller
 		$data['title'] = 'Dashboard | KPS';
 		$data['data_soal'] = $this->session->userdata('hasil_data_soal');
 		$data['pages'] = $this->load->view('pages/kps/dashboard','',true);
+		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
+		$data['tahun_list'] = $data_tahun->data;
 		$this->load->view('pengajuan_soal/kps/dashboard.php', array('main'=>$data));
 	}
 

@@ -24,7 +24,7 @@
 			<!-- pages -->
 			
 			
-			<?php $this->load->view('pages/kbk/home') ?>
+			<?php $this->load->view('pages/kbk/home', $main) ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->
