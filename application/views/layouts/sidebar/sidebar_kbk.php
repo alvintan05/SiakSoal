@@ -16,7 +16,7 @@
         </div>
         <div class="info">
           <a href="<?php echo site_url('kbk')?>" class="d-block"><?php echo $this->session->nama; ?></a>
-          <span data-toggle="tooltip" title="Sebagai" class="badge badge-warning">KBK</span>
+          <span data-toggle="tooltip" title="Sebagai" class="badge badge-warning"><?php echo $this->session->role; ?></span>
         </div>
       </div>
       <!-- Sidebar Menu -->

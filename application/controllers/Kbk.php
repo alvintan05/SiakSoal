@@ -27,14 +27,51 @@ class Kbk extends CI_Controller
 	function soal_uts()
 	{
 
-		$data['title'] = 'Dashboard | KBK';
-		$id = array('kbk_nip'=>$this->session->nip);
-		
-		$daftar_soal_uts = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluts', $id));
-		
-		$data['daftar_soal_uts'] = $daftar_soal_uts->data;
-
 		$data['title'] = 'Soal UTS | KBK';
+		$id = array('kbk_nip'=>$this->session->nip);
+
+		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
+		$data['tahun_list'] = $data_tahun->data;		
+
+		// ini default value
+		$data['isFilterResultNull'] = false;
+		$data['notif'] = false;
+		$data['tahun'] = null;
+		$data['semester'] = null;
+
+		$filter = $this->input->post('filter');		
+        $tahun  = $this->input->post('listTahun');
+        $semester = $this->input->post('listSemester');
+
+        if (isset($filter)) {
+			if($tahun != 'default' && $semester != 'default') {
+				$data_filter = array(
+					'kbk_nip'=>$this->session->nip,
+					'tahun'=>$tahun,
+					'semester'=>$semester
+				);			
+				$daftar_soal_uts = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluts_by', $data_filter));
+				$data['notif'] = false;	
+				$data['tahun'] = $tahun;
+				$data['semester'] = $semester;
+				
+				// check data jadwal null or not
+				if(empty($daftar_soal_uts->data)){
+					$data['isFilterResultNull'] = true;
+				} else {					
+					$data['daftar_soal_uts'] = $daftar_soal_uts->data;
+				}			
+			} else {				
+				$data['notif'] = true;				
+				$daftar_soal_uts = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluts', $id));	
+				$data['daftar_soal_uts'] = $daftar_soal_uts->data;
+			}              					
+		} else {
+			$data['notif'] = false;			            
+			$daftar_soal_uts = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluts', $id));	
+			$data['daftar_soal_uts'] = $daftar_soal_uts->data;
+		}
+
 		$this->load->view('pengajuan_soal/kbk/soal_uts.php', array('main'=>$data));
 	}
 
@@ -42,8 +79,48 @@ class Kbk extends CI_Controller
 	{
 		$data['title'] = 'Soal UAS | KBK';
 		$id = array('kbk_nip'=>$this->session->nip);
-		$daftar_soal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluas', $id));
-		$data['daftar_soal_uas'] = $daftar_soal_uas->data;
+
+		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
+		$data['tahun_list'] = $data_tahun->data;		
+
+		// ini default value
+		$data['isFilterResultNull'] = false;
+		$data['notif'] = false;
+		$data['tahun'] = null;
+		$data['semester'] = null;
+
+		$filter = $this->input->post('filter');		
+        $tahun  = $this->input->post('listTahun');
+        $semester = $this->input->post('listSemester');
+
+        if (isset($filter)) {
+			if($tahun != 'default' && $semester != 'default') {
+				$data_filter = array(
+					'kbk_nip'=>$this->session->nip,
+					'tahun'=>$tahun,
+					'semester'=>$semester
+				);			
+				$daftar_soal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluas_by', $data_filter));
+				$data['notif'] = false;	
+				$data['tahun'] = $tahun;
+				$data['semester'] = $semester;
+				
+				// check data jadwal null or not
+				if(empty($daftar_soal_uas->data)){
+					$data['isFilterResultNull'] = true;
+				} else {					
+					$data['daftar_soal_uas'] = $daftar_soal_uas->data;
+				}			
+			} else {				
+				$data['notif'] = true;				
+				$daftar_soal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluas', $id));
+				$data['daftar_soal_uas'] = $daftar_soal_uas->data;
+			}              					
+		} else {
+			$data['notif'] = false;			            
+			$daftar_soal_uas = json_decode($this->curl->simple_get($this->API.'/kbk/daftarsoaluas', $id));
+			$data['daftar_soal_uas'] = $daftar_soal_uas->data;
+		}	
 
 		$this->load->view('pengajuan_soal/kbk/soal_uas.php', array('main'=>$data));
 

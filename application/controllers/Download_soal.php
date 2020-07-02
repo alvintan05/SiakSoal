@@ -3,6 +3,7 @@
 class Download_soal extends CI_Controller
 {
 	var $API ="";
+	var $BASE_URL_FILE = "";
 	
 	function __construct()
 	{					
