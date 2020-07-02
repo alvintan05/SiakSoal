@@ -36,7 +36,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                      <label>Tahun Ajaran</label>
-                          <select name="tahun" class="form-control select2bs4" style="width: 100%;">
+                          <select name="tahun" class="form-control select2bs4" style="width: 100%;" required>
                             <option selected="selected"></option>
                             <option value="2015">2015</option>
                             <option value="2016">2016</option>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-group">
                       <label>Program Studi</label>
-                      <select name ="namaprodi"class="form-control select2bs4" style="width: 100%;">
+                      <select name ="namaprodi"class="form-control select2bs4" style="width: 100%;" required>
                         <option selected="selected"></option>
                         <option  value="TI">Teknik Informatika</option>
                         <option  value="TMD">Teknik Multimedia Digital</option>
@@ -59,7 +59,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                           <label>Semester</label>
-                          <select name="semester"class="form-control select2bs4" style="width: 100%;">
+                          <select name="semester"class="form-control select2bs4" style="width: 100%;" required>
                             <option selected="selected"></option>
                             <option value="ganjil">Ganjil</option>
                             <option value="genap">Genap</option>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="form-group">
                           <label>Jenis Soal</label>
-                          <select name="jenissoal"class="form-control select2bs4" style="width: 100%;">
+                          <select name="jenissoal"class="form-control select2bs4" style="width: 100%;" required>
                             <option selected="selected"></option>
                             <option value="uts">UTS</option>
                             <option value="uas">UAS</option>

@@ -43,14 +43,19 @@ class Kps extends CI_Controller
 			
 			$data_soal = json_decode($this->curl->simple_get($this->API.'/kps/search', $filter));
 			$data['data_soal'] = $data_soal->data;
-			$this->session->set_userdata('hasil_data_soal', $data['data_soal']);
 
+			if(isset($data['data_soal'])){
+				$this->session->set_userdata('hasil_data_soal', $data['data_soal']);
+			}else {
+				$data['kosong'] = 'Tidak ada hasil pencarian';
+			}
+			
 		} else {
 			echo "Filter gagal";
 		}
 
-		$data['pages'] = $this->load->view('pages/kps/bank_soal','',true);
-		$this->load->view('pengajuan_soal/kps/bank_soal.php', array('main'=>$data));
+		$data['pages'] = $this->load->view('pages/kps/dashboard','',true);
+		$this->load->view('pengajuan_soal/kps/dashboard.php', array('main'=>$data));
 	}
 
 	function dashboard()
