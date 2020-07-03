@@ -20,6 +20,7 @@ class Kps extends CI_Controller
 		$this->load->library('upload');
 		$this->load->library('form_validation');
 		$this->load->library('session');
+		$this->load->helper('download');
 	}
 
 	function index()

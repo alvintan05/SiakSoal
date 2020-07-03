@@ -18,7 +18,7 @@
                   Silahkan unduh file dibawah untuk mendapatkan panduan penggunaan Sistem Pengajuan Soal 
                 </p>
 
-                <a href="" class="card-link"><i class="fas fa-file"></i> panduan_sistem_pengajuan_soal.pdf </a>
+                <a href="<?php echo base_url(). 'index.php/download_panduan/panduan.pdf';?>" target="_blank" class="card-link"><i class="fas fa-file"></i> Unduh disini </a>
               </div>
             </div>
           </div>
