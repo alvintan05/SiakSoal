@@ -53,3 +53,4 @@ $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['download/(:any)'] = "/download_soal/download/$1";
+$route['download_format/(:any)'] = "/download_soal/download_format/$1";

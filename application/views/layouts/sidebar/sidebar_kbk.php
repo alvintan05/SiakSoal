@@ -51,12 +51,21 @@
               </p>
             </a>
           </li>
-         <!-- upload form soal -->
+         <!-- upload form soal uts -->
           <li class="nav-item">
-            <a href="<?php echo site_url('kbk/upload_form_soal'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/upload_form_soal') {echo "active" ;} ?>">
+            <a href="<?php echo site_url('kbk/upload_form_soal_uts'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/upload_form_soal_uts') {echo "active" ;} ?>">
               <i class="nav-icon fas fa-cloud-upload-alt"></i>
               <p>
-                Upload Format Soal
+                Upload Format Soal UTS
+              </p>
+            </a>
+          </li>
+          <!-- upload form soal uas -->
+          <li class="nav-item">
+            <a href="<?php echo site_url('kbk/upload_form_soal_uas'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'kbk/upload_form_soal_uas') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-cloud-upload-alt"></i>
+              <p>
+                Upload Format Soal UAS
               </p>
             </a>
           </li>

@@ -23,6 +23,12 @@ class Panitia extends CI_Controller
 	{		
 		$data['title'] = 'Home | Panitia';
 		$data['pages'] = $this->load->view('pages/panitia/home','',true);
+
+		$data_uts = json_decode($this->curl->simple_get($this->API.'/kbk/format_uts'));
+		$data['data_uts'] = $data_uts->data;
+		$data_uas = json_decode($this->curl->simple_get($this->API.'/kbk/format_uas'));
+		$data['data_uas'] = $data_uas->data;
+		
 		$this->load->view('pengajuan_soal/panitia/home.php', array('main'=>$data));
 	}
 

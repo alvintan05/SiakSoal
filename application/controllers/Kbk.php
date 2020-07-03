@@ -15,6 +15,8 @@ class Kbk extends CI_Controller
 		$this->API="http://localhost/siaksoal-api/api";		
         $this->load->library('curl');        
 		$this->load->helper('url');
+		$this->load->library('upload');
+		$this->load->helper('download');
 	}
 
 	function index()
@@ -24,6 +26,11 @@ class Kbk extends CI_Controller
 		$data_batas = json_decode($this->curl->simple_get($this->API.'/panitia/batas_waktu'));
 		$data['data_batas'] = $data_batas->data;
 		$this->session->set_userdata('batas_waktu', $data['data_batas']);
+
+		$data_uts = json_decode($this->curl->simple_get($this->API.'/kbk/format_uts'));
+		$data['data_uts'] = $data_uts->data;
+		$data_uas = json_decode($this->curl->simple_get($this->API.'/kbk/format_uas'));
+		$data['data_uas'] = $data_uas->data;
 
 		$this->load->view('pengajuan_soal/kbk/home.php', array('main'=>$data));
 	}
@@ -185,16 +192,91 @@ class Kbk extends CI_Controller
 		} else {
 			echo "<script>alert('$respon Mengedit Data'); window.location.href ='".base_url()."kbk/soal_uas'</script>";
 		}
-
-
-
 	}
 
-	function upload_form_soal()
+	function upload_form_soal_uts()
 	{
-		$data['title'] = 'Format Soal | KBK';
-		$this->load->view('pengajuan_soal/kbk/upload_form_soal.php', array('main'=>$data));
+		$data['title'] = 'Format Soal UTS | KBK';
+		$data_uts = json_decode($this->curl->simple_get($this->API.'/kbk/format_uts'));
+		$data['data_uts'] = $data_uts->data;
+		$this->load->view('pengajuan_soal/kbk/upload_form_soal_uts.php', array('main'=>$data));
 	}
+
+	function upload_form_soal_uas()
+	{
+		$data['title'] = 'Format Soal UAS | KBK';
+		$data_uas = json_decode($this->curl->simple_get($this->API.'/kbk/format_uas'));
+		$data['data_uas'] = $data_uas->data;
+		$this->load->view('pengajuan_soal/kbk/upload_form_soal_uas.php', array('main'=>$data));
+	}
+
+	function upload_uts()
+	{			
+		$file = $this->input->post('oldFileName');
+		$config = array(
+			'upload_path'=>'uploads/format/',
+			'allowed_types'=>'doc|docx|pdf',
+			'overwrite'=>'true',
+			'max_size'=>2048
+		);
+
+		$this->upload->initialize($config);			
+
+		if ($this->upload->do_upload('file1'))
+		{
+			$data_upload = $this->upload->data();
+			$filename = $data_upload['file_name'];
+
+			$this->deleteFile($file);
+
+			$data = array(
+				'jenis_ujian' =>  'UTS',				
+				'file' =>  $filename				
+			);			
+	
+			$update =  $this->curl->simple_put($this->API.'/kbk/upload_format', $data); 
+			echo "<script>alert('Sukses Upload'); window.location.href ='".base_url()."kbk'</script>";			
+		} else {			
+			echo "<script>alert('Gagal Upload, Harap Coba Lagi !') ; window.location.href ='".base_url()."kbk/upload_form_soal_uts'</script>";
+		}						
+	}
+
+	function upload_uas()
+	{			
+		$file = $this->input->post('oldFileName');
+		$config = array(
+			'upload_path'=>'uploads/format/',
+			'allowed_types'=>'doc|docx|pdf',
+			'overwrite'=>'true',
+			'max_size'=>2048
+		);
+
+		$this->upload->initialize($config);			
+
+		if ($this->upload->do_upload('file1'))
+		{
+			$data_upload = $this->upload->data();
+			$filename = $data_upload['file_name'];
+
+			$this->deleteFile($file);
+
+			$data = array(
+				'jenis_ujian' =>  'UAS',				
+				'file' =>  $filename				
+			);			
+	
+			$update =  $this->curl->simple_put($this->API.'/kbk/upload_format', $data); 
+			echo "<script>alert('Sukses Upload'); window.location.href ='".base_url()."kbk'</script>";			
+		} else {			
+			echo "<script>alert('Gagal Upload, Harap Coba Lagi !') ; window.location.href ='".base_url()."kbk/upload_form_soal_uas'</script>";
+		}						
+	}
+
+	function deleteFile($file)
+	{
+		return array_map('unlink', glob(FCPATH."/uploads/format/$file"));
+	}
+
 
 	function logout()
 	{

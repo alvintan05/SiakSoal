@@ -15,10 +15,8 @@
             <h1 class="card-title"><big><b>Upload Soal</b></big></h1>            
           </div>
           <form action="<?php echo base_url(). 'dosen/check_waktu_upload' ?>" method="post" enctype="multipart/form-data" id="formUploadSoal" >
-          <div class="card-body">                          
-           <!--  <h6 class="card-description text-muted">Mata Kuliah: <?php echo $data_matkul[0]->namamk;?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kelas: <?php echo $data_matkul[0]->namaklas;?></h6> -->
-              <div class="form-group">
-              <?php echo $this->session->flashdata('upload')?> 
+          <div class="card-body">                                     
+              <div class="form-group">              
                 <label for="matkul">Mata Kuliah</label>                
                 <input class="form-control" type="text" name="matkul" value="<?php echo $data_matkul[0]->namamk;?>" disabled/>
               </div>
@@ -58,7 +56,7 @@
               </div>
 
               <div class="form-group">
-                <label for="file1">File Soal Ujian (.doc .docx .pdf)</label>
+                <label for="file1">File Soal Ujian (.doc .docx .pdf) Max. 2 MB</label>
                 <input 
                   class="form-control-file" 
                   type="file" 
@@ -70,7 +68,7 @@
               </div> 
             </div>
             <div class="card-footer" align="right">
-              <a href="<?php echo site_url('dosen/dashboard') ?>"><input class="btn btn-danger" type="button" name="kemali" value="Kembali"></a>
+              <a href="<?php echo site_url('dosen/dashboard') ?>"><input class="btn btn-danger" type="button" name="kembali" value="Kembali"></a>
                 &nbsp;
               <input class="btn btn-success" type="submit" name="submit" value="Upload" />
             </div>                        

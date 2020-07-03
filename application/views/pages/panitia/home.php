@@ -32,7 +32,7 @@
                   Pembuatan soal UTS harus menggunkan format soal UTS yang telah ditentukan. Silahkan unduh format soal dibawah ini. 
                 </p>
 
-                <a href="" class="card-link"><i class="fas fa-file"></i> format_uts.pdf </a>
+                <a href="<?php echo base_url(). 'index.php/download_format/'. $data_uts[0]->file;?>" target="_blank" class="card-link"><i class="fas fa-file"></i> Unduh disini </a>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
                   Pembuatan soal UAS harus menggunkan format soal UAS yang telah ditentukan. Silahkan unduh format soal dibawah ini.
                 </p>
 
-                <a href="" class="card-link"><i class="fas fa-file"></i> format_uas.pdf </a>
+                <a href="<?php echo base_url(). 'index.php/download_format/'. $data_uas[0]->file;?>" target="_blank" class="card-link"><i class="fas fa-file"></i> Unduh disini </a>
               </div>
             </div>
           </div>

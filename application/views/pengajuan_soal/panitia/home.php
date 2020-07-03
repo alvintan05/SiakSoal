@@ -22,7 +22,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/panitia/home') ?>
+			<?php $this->load->view('pages/panitia/home', $main) ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->

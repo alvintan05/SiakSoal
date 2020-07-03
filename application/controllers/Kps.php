@@ -25,7 +25,13 @@ class Kps extends CI_Controller
 	function index()
 	{		
 		$data['title'] = 'Home | KPS';
-		$data['pages'] = $this->load->view('pages/kps/home','',true);		
+		$data['pages'] = $this->load->view('pages/kps/home','',true);	
+		
+		$data_uts = json_decode($this->curl->simple_get($this->API.'/kbk/format_uts'));
+		$data['data_uts'] = $data_uts->data;
+		$data_uas = json_decode($this->curl->simple_get($this->API.'/kbk/format_uas'));
+		$data['data_uas'] = $data_uas->data;
+
 		$this->load->view('pengajuan_soal/kps/home.php', array('main'=>$data));
 	}
 
