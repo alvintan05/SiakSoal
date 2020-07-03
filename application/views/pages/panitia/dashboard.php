@@ -169,6 +169,7 @@
           $nama = $row2->namamk;
           $dosen = $row2->pengajar;
           $kelas = $row2->namaklas;
+          $kbk = $row2->bagian;
           $jenisujian = "UTS";
           $jenissoal = $row2->jenis_soal;                    
           $tanggalValidasi = date("d F Y", strtotime($row2->update_at));
@@ -202,7 +203,11 @@
                 <tr>
                   <th>Kelas</th>
                   <td><p><?php echo $kelas ?></p></td>
-                </tr>                      
+                </tr>
+                <tr>
+                  <th>KBK</th>
+                  <td><p><?php echo $kbk ?></p></td>
+                </tr>
                 <tr>
                   <th>Jenis Ujian</th>
                   <td><p><?php echo $jenissoal ?></p></td>

@@ -92,6 +92,17 @@
           </div>          
         </div>
 
+        <!-- Error No Data API -->
+        <div class="row" <?php if(!$isApiResultNull) echo 'hidden'; ?>>
+          <div class="col-12 col-sm-7 col-md-7">
+            <div class="alert alert-danger alert-dismissible"> 
+              <?php  
+                echo "Data Jadwal Tidak Ditemukan";              
+                ?>                           
+            </div>
+          </div>          
+        </div>
+
         <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3 bg-green">            
               <div class="info-box-content">
@@ -120,7 +131,7 @@
     <div class="container-fluid">       
 
     	<!-- UTS -->
-            <div class="card" <?php if($isFilterResultNull) echo 'hidden'; ?>>
+            <div class="card" <?php if($isFilterResultNull || $isApiResultNull) echo 'hidden'; ?>>
               <div class="card-header border-transparent">
               	<div class="card-tools" align="float-sm-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">

@@ -62,6 +62,8 @@ class Kps extends CI_Controller
 		}
 
 		$data['pages'] = $this->load->view('pages/kps/dashboard','',true);
+		$data_tahun = json_decode($this->curl->simple_get($this->API.'/dosen/tahun'));
+		$data['tahun_list'] = $data_tahun->data;
 		$this->load->view('pengajuan_soal/kps/dashboard.php', array('main'=>$data));
 	}
 

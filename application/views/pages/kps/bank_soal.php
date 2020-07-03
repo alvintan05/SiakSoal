@@ -137,6 +137,10 @@
                   <td><p><?php echo $row->namaklas ?></p></td>
                 </tr>                      
                 <tr>
+                  <th>KBK</th>
+                  <td><p><?php echo $row->bagian ?></p></td>
+                </tr>        
+                <tr>
                   <th>Jenis Ujian</th>
                   <td><p><?php echo $row->jenis_soal ?></p></td>
                 </tr>

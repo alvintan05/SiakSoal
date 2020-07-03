@@ -142,7 +142,7 @@
                     <td>
                       <div class="box-button">
                         <!-- Detail icon -->
-                        <a class="btn" data-toggle="modal" data-target="#detailModalUts<?php echo $row->kode_soal;?>"> <i class="fa fa-eye"></i></a>
+                        <a class="btn" data-toggle="modal" data-target="#detailModalUas<?php echo $row->kode_soal;?>"> <i class="fa fa-eye"></i></a>
                         <!-- Edit Icon -->
                         <a class="btn" href="<?php echo base_url(). 'index.php/download/'. $row->file;?>" target="_blank">
                           <i class="fa fa-download"></i>
@@ -160,6 +160,85 @@
       </div>
       <!-- /.card-body -->
     </div>
+
+     <!-- Modal Detail -->
+     <?php          
+      if(isset($data_soal)){
+        foreach($data_soal as $row2) 
+        {
+          $kode = $row2->matakuliah_kodemk;
+          $nama = $row2->namamk;
+          $dosen = $row2->pengajar;
+          $kelas = $row2->namaklas;
+          $kbk = $row2->bagian;
+          $jenisujian = "UAS";
+          $jenissoal = $row2->jenis_soal;                    
+          $tanggalValidasi = date("d F Y", strtotime($row2->update_at));
+          $file = $row2->file;            
+    ?>
+      <!-- Modal Detail UTS -->
+    <div class="modal fade" id="detailModalUas<?php echo $row2->kode_soal;?>" tabindex="-1" role="dialog" aria-labelledby="detailModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="detailModalTitle">Detail Soal</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <table class="table table-sm table-hover">
+                <tr>
+                  <th>Kode Mata Kuliah</th>
+                  <td><p><?php echo $kode ?></p></td>
+                </tr>
+                <tr>
+                  <th>Nama Mata Kuliah</th>
+                  <td><p><?php echo $nama ?></p></td>
+                </tr>
+                <tr>
+                  <th>Dosen Pengajar</th>
+                  <td><p><?php echo $dosen ?></p></td>
+                </tr>
+                <tr>
+                  <th>Kelas</th>
+                  <td><p><?php echo $kelas ?></p></td>
+                </tr>
+                <tr>
+                  <th>KBK</th>
+                  <td><p><?php echo $kbk ?></p></td>
+                </tr>
+                <tr>
+                  <th>Jenis Ujian</th>
+                  <td><p><?php echo $jenissoal ?></p></td>
+                </tr>
+                <tr>
+                  <th>UTS / UAS</th>
+                  <td><p><?php echo $jenisujian ?></p></td>
+                </tr>                
+                <tr>
+                  <th>Tanggal Validasi</th>
+                  <td><p><?php echo $tanggalValidasi ?></p></td>
+                </tr>                
+                <tr>
+                  <th>File Soal</th>
+                  <td><i class="fas fa-file"></i> <?php echo $file ?></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php
+      }
+    }
+    ?>
+
   </div>
 </section>
 
