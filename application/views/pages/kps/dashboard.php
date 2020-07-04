@@ -71,8 +71,8 @@
                           <label>Jenis Soal</label>
                           <select name="jenissoal"class="form-control select2bs4" style="width: 100%;" required>
                             <option selected="selected"></option>
-                            <option value="uts">UTS</option>
-                            <option value="uas">UAS</option>
+                            <option value="UTS">UTS</option>
+                            <option value="UAS">UAS</option>
                           </select>
                         </div>
                     </div>
