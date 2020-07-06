@@ -4,11 +4,11 @@
           <div class="col-1" align="right">
             <span class="fa-stack fa-lg">
               <i class="fas fa-square fa-stack-2x" style="color: #ffff"></i>
-              <i class="fas fa-clock fa-stack-1x " style="color: #17a2b8"></i>
+              <i class="fas fa-tv fa-stack-1x " style="color: #17a2b8"></i>
             </span>
           </div>
           <div class="col-9">
-            <div class="text-secondary"><b>Batas Waktu</b></div>
+            <div class="text-secondary"><b>Monitor</b></div>
             <small class="content text-gray">Halaman ini untuk me-monitoring pengumpulan soal UTS dan UAS.</small>
           </div>
           <div class="col-2">
