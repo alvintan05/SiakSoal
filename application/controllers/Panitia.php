@@ -138,6 +138,14 @@ class Panitia extends CI_Controller
 		$this->load->view('pengajuan_soal/panitia/dashboard2.php', array('main'=>$data));
 	}
 
+	function monitor()
+	{
+		$data['title'] = 'Monitor | Panitia';
+		$data['pages'] = $this->load->view('pages/panitia/monitor','',true);
+		
+		$this->load->view('pengajuan_soal/panitia/monitor.php', array('main'=>$data));
+	}
+
 	function bataswaktu()
 	{
 		$data_batas = json_decode($this->curl->simple_get($this->API.'/panitia/batas_waktu'));

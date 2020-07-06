@@ -50,6 +50,14 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?php echo site_url('panitia/monitor'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'panitia/monitor') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-tv"></i>
+              <p>
+                Monitor
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?php echo site_url('panitia/bataswaktu'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'panitia/bataswaktu') {echo "active" ;} ?>">
               <i class="nav-icon fas fa-clock"></i>
               <p>
