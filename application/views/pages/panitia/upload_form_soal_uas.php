@@ -13,7 +13,7 @@
             <h1 class="card-title "><b>Upload Format Soal UAS</b></h1>
             <br>
           </div>
-          <form action="<?php echo base_url(). 'kbk/upload_uas' ?>" method="post" enctype="multipart/form-data" >
+          <form action="<?php echo base_url(). 'panitia/upload_uas' ?>" method="post" enctype="multipart/form-data" >
             <div class="card-body">
                 <div class="form-group">
                     <label for="oldFile">Format Saat ini</label>

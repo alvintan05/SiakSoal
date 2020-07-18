@@ -13,7 +13,7 @@
             <h1 class="card-title "><b>Upload Format Soal UTS</b></h1>
             <br>
           </div>
-          <form action="<?php echo base_url(). 'kbk/upload_uts' ?>" method="post" enctype="multipart/form-data" >
+          <form action="<?php echo base_url(). 'panitia/upload_uts' ?>" method="post" enctype="multipart/form-data" >
             <div class="card-body">            
               <div class="form-group">
                 <label for="oldFile">Format Saat ini</label>

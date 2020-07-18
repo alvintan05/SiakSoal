@@ -12,17 +12,17 @@
 	<div class="wrapper">
 
 		<!-- navbar -->
-			<?php $this->load->view('layouts/navbar/navbar_kbk')?>
+			<?php $this->load->view('layouts/navbar/navbar_panitia')?>
 		<!-- END navbar -->
 		
 		<!-- sidebar -->
-			<?php $this->load->view('layouts/sidebar/sidebar_kbk')?>
+			<?php $this->load->view('layouts/sidebar/sidebar_panitia')?>
 		<!-- END sidebar -->
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- pages -->
-			<?php $this->load->view('pages/kbk/upload_form_soal_uts', $main) ?>
+			<?php $this->load->view('pages/panitia/upload_form_soal_uts', $main) ?>
 			<!-- END pages -->
 		</div>
 		<!-- /.content-wrapper -->

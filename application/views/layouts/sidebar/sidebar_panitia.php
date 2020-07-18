@@ -64,7 +64,25 @@
                 Batas Waktu
               </p>
             </a>
-          </li>          
+          </li>     
+          <!-- upload form soal uts -->
+          <li class="nav-item">
+            <a href="<?php echo site_url('panitia/upload_form_soal_uts'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'panitia/upload_form_soal_uts') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-cloud-upload-alt"></i>
+              <p>
+                Upload Format Soal UTS
+              </p>
+            </a>
+          </li>
+          <!-- upload form soal uas -->
+          <li class="nav-item">
+            <a href="<?php echo site_url('panitia/upload_form_soal_uas'); ?>" class="nav-link <?php if ($this->uri->uri_string() == 'panitia/upload_form_soal_uas') {echo "active" ;} ?>">
+              <i class="nav-icon fas fa-cloud-upload-alt"></i>
+              <p>
+                Upload Format Soal UAS
+              </p>
+            </a>
+          </li>     
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

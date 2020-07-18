@@ -29,9 +29,9 @@ class Dosen extends CI_Controller
 		$data['data_batas'] = $data_batas->data;
 		$this->session->set_userdata('batas_waktu', $data['data_batas']);
 
-		$data_uts = json_decode($this->curl->simple_get($this->API.'/kbk/format_uts'));
+		$data_uts = json_decode($this->curl->simple_get($this->API.'/panitia/format_uts'));
 		$data['data_uts'] = $data_uts->data;
-		$data_uas = json_decode($this->curl->simple_get($this->API.'/kbk/format_uas'));
+		$data_uas = json_decode($this->curl->simple_get($this->API.'/panitia/format_uas'));
 		$data['data_uas'] = $data_uas->data;
 
 		$this->load->view('pengajuan_soal/dosen/home.php', array('main'=>$data));

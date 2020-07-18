@@ -16,6 +16,7 @@ class Panitia extends CI_Controller
 		$this->BASE_URL_FILE="http://localhost/SiakSoal/uploads/soal/";
 		$this->load->library('curl');        
 		$this->load->helper('url');
+		$this->load->library('upload');
 		$this->load->helper('download');
 	}
 
@@ -24,9 +25,9 @@ class Panitia extends CI_Controller
 		$data['title'] = 'Home | Panitia';
 		$data['pages'] = $this->load->view('pages/panitia/home','',true);
 
-		$data_uts = json_decode($this->curl->simple_get($this->API.'/kbk/format_uts'));
+		$data_uts = json_decode($this->curl->simple_get($this->API.'/panitia/format_uts'));
 		$data['data_uts'] = $data_uts->data;
-		$data_uas = json_decode($this->curl->simple_get($this->API.'/kbk/format_uas'));
+		$data_uas = json_decode($this->curl->simple_get($this->API.'/panitia/format_uas'));
 		$data['data_uas'] = $data_uas->data;
 		
 		$this->load->view('pengajuan_soal/panitia/home.php', array('main'=>$data));
@@ -165,6 +166,89 @@ class Panitia extends CI_Controller
 		$update =  $this->curl->simple_put($this->API.'/panitia/update_batas', $data);
 		redirect('panitia/bataswaktu');
 	}	
+
+	function upload_form_soal_uts()
+	{
+		$data['title'] = 'Format Soal UTS | Panitia';
+		$data_uts = json_decode($this->curl->simple_get($this->API.'/panitia/format_uts'));
+		$data['data_uts'] = $data_uts->data;
+		$this->load->view('pengajuan_soal/panitia/upload_form_soal_uts.php', array('main'=>$data));
+	}
+
+	function upload_form_soal_uas()
+	{
+		$data['title'] = 'Format Soal UAS | Panitia';
+		$data_uas = json_decode($this->curl->simple_get($this->API.'/panitia/format_uas'));
+		$data['data_uas'] = $data_uas->data;
+		$this->load->view('pengajuan_soal/panitia/upload_form_soal_uas.php', array('main'=>$data));
+	}
+
+	function upload_uts()
+	{			
+		$file = $this->input->post('oldFileName');
+		$config = array(
+			'upload_path'=>'uploads/format/',
+			'allowed_types'=>'doc|docx|pdf',
+			'overwrite'=>'true',
+			'max_size'=>2048
+		);
+
+		$this->upload->initialize($config);			
+
+		if ($this->upload->do_upload('file1'))
+		{
+			$data_upload = $this->upload->data();
+			$filename = $data_upload['file_name'];
+
+			$this->deleteFile($file);
+
+			$data = array(
+				'jenis_ujian' =>  'UTS',				
+				'file' =>  $filename				
+			);			
+	
+			$update =  $this->curl->simple_put($this->API.'/panitia/upload_format', $data); 
+			echo "<script>alert('Sukses Upload'); window.location.href ='".base_url()."panitia'</script>";			
+		} else {			
+			echo "<script>alert('Gagal Upload, Harap Coba Lagi !') ; window.location.href ='".base_url()."panitia/upload_form_soal_uts'</script>";
+		}						
+	}
+
+	function upload_uas()
+	{			
+		$file = $this->input->post('oldFileName');
+		$config = array(
+			'upload_path'=>'uploads/format/',
+			'allowed_types'=>'doc|docx|pdf',
+			'overwrite'=>'true',
+			'max_size'=>2048
+		);
+
+		$this->upload->initialize($config);			
+
+		if ($this->upload->do_upload('file1'))
+		{
+			$data_upload = $this->upload->data();
+			$filename = $data_upload['file_name'];
+
+			$this->deleteFile($file);
+
+			$data = array(
+				'jenis_ujian' =>  'UAS',				
+				'file' =>  $filename				
+			);			
+	
+			$update =  $this->curl->simple_put($this->API.'/panitia/upload_format', $data); 
+			echo "<script>alert('Sukses Upload'); window.location.href ='".base_url()."panitia'</script>";			
+		} else {			
+			echo "<script>alert('Gagal Upload, Harap Coba Lagi !') ; window.location.href ='".base_url()."panitia/upload_form_soal_uas'</script>";
+		}						
+	}
+
+	function deleteFile($file)
+	{
+		return array_map('unlink', glob(FCPATH."/uploads/format/$file"));
+	}
 
 	function logout()
 	{
